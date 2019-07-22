@@ -1,1 +1,1 @@
-# Parlay App
+# Parley App
