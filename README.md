@@ -1,1 +1,1 @@
-# parlay-app
+# Parlay App
