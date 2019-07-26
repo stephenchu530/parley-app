@@ -1,5 +1,6 @@
 package com.parley.parley;
 
+import com.parley.parley.models.Student;
 import com.parley.parley.repository.StudentRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.userdetails.UserDetails;
@@ -13,7 +14,7 @@ public class UserDetailsServiceImplementation implements UserDetailsService {
     @Override
     public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
         return studentRepository.findByUsername(username);
-//        return userRepository.findByUsername(username);
+
 
     }
 }
