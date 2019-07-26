@@ -24,7 +24,7 @@ Screenshots of the application
 ![]()
 
 # The App - 
-[Parley App](www.techparley.com)
+[Parley App](http://www.techparley.com/)
 
 ## Thanks to - 
     Links to any other repos used in the application (where applicable)
