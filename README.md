@@ -40,7 +40,7 @@ Screenshots of the application
 - [AWS S3](https://aws.amazon.com/s3/)
 - [AWS Elastic Beanstalk](https://aws.amazon.com/elasticbeanstalk/)
 - [AWS SES](https://aws.amazon.com/ses/)
-_ [AWS CloudWatch](https://aws.amazon.com/cloudwatch/)
+- [AWS CloudWatch](https://aws.amazon.com/cloudwatch/)
 
 # How to use Parley
 Directions to run the application, both for local development and in production
