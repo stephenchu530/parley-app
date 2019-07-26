@@ -485,4 +485,38 @@ gradle-app.setting
 ### Gradle Patch ###
 **/build/
 
+### Added from spring initializr ###
+HELP.md
+.gradle
+build/
+!gradle/wrapper/gradle-wrapper.jar
+!**/src/main/**
+!**/src/test/**
+
+### STS ###
+.apt_generated
+.classpath
+.factorypath
+.project
+.settings
+.springBeans
+.sts4-cache
+
+### IntelliJ IDEA ###
+.idea
+*.iws
+*.iml
+*.ipr
+out/
+
+### NetBeans ###
+/nbproject/private/
+/nbbuild/
+/dist/
+/nbdist/
+/.nb-gradle/
+
+### VS Code ###
+.vscode/
+
 # End of https://www.gitignore.io/api/vim,node,java,emacs,linux,macos,gradle,python,windows,intellij+all,visualstudiocode
