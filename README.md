@@ -16,7 +16,7 @@ They Parley app allows code school instructors to easily set up and administer w
 
 
 An architecture and/or data-flow drawing (preferably in UML) that illustrates how your application works.  
-![](./docs/parley_render.png)
+![](docs/parley_render.png)
 
 Screenshots of the application
 ![]()
