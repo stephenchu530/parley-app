@@ -1,0 +1,59 @@
+package com.parley.parley.models;
+
+
+
+import javax.persistence.*;
+import java.util.HashSet;
+import java.util.Set;
+import java.util.UUID;
+
+@Entity
+//@Table(name = "roleTypes")
+public class RoleType {
+
+    @Id
+    @GeneratedValue(strategy = GenerationType.AUTO)
+    private UUID id;
+
+    @Column(unique = true)
+    private String role;
+
+    @ManyToMany(mappedBy = "roleTypes", fetch = FetchType.EAGER)
+    private Set<Instructor> instructors = new HashSet<Instructor>();
+
+    //constructors
+    public RoleType(){}
+
+    public RoleType(String role){
+        this.role = role;
+    }
+
+    //getters
+
+    public UUID getId() {
+        return id;
+    }
+
+    public String getRole() {
+        return role;
+    }
+
+    public Set<Instructor> getInstructors() {
+        return instructors;
+    }
+
+
+    //setters
+
+    public void setId(UUID id) {
+        this.id = id;
+    }
+
+    public void setRole(String role) {
+        this.role = role;
+    }
+
+    public void setInstructors(Set<Instructor> instructors) {
+        this.instructors = instructors;
+    }
+}
