@@ -8,7 +8,7 @@ import java.util.Set;
 import java.util.UUID;
 
 @Entity
-@Table(name = "roleTypes")
+//@Table(name = "roleTypes")
 public class RoleType {
 
     @Id
