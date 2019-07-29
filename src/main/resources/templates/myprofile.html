@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>My Profile</title>
+
+</head>
+<body>
+
+<div th:if="${principal == null}">
+    <div th:replace="fragments/header :: header"></div>
+</div>
+
+<div th:if="${principal != null}">
+    <div th:replace="fragments/loggedInHeader :: header(principal=${principal})"></div>
+</div>
+
+<section>
+
+    <h1 th:if="${user}">Welcome, [[${user.firstname}]]</h1>
+
+    <div th:if="${user}">
+        <div th:if="${mywhiteboards}">
+            <h3>Upcoming Whiteboard Interviews</h3>
+            <ol>
+                <li th:each="p:${mywhiteboards}">
+                    <a th:href="'/Interviews/'+${p.id}">
+                        <span th:text="${p.dueDateOfInterview}"></span>ç
+                    </a>
+                </li>
+            </ol>
+        </div>
+
+        <div th:if="${gradedWhiteboards}">
+            <h3>Whiteboard Assessments</h3>
+            <ol>
+                <li th:each="p:${myassessments}">
+                    <a th:href="'/Interviews/'+${p.id}">
+                        <span th:text="${p.dateOfInterview}"></span>
+                    </a>
+                </li>
+            </ol>
+        </div>
+
+    </div>
+</section>
+<div th:replace="fragments/footer :: foot"></div>
+</body>
+</html>
