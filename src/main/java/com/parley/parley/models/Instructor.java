@@ -8,6 +8,7 @@ import javax.persistence.*;
 import java.util.*;
 
 @Entity
+//@Table(name = "instructors")
 public class Instructor {
 
     @Id
@@ -22,13 +23,15 @@ public class Instructor {
     private String username;
     private String password;
 
-    List<String> classes;
+    @Column
+    @ElementCollection(targetClass=String.class)
+    private List<String> classes;
 
     @ManyToMany(fetch = FetchType.EAGER)
     @JoinTable(
-            name = "UserRoles",
+            name = "AdminRoles",
             joinColumns = @JoinColumn(
-                    name = "user_id", referencedColumnName = "id"),
+                    name = "instructor_id", referencedColumnName = "id"),
             inverseJoinColumns = @JoinColumn(
                     name = "role_id", referencedColumnName = "id"))
     private Set<RoleType> roleTypes = new HashSet<RoleType>();
@@ -41,6 +44,21 @@ public class Instructor {
         } else {
             return false;
         }
+    }
+
+    //constructors
+    public Instructor(){}
+
+    public Instructor(
+            String firstName,
+            String lastName,
+            String username,
+            String password
+    ){
+        this.setFirstName(firstName);
+        this.setLastName(lastName);
+        this.setUsername(username);
+        this.setPassword(password);
     }
 
 
@@ -79,6 +97,9 @@ public class Instructor {
         return classes;
     }
 
+    public Set<RoleType> getRoleTypes() {
+        return roleTypes;
+    }
 
     //setters
 
@@ -110,6 +131,9 @@ public class Instructor {
         this.classes = classes;
     }
 
+    public void setRoleTypes(Set<RoleType> roleTypes) {
+        this.roleTypes = roleTypes;
+    }
 
     public Collection<? extends GrantedAuthority> getAuthorities() {
         List<GrantedAuthority> roles = new ArrayList<GrantedAuthority>();
