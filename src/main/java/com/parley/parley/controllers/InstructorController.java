@@ -28,7 +28,7 @@ public class InstructorController {
 
     @PostMapping("/login")
     public String login(){
-        return "myprofile2";
+        return "myprofile";
     }
 
 
