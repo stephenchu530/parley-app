@@ -11,12 +11,12 @@ public class Assessments {
 
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
-    UUID id;
+    Long id;
     @DateTimeFormat(pattern = "yyyy-mm-dd")
     Date dateOfInterview;
-    UUID prompt;
-    UUID interviewer;
-    UUID interviewee;
+    Long prompt;
+    Long interviewer;
+    Long interviewee;
     String whiteboardImgURL;
     Integer interpretationScore;
     String interpretationComments;
@@ -33,9 +33,9 @@ public class Assessments {
     public Assessments() {}
 
     public Assessments(Date dateOfInterview,
-                       UUID prompt,
-                       UUID interviewer,
-                       UUID interviewee,
+                       Long prompt,
+                       Long interviewer,
+                       Long interviewee,
                        String whiteboardImgURL,
                        Integer interpretationScore,
                        String interpretationComments,
@@ -65,7 +65,7 @@ public class Assessments {
     }
 
     // Getters
-    public UUID getId() {
+    public Long getId() {
         return id;
     }
 
@@ -73,15 +73,15 @@ public class Assessments {
         return dateOfInterview;
     }
 
-    public UUID getPrompt() {
+    public Long getPrompt() {
         return prompt;
     }
 
-    public UUID getInterviewer() {
+    public Long getInterviewer() {
         return interviewer;
     }
 
-    public UUID getInterviewee() {
+    public Long getInterviewee() {
         return interviewee;
     }
 
@@ -130,7 +130,7 @@ public class Assessments {
     }
 
     // Setters
-    public void setId(UUID id) {
+    public void setId(Long id) {
         this.id = id;
     }
 
@@ -138,15 +138,15 @@ public class Assessments {
         this.dateOfInterview = dateOfInterview;
     }
 
-    public void setPrompt(UUID prompt) {
+    public void setPrompt(Long prompt) {
         this.prompt = prompt;
     }
 
-    public void setInterviewer(UUID interviewer) {
+    public void setInterviewer(Long interviewer) {
         this.interviewer = interviewer;
     }
 
-    public void setInterviewee(UUID interviewee) {
+    public void setInterviewee(Long interviewee) {
         this.interviewee = interviewee;
     }
 
