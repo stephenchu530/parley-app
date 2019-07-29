@@ -5,6 +5,6 @@ import org.springframework.data.repository.CrudRepository;
 
 import java.util.UUID;
 
-public interface InstructorRepository extends CrudRepository<Instructor, UUID> {
+public interface InstructorRepository extends CrudRepository<Instructor, Long> {
     Instructor findByUsername(String username);
 }

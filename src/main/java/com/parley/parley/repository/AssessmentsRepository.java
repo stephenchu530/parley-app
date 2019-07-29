@@ -4,8 +4,8 @@ import com.parley.parley.models.Assessments;
 import org.springframework.data.repository.CrudRepository;
 
 import java.util.Date;
-import java.util.UUID;
 
-public interface AssessmentsRepository extends CrudRepository<Assessments, UUID> {
+
+public interface AssessmentsRepository extends CrudRepository<Assessments, Long> {
     Assessments findByDateOfInterview(Date dateOfInterview);
 }
