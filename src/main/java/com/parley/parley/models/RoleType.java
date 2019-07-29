@@ -13,7 +13,7 @@ public class RoleType {
 
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
-    private UUID id;
+    private Long id;
 
     @Column(unique = true)
     private String role;
@@ -30,7 +30,7 @@ public class RoleType {
 
     //getters
 
-    public UUID getId() {
+    public Long getId() {
         return id;
     }
 
@@ -45,7 +45,7 @@ public class RoleType {
 
     //setters
 
-    public void setId(UUID id) {
+    public void setId(Long id) {
         this.id = id;
     }
 

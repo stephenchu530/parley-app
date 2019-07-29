@@ -6,6 +6,6 @@ import org.springframework.data.repository.CrudRepository;
 import java.util.Date;
 import java.util.UUID;
 
-public interface SchedulesRepository extends CrudRepository<Schedules, UUID> {
+public interface SchedulesRepository extends CrudRepository<Schedules, Long> {
     Schedules findByDueDateOfInterview(Date dueDateOfInterview);
 }

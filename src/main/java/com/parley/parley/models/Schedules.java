@@ -14,21 +14,21 @@ public class Schedules {
 
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
-    UUID id;
-    UUID studentOne;
-    UUID promptOne;
-    UUID studentTwo;
-    UUID promptTwo;
+    Long id;
+    Long studentOne;
+    Long promptOne;
+    Long studentTwo;
+    Long promptTwo;
     @DateTimeFormat(pattern = "yyyy-mm-dd")
     Date dueDateOfInterview;
 
         //Default Constructor
         public Schedules() {}
 
-        public Schedules(UUID studentOne,
-                         UUID promptOne,
-                         UUID studentTwo,
-                         UUID promptTwo,
+        public Schedules(Long studentOne,
+                         Long promptOne,
+                         Long studentTwo,
+                         Long promptTwo,
                          Date dueDateOfInterview) {
             this.setStudentOne(studentOne);
             this.setPromptOne(promptOne);
@@ -37,23 +37,23 @@ public class Schedules {
             this.setDueDateOfInterview(dueDateOfInterview);
         }
         // Getters
-        public UUID getId() {
+        public Long getId() {
             return id;
         }
 
-        public UUID getStudentOne() {
+        public Long getStudentOne() {
             return studentOne;
         }
 
-        public UUID getPromptOne() {
+        public Long getPromptOne() {
             return promptOne;
         }
 
-        public UUID getStudentTwo() {
+        public Long getStudentTwo() {
             return studentTwo;
         }
 
-        public UUID getPromptTwo() {
+        public Long getPromptTwo() {
             return promptTwo;
         }
 
@@ -63,23 +63,23 @@ public class Schedules {
 
         // Setters
 
-        public void setId(UUID id) {
+        public void setId(Long id) {
             this.id = id;
         }
 
-        public void setStudentOne(UUID studentOne) {
+        public void setStudentOne(Long studentOne) {
             this.studentOne = studentOne;
         }
 
-        public void setPromptOne(UUID promptOne) {
+        public void setPromptOne(Long promptOne) {
             this.promptOne = promptOne;
         }
 
-        public void setStudentTwo(UUID studentTwo) {
+        public void setStudentTwo(Long studentTwo) {
             this.studentTwo = studentTwo;
         }
 
-        public void setPromptTwo(UUID promptTwo) {
+        public void setPromptTwo(Long promptTwo) {
             this.promptTwo = promptTwo;
         }
 
