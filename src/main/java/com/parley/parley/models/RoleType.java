@@ -1,13 +1,20 @@
 package com.parley.parley.models;
 
-import com.amazonaws.services.dynamodbv2.datamodeling.DynamoDBTable;
 
-import javax.persistence.Entity;
-import javax.persistence.Table;
+
+import javax.persistence.*;
+import java.util.UUID;
 
 @Entity
-@DynamoDBTable(tableName = "roleType")
+@Table(name = "roleTypes")
 public class RoleType {
+
+    @Id
+    @GeneratedValue(strategy = GenerationType.AUTO)
+    private UUID id;
+
+    @Column(unique = true)
+    private String role;
 
 
 
