@@ -31,4 +31,5 @@ dependencies {
 	testImplementation 'org.springframework.security:spring-security-test'
 	compile 'com.amazonaws:aws-java-sdk-dynamodb:1.11.585'
 	compile 'com.github.derjust:spring-data-dynamodb:5.1.0'
+	runtimeOnly 'org.postgresql:postgresql'
 }
