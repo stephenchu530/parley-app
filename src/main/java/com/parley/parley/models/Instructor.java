@@ -1,9 +1,11 @@
 package com.parley.parley.models;
 
 
+import org.springframework.security.core.GrantedAuthority;
+import org.springframework.security.core.authority.SimpleGrantedAuthority;
+
 import javax.persistence.*;
-import java.util.List;
-import java.util.UUID;
+import java.util.*;
 
 @Entity
 public class Instructor {
@@ -21,6 +23,25 @@ public class Instructor {
     private String password;
 
     List<String> classes;
+
+    @ManyToMany(fetch = FetchType.EAGER)
+    @JoinTable(
+            name = "UserRoles",
+            joinColumns = @JoinColumn(
+                    name = "user_id", referencedColumnName = "id"),
+            inverseJoinColumns = @JoinColumn(
+                    name = "role_id", referencedColumnName = "id"))
+    private Set<RoleType> roleTypes = new HashSet<RoleType>();
+
+    public boolean isAdmin() {
+        List<String> roleNames = new ArrayList<String>();
+        roleTypes.forEach(roleType -> roleNames.add(roleType.getRole()));
+        if(roleNames.contains("admin")) {
+            return true;
+        } else {
+            return false;
+        }
+    }
 
 
     //getters
@@ -88,4 +109,12 @@ public class Instructor {
     public void setClasses(List<String> classes) {
         this.classes = classes;
     }
+
+
+    public Collection<? extends GrantedAuthority> getAuthorities() {
+        List<GrantedAuthority> roles = new ArrayList<GrantedAuthority>();
+        roleTypes.forEach(roleType -> roles.add(new SimpleGrantedAuthority("role_" + roleType.getRole())));
+        return roles;
+    }
+
 }
