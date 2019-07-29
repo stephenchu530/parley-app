@@ -5,7 +5,12 @@
     <title>Login</title>
 </head>
 <body>
-
+<div th:if="${principal == null}">
+    <div th:replace="fragments/header :: header"></div>
+</div>
+<!--<div th:if="${principal != null}">-->
+    <!--<div th:replace="fragments/loggedInHeader :: header(principal=${principal})"></div>-->
+<!--</div>-->
     <h4 style="margin: 0px 140px; color:#232f3e;">Login</h4>
     <form action="/login" class="col s12" method="post">
         <div th:if="${error}">
@@ -39,42 +44,47 @@
     </form>
 
 
-    <h4 style="margin: 0px 140px; color:#232f3e;">Register</h4>
-    <form id="password-form" method="post" th:action="@{/register}" autocomplete="on">
+    <h4 style="margin: 0px 140px; color:#232f3e;">Student Register</h4>
+    <form id="student-form" method="POST" th:action="@{/register/student}" autocomplete="on">
         <div th:if="${errors}" th:each="error: ${errors}">
             <p style="color: red;"  th:text="${error}"></p>
         </div>
         <div class='row'>
-            <div class='input-field col s12'>
-                <label for="reg-email">Email</label>
-                <input type='text' name="username" id="reg-email"required/>
-            </div>
-        </div>
-
-        <div class='row'>
             <div class='input-field col s6'>
-                <label class="login-info" for="reg-pass">Password</label>
-                <input type='password' name="password" id="reg-pass"required/>
+                <label class="login-info" for="student-reg-firstname">First Name</label>
+                <input type='text' name="firstName" id="student-reg-firstName" />
             </div>
             <div class='input-field col s6'>
-                <label class="login-info" for="reg-passconf">Confirm Password</label>
-                <input type='password' name="confirmPassword" id="reg-passconf"required/>
-            </div>
-        </div>
-        <div class='row'>
-            <div class='input-field col s6'>
-                <label class="login-info" for="reg-firstname">First Name</label>
-                <input type='text' name="firstName" id="reg-firstname" />
-            </div>
-            <div class='input-field col s6'>
-                <label class="login-info" for="reg-lastname">Last Name</label>
-                <input type='text' name="lastName" id="reg-lastname" />
+                <label class="login-info" for="student-reg-lastname">Last Name</label>
+                <input type='text' name="lastName" id="student-reg-lastName" />
             </div>
         </div>
         <div class='row'>
             <div class='input-field col s12'>
-                <label class="login-info" for="reg-team">Team Alias</label>
-                <input type='text' name="team" id="reg-team" />
+                <label for="student-reg-email">Username</label>
+                <input type='text' name="username" id="student-reg-username"required/>
+            </div>
+        </div>
+        <div class='row'>
+            <div class='input-field col s6'>
+                <label class="login-info" for="student-reg-pass">Password</label>
+                <input type='password' name="password" id="student-reg-pass"required/>
+            </div>
+            <!--<div class='input-field col s6'>-->
+                <!--<label class="login-info" for="student-reg-passconf">Confirm Password</label>-->
+                <!--<input type='password' name="confirmPassword" id="student-reg-passconf"required/>-->
+            <!--</div>-->
+        </div>
+        <div class='row'>
+            <div class='input-field col s12'>
+                <label class="login-info" for="student-reg-team">Class</label>
+                <input type='text' name="team" id="student-reg-team" />
+            </div>
+        </div>
+        <div class='row'>
+            <div class='input-field col s12'>
+                <label class="login-info" for="student-reg-email">Email</label>
+                <input type='email' name="email" id="student-reg-email" />
             </div>
         </div>
         <div class='row'>
@@ -82,5 +92,53 @@
         </div>
     </form>
 
+<h4 style="margin: 0px 140px; color:#232f3e;">Instructor Register</h4>
+<form id="instructor-form" method="post" th:action="@{/register/instructor}" autocomplete="on">
+    <div th:if="${errors}" th:each="error: ${errors}">
+        <p style="color: red;"  th:text="${error}"></p>
+    </div>
+    <div class='row'>
+        <div class='input-field col s6'>
+            <label class="login-info" for="instructor-reg-firstname">First Name</label>
+            <input type='text' name="firstName" id="instructor-reg-firstName" />
+        </div>
+        <div class='input-field col s6'>
+            <label class="login-info" for="instructor-reg-lastname">Last Name</label>
+            <input type='text' name="lastName" id="instructor-reg-lastName" />
+        </div>
+    </div>
+    <div class='row'>
+        <div class='input-field col s12'>
+            <label for="instructor-reg-email">Username</label>
+            <input type='text' name="username" id="instructor-reg-username"required/>
+        </div>
+    </div>
+    <div class='row'>
+        <div class='input-field col s6'>
+            <label class="login-info" for="instructor-reg-pass">Password</label>
+            <input type='password' name="password" id="instructor-reg-pass"required/>
+        </div>
+        <!--<div class='input-field col s6'>-->
+        <!--<label class="login-info" for="instructor-reg-passconf">Confirm Password</label>-->
+        <!--<input type='password' name="confirmPassword" id="instructor-reg-passconf"required/>-->
+        <!--</div>-->
+    </div>
+    <div class='row'>
+        <div class='input-field col s12'>
+            <label class="login-info" for="instructor-reg-team">Class</label>
+            <input type='text' name="team" id="instructor-reg-team" />
+        </div>
+    </div>
+    <div class='row'>
+        <div class='input-field col s12'>
+            <label class="login-info" for="instructor-reg-email">Email</label>
+            <input type='email' name="email" id="instructor-reg-email" />
+        </div>
+    </div>
+    <div class='row'>
+        <button type='submit' name='btn_login' class='col s12 btn btn-large waves-effect'>Register</button>
+    </div>
+</form>
+<div th:replace="fragments/footer :: foot"></div>
 </body>
 </html>
