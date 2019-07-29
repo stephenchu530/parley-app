@@ -1,67 +1,77 @@
 package com.parley.parley.controllers;
 
+import com.parley.parley.models.Instructor;
+import com.parley.parley.models.Student;
 import com.parley.parley.repository.InstructorRepository;
 import com.parley.parley.repository.RoleRepository;
+import com.parley.parley.repository.StudentRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.authentication.AuthenticationManager;
+import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
+import org.springframework.security.core.Authentication;
+import org.springframework.security.core.context.SecurityContextHolder;
+import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.servlet.view.RedirectView;
+import java.util.ArrayList;
+
 
 @Controller
 public class InstructorController {
 
     @Autowired
-    private AuthenticationManager authenticationManager;
+    AuthenticationManager authenticationManager;
 
     @Autowired
-    private InstructorRepository instructorRepository;
+    InstructorRepository instructorRepository;
 
     @Autowired
-    private RoleRepository roleRepository;
+    RoleRepository roleRepository;
+
+    @Autowired
+    StudentRepository studentRepository;
+
+    @Autowired
+    PasswordEncoder bCryptPasswordEncoder;
 
     @GetMapping("/")
     public String splashPage(){
         return "login";
     }
 
-    @PostMapping("/login")
+    @GetMapping("/login")
     public String login(){
         return "myprofile";
     }
 
+    @PostMapping("/login")
+    public String loginAfterRegister(){
+        return "myprofile";
+    }
 
-//    @RequestMapping(value = "/register", method = RequestMethod.POST)
-//    public String createUser(@Valid @ModelAttribute UserAccount user, BindingResult binding, RedirectAttributes redirect) {
-//        if(binding.hasErrors() || !user.getConfirmPassword().equals(user.getPassword())) {
-//            List<String> customErrors = new ArrayList<>();
-//            binding.getAllErrors().forEach(error -> customErrors.add(error.getDefaultMessage()));
-//            if(!user.getConfirmPassword().equals(user.getPassword())) {
-//                customErrors.add("Password must match.");
-//            }
-//            redirect.addFlashAttribute("errors", customErrors);
-//            return "redirect:/login#registration";
-//        }
-//
-//        user.setPassword(bCryptPasswordEncoder.encode(user.getPassword()));
-//        user.getRoleTypes().add(roleRepository.findByRole("user"));
-//        userRepository.save(user);
-//
-//        Authentication authentication = new UsernamePasswordAuthenticationToken(user, null, new ArrayList<>());
-//        SecurityContextHolder.getContext().setAuthentication(authentication);
-//        EmailSender.sendEmail(user, null, "INTRO", null);
-//        return "redirect:/main";
-//    }
-//
-//    @RequestMapping(value = "/login", method = RequestMethod.GET)
-//    public String indexError(@RequestParam(value = "error", required=false) boolean error, RedirectAttributes redirect) {
-//        if(error) {
-//            redirect.addFlashAttribute("error", "Incorrect Credentials");
-//            return "redirect:/login#registration";
-//        }
-//        return "login";
-//    }
+    @PostMapping("/register/student")
+    public RedirectView addNewStudent(String firstname, String lastname, String username, String password, String classDesignator, String email) {
+        System.out.println("this ran first");
+        Student newStudent = new Student(firstname, lastname, username, bCryptPasswordEncoder.encode(password), classDesignator, email);
+        System.out.println("this ran");
+        studentRepository.save(newStudent);
+        System.out.println("this ran next");
+        Authentication authentication = new UsernamePasswordAuthenticationToken(newStudent, null, new ArrayList<>());
+        SecurityContextHolder.getContext().setAuthentication(authentication);
+        System.out.println("authentication works, next is reidrect");
+        return new RedirectView("/login");
+    }
+
+    @PostMapping("/register/instructor")
+    public RedirectView addNewInstructor(String firstname, String lastname, String username, String password, String email) {
+        Instructor instructor = new Instructor(firstname, lastname, username, bCryptPasswordEncoder.encode(password), email);
+        instructorRepository.save(instructor);
+        Authentication authentication = new UsernamePasswordAuthenticationToken(instructor, null, new ArrayList<>());
+        SecurityContextHolder.getContext().setAuthentication(authentication);
+        return new RedirectView("/login");
+    }
 
 
 }
