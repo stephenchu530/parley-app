@@ -53,12 +53,14 @@ public class Instructor {
             String firstName,
             String lastName,
             String username,
-            String password
+            String password,
+            String email
     ){
         this.setFirstName(firstName);
         this.setLastName(lastName);
         this.setUsername(username);
         this.setPassword(password);
+        this.setEmail(email);
     }
 
 

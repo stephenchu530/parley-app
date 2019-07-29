@@ -11,7 +11,7 @@ public class Student implements UserDetails {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private UUID id;
+    private Long id;
     private String firstName;
     private String lastName;
     @Column(unique = true)
@@ -40,8 +40,10 @@ public class Student implements UserDetails {
 
 
     //Getters
-    public UUID getId() {
-        return this.id;
+
+
+    public Long getId() {
+        return id;
     }
 
     public String getFirstName() {
@@ -72,7 +74,7 @@ public class Student implements UserDetails {
 
 
     //Setters
-    public void setId(UUID id) {
+    public void setId(Long id) {
         this.id = id;
     }
 
