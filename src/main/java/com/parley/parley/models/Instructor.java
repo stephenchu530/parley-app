@@ -13,7 +13,7 @@ public class Instructor {
 
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
-    private UUID id;
+    private Long id;
 
     private String firstName;
     private String lastName;
@@ -65,7 +65,7 @@ public class Instructor {
     //getters
 
 
-    public UUID getId() {
+    public Long getId() {
         return id;
     }
 
@@ -103,7 +103,7 @@ public class Instructor {
 
     //setters
 
-    public void setId(UUID id) {
+    public void setId(Long id) {
         this.id = id;
     }
 

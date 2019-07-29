@@ -8,7 +8,7 @@ public class Prompts {
 
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
-    private UUID id;
+    private Long id;
     @Column(unique = true)
     private String title;
     private String category;
@@ -26,7 +26,7 @@ public class Prompts {
     }
 
     // Getters
-    public UUID getId() {
+    public Long getId() {
         return this.id;
     }
 
@@ -43,7 +43,7 @@ public class Prompts {
     }
 
     // Setters
-    public void setId(UUID id) {
+    public void setId(Long id) {
         this.id = id;
     }
 

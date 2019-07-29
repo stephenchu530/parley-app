@@ -5,6 +5,6 @@ import org.springframework.data.repository.CrudRepository;
 
 import java.util.UUID;
 
-public interface RoleRepository extends CrudRepository<RoleType, UUID> {
+public interface RoleRepository extends CrudRepository<RoleType, Long> {
     RoleType findByRole(String role);
 }
