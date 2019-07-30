@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="UTF-8">
+    <title>Home</title>
+
+</head>
+<body>
+
+<div th:if="${principal == null}">
+    <div th:replace="fragments/header :: header"></div>
+</div>
+<div th:if="${principal != null}">
+    <div th:replace="fragments/loggedInHeader :: header(principal=${principal})"></div>
+</div>
+
+<h1>Instructors</h1>
+
+<a href="/student"><button>Add Student</button></a>
+<a href="/class"><button>Add Class</button></a>
+<a href="/prompt"><button>Add Prompt</button></a>
+<a href="/schedule"><button>Schedule Mock Interview</button></a>
+
+<img src="/dry-erase-home.png" alt="Whiteboard"><br>
+<div th:replace="fragments/footer :: foot"></div>
+</body>

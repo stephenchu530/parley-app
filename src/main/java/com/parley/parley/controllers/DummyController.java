@@ -10,7 +10,7 @@ import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.PrintWriter;
 
-public class dummyController {
+public class DummyController {
 
     @Autowired
     StudentRepository studentRepository;
