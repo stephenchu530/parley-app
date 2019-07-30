@@ -14,7 +14,7 @@
     <!--<div th:replace="fragments/loggedInHeader :: header(principal=${principal})"></div>-->
 <!--</div>-->
     <h4>Login</h4>
-    <form action="/perform_login" class="col s12" method="post">
+    <form action="/login" class="col s12" method="post">
         <fieldset>
             <legend>Login</legend>
             <div th:if="${error}">
@@ -25,7 +25,7 @@
                 <div class='input-field col s12'>
                     <label for='username' class="col-sm-2 col-form-label">Enter your username</label>
                     <div>
-                        <input class='validate' type='text' name='username' id='username' />
+                        <input class='validate' type='text' name='username' id='log-username' />
                     </div>
 
                 </div>
@@ -33,7 +33,7 @@
 
             <div class='row'>
                 <div class='input-field col s12'>
-                    <input class='validate' type='password' name='password' id='password' />
+                    <input class='validate' type='password' name='password' id='log-password' />
                     <label for='password' class="col-sm-2 col-form-label">Enter your password</label>
                 </div>
             </div>
@@ -54,32 +54,31 @@
         <div class="modal-content-student">
             <div class="modal-header-student">
                 <span id="studentClose" class="close-student">&times;</span>
-                <h4>Student Register</h4>
+                <h4>Register</h4>
             </div>
             <div class="modal-body-student">
-                <form id="student-form" method="POST" th:action="@{/register/student}" autocomplete="on">
+                <form id="student-form" method="POST" th:action="@{/register}" autocomplete="on">
                     <div th:if="${errors}" th:each="error: ${errors}">
                         <p style="color: red;"  th:text="${error}"></p>
                     </div>
 
-                            <label class="login-info" for="student-reg-firstname">First Name</label>
-                            <input type='text' name="firstName" id="student-reg-firstName" />
+                            <label class="login-info" for="firstName">First Name</label>
+                            <input type='text' name="firstName" id="firstName" />
 
-                            <label class="login-info" for="student-reg-lastname">Last Name</label>
-                            <input type='text' name="lastName" id="student-reg-lastName" />
+                            <label class="login-info" for="lastName">Last Name</label>
+                            <input type='text' name="lastName" id="lastName" />
 
+                            <label for="username">Username</label>
+                            <input type='text' name="username" id="username"required/>
 
-                            <label for="student-reg-email">Username</label>
-                            <input type='text' name="username" id="student-reg-username"required/>
+                            <label class="login-info" for="password">Password</label>
+                            <input type='password' name="password" id="password"required/>
 
-                            <label class="login-info" for="student-reg-pass">Password</label>
-                            <input type='password' name="password" id="student-reg-pass"required/>
+                            <label class="login-info" for="classDesignator">Class</label>
+                            <input type='text' name="team" id="classDesignator" />
 
-                            <label class="login-info" for="student-reg-team">Class</label>
-                            <input type='text' name="team" id="student-reg-team" />
-
-                            <label class="login-info" for="student-reg-email">Email</label>
-                            <input type='email' name="email" id="student-reg-email" />
+                            <label class="login-info" for="email">Email</label>
+                            <input type='email' name="email" id="email" />
 
 
                         <button type='submit' name='btn_login' class='col s12 btn btn-large waves-effect'>Register</button>
@@ -94,49 +93,6 @@
         </div>
 
     </div>
-
-
-<div id="instructorModal" class="modalInstructor" >
-    <div class="modal-content-instructor">
-        <div class="modal-header-instructor">
-            <span id="instructorClose" class="close-instructor">&times;</span>
-            <h4>Instructor Register</h4>
-        </div>
-        <div class="modal-body-instructor">
-            <form id="instructor-form" method="POST" th:action="@{/register/instructor}" autocomplete="on">
-                <div th:if="${errors}" th:each="error: ${errors}">
-                    <p style="color: red;"  th:text="${error}"></p>
-                </div>
-
-                <label class="login-info" for="instructor-reg-firstname">First Name</label>
-                <input type='text' name="firstName" id="instructor-reg-firstName" />
-
-                <label class="login-info" for="instructor-reg-lastname">Last Name</label>
-                <input type='text' name="lastName" id="instructor-reg-lastName" />
-
-
-                <label for="instructor-reg-username">Username</label>
-                <input type='text' name="username" id="instructor-reg-username"required/>
-
-                <label class="login-info" for="instructor-reg-pass">Password</label>
-                <input type='password' name="password" id="instructor-reg-pass"required/>
-
-                <label class="login-info" for="instructor-reg-team">Class</label>
-                <input type='text' name="team" id="instructor-reg-team" />
-
-                <label class="login-info" for="instructor-reg-email">Email</label>
-                <input type='email' name="email" id="instructor-reg-email" />
-
-
-                <button type='submit' name='btn_login' class='col s12 btn btn-large waves-effect'>Register</button>
-
-            </form>
-        </div>
-        <div class="modal-footer-instructor">
-            <div th:replace="fragments/footer :: foot"></div>
-        </div>
-    </div>
-</div>
 
 <div th:replace="fragments/footer :: foot"></div>
 <script type="text/javascript" src="/javascript/modal.js"></script>
