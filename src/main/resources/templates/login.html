@@ -2,6 +2,8 @@
 <html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
 <head>
     <meta charset="UTF-8">
+    <link href="/css/reset.css" rel="stylesheet" />
+    <link href="/css/bootstrap.min.css" rel="stylesheet" />
     <title>Login</title>
 </head>
 <body>
@@ -11,134 +13,88 @@
 <!--<div th:if="${principal != null}">-->
     <!--<div th:replace="fragments/loggedInHeader :: header(principal=${principal})"></div>-->
 <!--</div>-->
-    <h4 style="margin: 0px 140px; color:#232f3e;">Login</h4>
+    <h4>Login</h4>
     <form action="/login" class="col s12" method="post">
-        <div th:if="${error}">
-            <p style="color: red;" th:text="${error}"></p>
-        </div>
-        <div class='row'>
-            <div class='col s12'>
+        <fieldset>
+            <legend>Login</legend>
+            <div th:if="${error}">
+                <p style="color: red;" th:text="${error}"></p>
             </div>
-        </div>
 
-        <div class='row'>
-            <div class='input-field col s12'>
-                <input class='validate' type='text' name='username' id='username' />
-                <label for='username'>Enter your username</label>
+            <div class="form-group row">
+                <div class='input-field col s12'>
+                    <label for='username' class="col-sm-2 col-form-label">Enter your username</label>
+                    <div>
+                        <input class='validate' type='text' name='username' id='log-username' />
+                    </div>
+
+                </div>
             </div>
-        </div>
 
-        <div class='row'>
-            <div class='input-field col s12'>
-                <input class='validate' type='password' name='password' id='password' />
-                <label for='password'>Enter your password</label>
+            <div class='row'>
+                <div class='input-field col s12'>
+                    <input class='validate' type='password' name='password' id='log-password' />
+                    <label for='password' class="col-sm-2 col-form-label">Enter your password</label>
+                </div>
             </div>
-        </div>
 
-        <br />
-        <center>
             <div class='row'>
                 <button type='submit' name='btn_login' class='col s12 btn btn-large waves-effect'>Login</button>
             </div>
-        </center>
+        </fieldset>
+
+
     </form>
 
+    <button type="button" id="studentRegister" class="btn btn-primary btn-lg">Student Registration</button>
 
-    <h4 style="margin: 0px 140px; color:#232f3e;">Student Register</h4>
-    <form id="student-form" method="POST" th:action="@{/register/student}" autocomplete="on">
-        <div th:if="${errors}" th:each="error: ${errors}">
-            <p style="color: red;"  th:text="${error}"></p>
-        </div>
-        <div class='row'>
-            <div class='input-field col s6'>
-                <label class="login-info" for="student-reg-firstname">First Name</label>
-                <input type='text' name="firstName" id="student-reg-firstName" />
-            </div>
-            <div class='input-field col s6'>
-                <label class="login-info" for="student-reg-lastname">Last Name</label>
-                <input type='text' name="lastName" id="student-reg-lastName" />
-            </div>
-        </div>
-        <div class='row'>
-            <div class='input-field col s12'>
-                <label for="student-reg-email">Username</label>
-                <input type='text' name="username" id="student-reg-username"required/>
-            </div>
-        </div>
-        <div class='row'>
-            <div class='input-field col s6'>
-                <label class="login-info" for="student-reg-pass">Password</label>
-                <input type='password' name="password" id="student-reg-pass"required/>
-            </div>
-            <!--<div class='input-field col s6'>-->
-                <!--<label class="login-info" for="student-reg-passconf">Confirm Password</label>-->
-                <!--<input type='password' name="confirmPassword" id="student-reg-passconf"required/>-->
-            <!--</div>-->
-        </div>
-        <div class='row'>
-            <div class='input-field col s12'>
-                <label class="login-info" for="student-reg-team">Class</label>
-                <input type='text' name="team" id="student-reg-team" />
-            </div>
-        </div>
-        <div class='row'>
-            <div class='input-field col s12'>
-                <label class="login-info" for="student-reg-email">Email</label>
-                <input type='email' name="email" id="student-reg-email" />
-            </div>
-        </div>
-        <div class='row'>
-            <button type='submit' name='btn_login' class='col s12 btn btn-large waves-effect'>Register</button>
-        </div>
-    </form>
+    <button type="button" id="instructorRegister" class="btn btn-primary btn-lg">Instructor Registration</button>
 
-<h4 style="margin: 0px 140px; color:#232f3e;">Instructor Register</h4>
-<form id="instructor-form" method="post" th:action="@{/register/instructor}" autocomplete="on">
-    <div th:if="${errors}" th:each="error: ${errors}">
-        <p style="color: red;"  th:text="${error}"></p>
-    </div>
-    <div class='row'>
-        <div class='input-field col s6'>
-            <label class="login-info" for="instructor-reg-firstname">First Name</label>
-            <input type='text' name="firstName" id="instructor-reg-firstName" />
+    <div id="studentModal" class="modalStudent" >
+        <div class="modal-content-student">
+            <div class="modal-header-student">
+                <span id="studentClose" class="close-student">&times;</span>
+                <h4>Register</h4>
+            </div>
+            <div class="modal-body-student">
+                <form id="student-form" method="POST" th:action="@{/register}" autocomplete="on">
+                    <div th:if="${errors}" th:each="error: ${errors}">
+                        <p style="color: red;"  th:text="${error}"></p>
+                    </div>
+
+                            <label class="login-info" for="firstName">First Name</label>
+                            <input type='text' name="firstName" id="firstName" />
+
+                            <label class="login-info" for="lastName">Last Name</label>
+                            <input type='text' name="lastName" id="lastName" />
+
+                            <label for="username">Username</label>
+                            <input type='text' name="username" id="username"required/>
+
+                            <label class="login-info" for="password">Password</label>
+                            <input type='password' name="password" id="password"required/>
+
+                            <label class="login-info" for="classDesignator">Class</label>
+                            <input type='text' name="team" id="classDesignator" />
+
+                            <label class="login-info" for="email">Email</label>
+                            <input type='email' name="email" id="email" />
+
+
+                        <button type='submit' name='btn_login' class='col s12 btn btn-large waves-effect'>Register</button>
+
+                </form>
+            </div>
+
+            <div class="modal-footer-student">
+                <div th:replace="fragments/footer :: foot"></div>
+            </div>
+
         </div>
-        <div class='input-field col s6'>
-            <label class="login-info" for="instructor-reg-lastname">Last Name</label>
-            <input type='text' name="lastName" id="instructor-reg-lastName" />
-        </div>
+
     </div>
-    <div class='row'>
-        <div class='input-field col s12'>
-            <label for="instructor-reg-email">Username</label>
-            <input type='text' name="username" id="instructor-reg-username"required/>
-        </div>
-    </div>
-    <div class='row'>
-        <div class='input-field col s6'>
-            <label class="login-info" for="instructor-reg-pass">Password</label>
-            <input type='password' name="password" id="instructor-reg-pass"required/>
-        </div>
-        <!--<div class='input-field col s6'>-->
-        <!--<label class="login-info" for="instructor-reg-passconf">Confirm Password</label>-->
-        <!--<input type='password' name="confirmPassword" id="instructor-reg-passconf"required/>-->
-        <!--</div>-->
-    </div>
-    <div class='row'>
-        <div class='input-field col s12'>
-            <label class="login-info" for="instructor-reg-team">Class</label>
-            <input type='text' name="team" id="instructor-reg-team" />
-        </div>
-    </div>
-    <div class='row'>
-        <div class='input-field col s12'>
-            <label class="login-info" for="instructor-reg-email">Email</label>
-            <input type='email' name="email" id="instructor-reg-email" />
-        </div>
-    </div>
-    <div class='row'>
-        <button type='submit' name='btn_login' class='col s12 btn btn-large waves-effect'>Register</button>
-    </div>
-</form>
+
 <div th:replace="fragments/footer :: foot"></div>
+<script type="text/javascript" src="/javascript/modal.js"></script>
 </body>
 </html>

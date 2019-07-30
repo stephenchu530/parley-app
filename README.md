@@ -1,5 +1,5 @@
 # Parley App
-They Parley app allows code school instructors to easily set up and administer whiteboard technical challenges to their students.  Students are able to log in and use a visual interface to interview and grade other students.
+They Parley app allows code school userAccounts to easily set up and administer whiteboard technical challenges to their students.  Students are able to log in and use a visual interface to interview and grade other students.
 
 - Instructors can:  
     - Add/remove students to a class list

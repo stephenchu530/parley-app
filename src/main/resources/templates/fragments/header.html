@@ -1,9 +1,25 @@
 <header class="header" th:fragment="header" xmlns:th="http://www.springframework.org/schema/security">
     <h1>Parley</h1>
     <nav>
-        <a href="/">Home</a>
-        <a href="/login">Log In</a>
-        <a href="/signup">Sign Up</a>
-        <a href="/aboutus">About Us</a>
+        <!--<a href="/">Home</a>-->
+        <!--<a href="/login">Log In</a>-->
+        <!--<fragment th:if="${principal}">-->
+            <!--<a href="/" th:if="${principal.isAdmin()}">admin test</a>-->
+        <!--</fragment>-->
+
+        <!--<a href="/signup">Sign Up</a>-->
+        <!--<a href="/aboutus">About Us</a>-->
+        <!--<a href="/logout">Logout</a>-->
+        <ul>
+            <li><a href="/">Home</a></li>
+            <li><a href="/login">Login</a></li>
+            <li><a href="/signup">Sign Up</a></li>
+            <li><a href="/aboutus">About Us</a></li>
+            <li><a href="/logout">Logout</a></li>
+            <fragment th:if="${user}">
+                <li th:if="${user.isAdmin()}"><a href="#">Admin Test</a></li>
+            </fragment>
+
+        </ul>
     </nav>
 </header>
