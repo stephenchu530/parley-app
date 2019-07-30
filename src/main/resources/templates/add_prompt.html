@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="UTF-8">
+    <title>Home</title>
+
+</head>
+<body>
+
+<div th:if="${principal == null}">
+    <div th:replace="fragments/header :: header"></div>
+</div>
+<div th:if="${principal != null}">
+    <div th:replace="fragments/loggedInHeader :: header(principal=${principal})"></div>
+</div>
+
+<h1>Add Interview Prompt</h1>
+
+<!-- form to add prompts to the db-->
+<form method="POST" action="/prompt" encType="multipart/form-data">
+    <p>Prompt Title: <input name="title" id="title"></p>
+    <p>Category: <input name="category" id="category"></p>
+    <label>
+        <span>Upload Image</span>
+        <input name="file" type="file" />
+    </label>
+    <button>Save</button>
+</form>
+
+<img src="/dry-erase-home.png" alt="Whiteboard"><br>
+<div th:replace="fragments/footer :: foot"></div>
+</body>

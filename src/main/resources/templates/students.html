@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="UTF-8">
+    <title>Home</title>
+
+</head>
+<body>
+
+<div th:if="${principal == null}">
+    <div th:replace="fragments/header :: header"></div>
+</div>
+<div th:if="${principal != null}">
+    <div th:replace="fragments/loggedInHeader :: header(principal=${principal})"></div>
+</div>
+
+<h1>Students</h1>
+
+
+<h2>Upcoming interviews for ${principal.name}</h2>
+<!--if logged in student is the interviewee show "incoming" interviews-->
+<!--<div th:each="interview : ${scheduledInterviews}">-->
+<!--    <ul >-->
+<!--        <li th:text="${interview.date}"></li>-->
+<!--        <li th:text="${interview.interviewer}"></li>-->
+<!--    </ul>-->
+<!--</div>-->
+
+<!-- DUMMY DATA -->
+<ul>
+    <li>2019-11-10</li>
+    <li>Joe Schmoe</li>
+</ul>
+<ul>
+    <li>2019-11-17</li>
+    <li>Jim Schmoe</li>
+</ul>
+<!-- END DUMMY DATA -->
+
+<h2>Upcoming interviews to administer</h2>
+<!--if logged in student is the interviewer show interviews to give-->
+<!--<div th:each="interview : ${scheduledInterviews}">-->
+<!--    <ul >-->
+<!--        <li th:text="${interview.date}"></li>-->
+<!--        <li th:text="${interview.interviewer}"></li>-->
+<!--        <li><a href="/interview/{id}"><button>Start Interview</button></a></li>-->
+<!--    </ul>-->
+<!--</div>-->
+
+<!-- DUMMY DATA -->
+<ul>
+    <li>2019-11-10</li>
+    <li>Jim Schmoe</li>
+    <li><button>Start Interview</button></li>
+</ul>
+<ul>
+    <li>2019-11-17</li>
+    <li>Joe Schmoe</li>
+    <li><button>Start Interview</button></li>
+</ul>
+<!-- END DUMMY DATA -->
+
+<a href="/student"><button>Add Student</button></a>
+<a href="/class"><button>Add Class</button></a>
+<a href="/prompt"><button>Add Prompt</button></a>
+<a href="/schedule"><button>Schedule Mock Interview</button></a>
+
+<img src="/dry-erase-home.png" alt="Whiteboard"><br>
+<div th:replace="fragments/footer :: foot"></div>
+</body>
