@@ -1,8 +1,8 @@
 package com.parley.parley;
 
-import com.parley.parley.models.Instructor;
+import com.parley.parley.models.UserAccount;
 import com.parley.parley.models.RoleType;
-import com.parley.parley.repository.InstructorRepository;
+import com.parley.parley.repository.UserAccountRepository;
 import com.parley.parley.repository.RoleRepository;
 import org.springframework.beans.factory.InitializingBean;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -15,7 +15,7 @@ import org.springframework.security.crypto.password.PasswordEncoder;
 public class ParleyApplication {
 
 	@Autowired
-	private InstructorRepository instructorRepository;
+	private UserAccountRepository userAccountRepository;
 
 	@Autowired
 	private RoleRepository roleRepository;
@@ -37,15 +37,15 @@ public class ParleyApplication {
 			if(roleRepository.findByRole("user") == null) {
 				roleRepository.save(new RoleType("user"));
 			}
-			if(instructorRepository.findByUsername("admin") == null) {
+			if(userAccountRepository.findByUsername("admin") == null) {
 
-				Instructor admin = new Instructor();
+				UserAccount admin = new UserAccount();
 				admin.setUsername("admin");
 				admin.setPassword(passwordEncoder.encode("parley"));
 //				admin.setConfirmPassword((passwordEncoder.encode("admin")));
 				admin.getRoleTypes().add(roleRepository.findByRole("user"));
 				admin.getRoleTypes().add(roleRepository.findByRole("admin"));
-				instructorRepository.save(admin);
+				userAccountRepository.save(admin);
 			}
 		};
 
