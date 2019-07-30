@@ -24,17 +24,17 @@ As a user I want my username and password to be secure so I do not get my identi
 
 # Instructor (different User role) Stories
 
-As an instructor, I want to be able to add other 'instructors' and 'students' so that I can increase the usage. (1 hour)
+As an userAccount, I want to be able to add other 'userAccounts' and 'students' so that I can increase the usage. (1 hour)
 
-As an instructor, I want to be able to add new interview prompts so there are many interview questions to choose from.  (1.5 hours)
+As an userAccount, I want to be able to add new interview prompts so there are many interview questions to choose from.  (1.5 hours)
 
-As an instructor, I want to be able to schedule an interview between 2 students using student usernames, interview questions, and a date/time expiration.  (2 hour)
+As an userAccount, I want to be able to schedule an interview between 2 students using student usernames, interview questions, and a date/time expiration.  (2 hour)
 
-As an instructor, I want to be able to select a group of students, a group of interview questions, and a date/time expiration and have the app randomly pair and select interview questions.  (1.5 hours)
+As an userAccount, I want to be able to select a group of students, a group of interview questions, and a date/time expiration and have the app randomly pair and select interview questions.  (1.5 hours)
 
-As an instructor, I want the app to send out email notifications of scheduled interviews to the students.  (2 hour)
+As an userAccount, I want the app to send out email notifications of scheduled interviews to the students.  (2 hour)
 
-As an instructor, I want to be able to see all the scheduled interviews for a given period (day/week/ etc).  (1 hour)
+As an userAccount, I want to be able to see all the scheduled interviews for a given period (day/week/ etc).  (1 hour)
 
 
 

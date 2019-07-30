@@ -5,7 +5,6 @@ package com.parley.parley.models;
 import javax.persistence.*;
 import java.util.HashSet;
 import java.util.Set;
-import java.util.UUID;
 
 @Entity
 //@Table(name = "roleTypes")
@@ -19,7 +18,7 @@ public class RoleType {
     private String role;
 
     @ManyToMany(mappedBy = "roleTypes", fetch = FetchType.EAGER)
-    private Set<Instructor> instructors = new HashSet<Instructor>();
+    private Set<UserAccount> userAccounts = new HashSet<UserAccount>();
 
     //constructors
     public RoleType(){}
@@ -38,8 +37,8 @@ public class RoleType {
         return role;
     }
 
-    public Set<Instructor> getInstructors() {
-        return instructors;
+    public Set<UserAccount> getUserAccounts() {
+        return userAccounts;
     }
 
 
@@ -53,7 +52,7 @@ public class RoleType {
         this.role = role;
     }
 
-    public void setInstructors(Set<Instructor> instructors) {
-        this.instructors = instructors;
+    public void setUserAccounts(Set<UserAccount> userAccounts) {
+        this.userAccounts = userAccounts;
     }
 }

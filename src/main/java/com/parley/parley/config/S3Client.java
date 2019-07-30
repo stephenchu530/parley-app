@@ -110,9 +110,21 @@ public class S3Client {
                 .withCannedAcl(CannedAccessControlList.PublicRead));
     }
 
-    public String deleteFileFromS3Bucket(String fileUrl, String bucket) {
+    public String deleteFileFromPrompts(String fileUrl) {
         String fileName = fileUrl.substring(fileUrl.lastIndexOf("/") + 1);
-        s3client.deleteObject(new DeleteObjectRequest(bucket, fileName));
+        s3client.deleteObject(new DeleteObjectRequest(prompt_bucket, fileName));
+        return "Successfully deleted";
+    }
+
+    public String deleteFileFromWbs(String fileUrl) {
+        String fileName = fileUrl.substring(fileUrl.lastIndexOf("/") + 1);
+        s3client.deleteObject(new DeleteObjectRequest(wb_bucket, fileName));
+        return "Successfully deleted";
+    }
+
+    public String deleteFileFromPdfs(String fileUrl) {
+        String fileName = fileUrl.substring(fileUrl.lastIndexOf("/") + 1);
+        s3client.deleteObject(new DeleteObjectRequest(pdf_bucket, fileName));
         return "Successfully deleted";
     }
 }

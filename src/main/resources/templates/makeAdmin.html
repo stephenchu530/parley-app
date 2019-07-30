@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="UTF-8">
+    <title>Make Admin</title>
+</head>
+<body>
+<div th:replace="fragments/header :: header"></div>
+<center>
+    <div id="profile">
+        <h2>Your Profile</h2>
+        <p th:text="${'Email: ' + principal.username}"></p>
+        <p th:text="${'First Name: ' + principal.firstName}"></p>
+        <p th:text="${'Last Name: ' + principal.lastName}"></p>
+        <p th:text="${'Team: ' + principal.team}"></p>
+
+        <h4 th:if="${principal.isAdmin()}">Create Admin Role</h4>
+        <form method="post" action="/profile" th:if="${principal.isAdmin()}">
+            <select name="makeUserAdmin" style="display: block; width: 50%;">
+                <fragment th:each="user: ${users}" >
+                    <option th:if="${!user.isAdmin()}" th:value="${user.username}" th:text="${user.username}"></option>
+                    <option th:if="${user.isAdmin()}" th:value="${user.username}" th:text="${user.username + ' (Admin)'}"></option>
+                </fragment>
+            </select>
+            <input type="submit" value="Make Admin"/>
+        </form>
+    </div>
+
+</center>
+
+<div th:replace="fragments/footer :: footer"></div>
+</body>
+</html>

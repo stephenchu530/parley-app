@@ -3,13 +3,14 @@ package com.parley.parley.models;
 
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
+import org.springframework.security.core.userdetails.UserDetails;
 
 import javax.persistence.*;
 import java.util.*;
 
 @Entity
 //@Table(name = "instructors")
-public class Instructor {
+public class UserAccount implements UserDetails {
 
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
@@ -46,10 +47,13 @@ public class Instructor {
         }
     }
 
-    //constructors
-    public Instructor(){}
+    //instance variable for student users
+    private String classDesignator;
 
-    public Instructor(
+    //constructors for admin/instructor users
+    public UserAccount(){}
+
+    public UserAccount(
             String firstName,
             String lastName,
             String username,
@@ -63,6 +67,20 @@ public class Instructor {
         this.setEmail(email);
     }
 
+    //constructors for student users
+    public UserAccount(String firstName,
+                       String lastName,
+                       String username,
+                       String password,
+                       String classDesignator,
+                       String email){
+        this.setFirstName(firstName);
+        this.setLastName(lastName);
+        this.setUsername(username);
+        this.setPassword(password);
+        this.setClassDesignator(classDesignator);
+        this.setEmail(email);
+    }
 
     //getters
 
@@ -87,6 +105,31 @@ public class Instructor {
 
     public String getUsername() {
         return username;
+    }
+
+    public String getClassDesignator() {
+        return classDesignator;
+    }
+
+    //users details service methods
+    @Override
+    public boolean isAccountNonExpired() {
+        return true;
+    }
+
+    @Override
+    public boolean isAccountNonLocked() {
+        return true;
+    }
+
+    @Override
+    public boolean isCredentialsNonExpired() {
+        return true;
+    }
+
+    @Override
+    public boolean isEnabled() {
+        return true;
     }
 
 
@@ -135,6 +178,10 @@ public class Instructor {
 
     public void setRoleTypes(Set<RoleType> roleTypes) {
         this.roleTypes = roleTypes;
+    }
+
+    public void setClassDesignator(String classDesignator) {
+        this.classDesignator = classDesignator;
     }
 
     public Collection<? extends GrantedAuthority> getAuthorities() {
