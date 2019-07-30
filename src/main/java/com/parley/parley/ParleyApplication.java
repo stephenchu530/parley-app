@@ -27,29 +27,29 @@ public class ParleyApplication {
 		SpringApplication.run(ParleyApplication.class, args);
 	}
 
-	@Bean
-	InitializingBean seedDatabase() {
-		//inpired by taskmaster
-		return () -> {
-			if(roleRepository.findByRole("admin") == null) {
-				roleRepository.save(new RoleType("admin"));
-			}
-			if(roleRepository.findByRole("user") == null) {
-				roleRepository.save(new RoleType("user"));
-			}
-			if(instructorRepository.findByUsername("admin") == null) {
-
-				Instructor admin = new Instructor();
-				admin.setUsername("admin");
-				admin.setPassword(passwordEncoder.encode("parley"));
-//				admin.setConfirmPassword((passwordEncoder.encode("admin")));
-				admin.getRoleTypes().add(roleRepository.findByRole("user"));
-				admin.getRoleTypes().add(roleRepository.findByRole("admin"));
-				instructorRepository.save(admin);
-			}
-		};
-
-
-	}
+//	@Bean
+//	InitializingBean seedDatabase() {
+//		//inpired by taskmaster
+//		return () -> {
+//			if(roleRepository.findByRole("admin") == null) {
+//				roleRepository.save(new RoleType("admin"));
+//			}
+//			if(roleRepository.findByRole("user") == null) {
+//				roleRepository.save(new RoleType("user"));
+//			}
+//			if(instructorRepository.findByUsername("admin") == null) {
+//
+//				Instructor admin = new Instructor();
+//				admin.setUsername("admin");
+//				admin.setPassword(passwordEncoder.encode("parley"));
+////				admin.setConfirmPassword((passwordEncoder.encode("admin")));
+//				admin.getRoleTypes().add(roleRepository.findByRole("user"));
+//				admin.getRoleTypes().add(roleRepository.findByRole("admin"));
+//				instructorRepository.save(admin);
+//			}
+//		};
+//
+//
+//	}
 
 }

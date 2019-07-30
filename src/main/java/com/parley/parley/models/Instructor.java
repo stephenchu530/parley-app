@@ -3,12 +3,10 @@ package com.parley.parley.models;
 
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
-
 import javax.persistence.*;
 import java.util.*;
 
 @Entity
-//@Table(name = "instructors")
 public class Instructor {
 
     @Id

@@ -5,10 +5,8 @@ package com.parley.parley.models;
 import javax.persistence.*;
 import java.util.HashSet;
 import java.util.Set;
-import java.util.UUID;
 
 @Entity
-//@Table(name = "roleTypes")
 public class RoleType {
 
     @Id
