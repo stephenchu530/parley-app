@@ -65,7 +65,10 @@ public class InstructorController {
         return "myprofile";
     }
 
-
+    @GetMapping("/instructors")
+    public String instructorsHomePage(){
+        return "instructors";
+    }
 
     @PostMapping("/register/student")
     public RedirectView addNewStudent(String firstname, String lastname, String username, String password, String classDesignator, String email) {

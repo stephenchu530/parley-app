@@ -16,7 +16,6 @@
 
 <h1>Add Interview Prompt</h1>
 
-
 <!-- form to add prompts to the db-->
 <form method="POST" action="/prompt" encType="multipart/form-data">
     <p>Prompt Title: <input name="title" id="title"></p>
@@ -27,16 +26,6 @@
     </label>
     <button>Save</button>
 </form>
-
-<!--<div id="add_image">-->
-<!--    <form action={API + '/tasks/' + task.id + '/images'}  method="post" encType="multipart/form-data">-->
-<!--    <label>-->
-<!--        <span>Upload Image</span>-->
-<!--        <input name="file" type="file" />-->
-<!--    </label>-->
-<!--    <button>Save</button>-->
-<!--    </form>-->
-<!--</div>-->
 
 <img src="/dry-erase-home.png" alt="Whiteboard"><br>
 <div th:replace="fragments/footer :: foot"></div>
