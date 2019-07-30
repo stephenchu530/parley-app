@@ -7,17 +7,17 @@
 </head>
 <body>
 
-<div th:if="${principal == null}">
-    <div th:replace="fragments/header :: header"></div>
-</div>
-
-<div th:if="${principal != null}">
-    <div th:replace="fragments/loggedInHeader :: header(principal=${principal})"></div>
-</div>
+<!--<div th:if="${user == null}">-->
+    <!--<div th:replace="fragments/header :: header"></div>-->
+<!--</div>-->
+<div th:replace="fragments/header :: header"></div>
+<!--<div th:if="${user != null}">-->
+    <!--<div th:replace="fragments/loggedInHeader :: header(user=${user})"></div>-->
+<!--</div>-->
 
 <section>
 
-    <h1 th:if="${user}">Welcome, [[${user.firstname}]]</h1>
+    <h1 th:if="${user}">Welcome, [[${user.firstName}]]</h1>
 
     <div th:if="${user}">
         <div th:if="${mywhiteboards}">
