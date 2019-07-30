@@ -1,8 +1,10 @@
 package com.parley.parley.controllers;
 
+import com.parley.parley.models.RoleType;
 import com.parley.parley.models.UserAccount;
 import com.parley.parley.repository.UserAccountRepository;
 import com.parley.parley.repository.RoleRepository;
+import com.sun.org.apache.xpath.internal.operations.Mod;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
@@ -78,24 +80,31 @@ public class UserAccountController {
         return "makeAdmin";
     }
 
-//    @RequestMapping(value = "/profile", method = RequestMethod.GET)
-//    public String user(Principal user, Model m) {
-//        Iterable<UserAccount> userList = userRepository.findAll();
-//        m.addAttribute("principal", userRepository.findByUsername(user.getName()));
-//        m.addAttribute("users", userList);
-//        return "user";
-//    }
+    @PostMapping("/makeAdmin")
+    public RedirectView makeInstructor(Principal principal, Model model, String makeAdmin){
+        if(userAccountRepository.findByUsername(principal.getName()).isAdmin()){
+            UserAccount chosenOne = userAccountRepository.findByUsername(makeAdmin);
+            RoleType adminRole = roleRepository.findByRole("admin");
+            chosenOne.getRoleTypes().add(adminRole);
+            userAccountRepository.save(chosenOne);
+        }
+        return new RedirectView("/myprofile");
+    }
 
-//    @PostMapping("/register")
-//    public RedirectView addNewInstructor(String firstname, String lastname, String username, String password, String email) {
-//        System.out.println("hits registration route");
-//        UserAccount userAccount = new UserAccount(firstname, lastname, username, bCryptPasswordEncoder.encode(password), email);
-//        userAccountRepository.save(userAccount);
-//        Authentication authentication = new UsernamePasswordAuthenticationToken(userAccount, null, new ArrayList<>());
-//        SecurityContextHolder.getContext().setAuthentication(authentication);
-//        System.out.println("about to redirect");
-//        return new RedirectView("/login");
-//    }
+    @GetMapping("/logout_complete")
+    public String logoutPage(){
+        return "logout_completed";
+    }
+
+//    @RequestMapping(value = "/profile", method = RequestMethod.POST)
+//    public String makeAdmin(Principal user, Model m, String makeUserAdmin) {
+//        if(userRepository.findByUsername(user.getName()).isAdmin()) {
+//            UserAccount selectedUser = userRepository.findByUsername(makeUserAdmin);
+//            RoleType adminRole = roleRepository.findByRole("admin");
+//            selectedUser.getRoleTypes().add(adminRole);
+//            userRepository.save(selectedUser);
+//        }
+//        return "redirect:/profile";
 
 
 }
