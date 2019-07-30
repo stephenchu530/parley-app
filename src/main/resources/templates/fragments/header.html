@@ -17,7 +17,7 @@
             <li><a href="/aboutus">About Us</a></li>
             <li><a href="/logout">Logout</a></li>
             <fragment th:if="${user}">
-                <li th:if="${user.isAdmin()}"><a href="#">Admin Test</a></li>
+                <li th:if="${user.isAdmin()}"><a href="/makeAdmin">Admin</a></li>
             </fragment>
 
         </ul>
