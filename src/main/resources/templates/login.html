@@ -2,6 +2,7 @@
 <html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
 <head>
     <meta charset="UTF-8">
+    <link href="/css/modal.css" rel="stylesheet" />
     <title>Login</title>
 </head>
 <body>
@@ -11,7 +12,7 @@
 <!--<div th:if="${principal != null}">-->
     <!--<div th:replace="fragments/loggedInHeader :: header(principal=${principal})"></div>-->
 <!--</div>-->
-    <h4 style="margin: 0px 140px; color:#232f3e;">Login</h4>
+    <h4>Login</h4>
     <form action="/login" class="col s12" method="post">
         <div th:if="${error}">
             <p style="color: red;" th:text="${error}"></p>
@@ -36,63 +37,64 @@
         </div>
 
         <br />
-        <center>
+
             <div class='row'>
                 <button type='submit' name='btn_login' class='col s12 btn btn-large waves-effect'>Login</button>
             </div>
-        </center>
+
     </form>
 
+    <button id="studentRegister">Student Registration</button>
 
-    <h4 style="margin: 0px 140px; color:#232f3e;">Student Register</h4>
-    <form id="student-form" method="POST" th:action="@{/register/student}" autocomplete="on">
-        <div th:if="${errors}" th:each="error: ${errors}">
-            <p style="color: red;"  th:text="${error}"></p>
-        </div>
-        <div class='row'>
-            <div class='input-field col s6'>
-                <label class="login-info" for="student-reg-firstname">First Name</label>
-                <input type='text' name="firstName" id="student-reg-firstName" />
-            </div>
-            <div class='input-field col s6'>
-                <label class="login-info" for="student-reg-lastname">Last Name</label>
-                <input type='text' name="lastName" id="student-reg-lastName" />
-            </div>
-        </div>
-        <div class='row'>
-            <div class='input-field col s12'>
-                <label for="student-reg-email">Username</label>
-                <input type='text' name="username" id="student-reg-username"required/>
-            </div>
-        </div>
-        <div class='row'>
-            <div class='input-field col s6'>
-                <label class="login-info" for="student-reg-pass">Password</label>
-                <input type='password' name="password" id="student-reg-pass"required/>
-            </div>
-            <!--<div class='input-field col s6'>-->
-                <!--<label class="login-info" for="student-reg-passconf">Confirm Password</label>-->
-                <!--<input type='password' name="confirmPassword" id="student-reg-passconf"required/>-->
-            <!--</div>-->
-        </div>
-        <div class='row'>
-            <div class='input-field col s12'>
-                <label class="login-info" for="student-reg-team">Class</label>
-                <input type='text' name="team" id="student-reg-team" />
-            </div>
-        </div>
-        <div class='row'>
-            <div class='input-field col s12'>
-                <label class="login-info" for="student-reg-email">Email</label>
-                <input type='email' name="email" id="student-reg-email" />
-            </div>
-        </div>
-        <div class='row'>
-            <button type='submit' name='btn_login' class='col s12 btn btn-large waves-effect'>Register</button>
-        </div>
-    </form>
+    <button id="instructorRegister">Instructor Registration</button>
 
-<h4 style="margin: 0px 140px; color:#232f3e;">Instructor Register</h4>
+    <div id="studentModal" class="modal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <span class="close">&times;</span>
+                <h4>Student Register</h4>
+            </div>
+            <div class="modal-body">
+                <form id="student-form" method="POST" th:action="@{/register/student}" autocomplete="on">
+                    <div th:if="${errors}" th:each="error: ${errors}">
+                        <p style="color: red;"  th:text="${error}"></p>
+                    </div>
+
+                            <label class="login-info" for="student-reg-firstname">First Name</label>
+                            <input type='text' name="firstName" id="student-reg-firstName" />
+
+                            <label class="login-info" for="student-reg-lastname">Last Name</label>
+                            <input type='text' name="lastName" id="student-reg-lastName" />
+
+
+                            <label for="student-reg-email">Username</label>
+                            <input type='text' name="username" id="student-reg-username"required/>
+
+                            <label class="login-info" for="student-reg-pass">Password</label>
+                            <input type='password' name="password" id="student-reg-pass"required/>
+
+                            <label class="login-info" for="student-reg-team">Class</label>
+                            <input type='text' name="team" id="student-reg-team" />
+
+                            <label class="login-info" for="student-reg-email">Email</label>
+                            <input type='email' name="email" id="student-reg-email" />
+
+
+                        <button type='submit' name='btn_login' class='col s12 btn btn-large waves-effect'>Register</button>
+
+                </form>
+            </div>
+
+            <div class="modal-footer">
+                <div th:replace="fragments/footer :: foot"></div>
+            </div>
+
+        </div>
+
+    </div>
+
+
+<h4>Instructor Register</h4>
 <form id="instructor-form" method="post" th:action="@{/register/instructor}" autocomplete="on">
     <div th:if="${errors}" th:each="error: ${errors}">
         <p style="color: red;"  th:text="${error}"></p>
@@ -140,5 +142,6 @@
     </div>
 </form>
 <div th:replace="fragments/footer :: foot"></div>
+<script type="text/javascript" src="/javascript/modal.js"></script>
 </body>
 </html>
