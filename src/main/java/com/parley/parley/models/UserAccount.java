@@ -10,7 +10,7 @@ import java.util.*;
 
 @Entity
 //@Table(name = "instructors")
-public class Instructor implements UserDetails {
+public class UserAccount implements UserDetails {
 
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
@@ -47,10 +47,13 @@ public class Instructor implements UserDetails {
         }
     }
 
-    //constructors
-    public Instructor(){}
+    //instance variable for student users
+    private String classDesignator;
 
-    public Instructor(
+    //constructors for admin/instructor users
+    public UserAccount(){}
+
+    public UserAccount(
             String firstName,
             String lastName,
             String username,
@@ -64,6 +67,20 @@ public class Instructor implements UserDetails {
         this.setEmail(email);
     }
 
+    //constructors for student users
+    public UserAccount(String firstName,
+                       String lastName,
+                       String username,
+                       String password,
+                       String classDesignator,
+                       String email){
+        this.setFirstName(firstName);
+        this.setLastName(lastName);
+        this.setUsername(username);
+        this.setPassword(password);
+        this.setClassDesignator(classDesignator);
+        this.setEmail(email);
+    }
 
     //getters
 
@@ -90,6 +107,11 @@ public class Instructor implements UserDetails {
         return username;
     }
 
+    public String getClassDesignator() {
+        return classDesignator;
+    }
+
+    //users details service methods
     @Override
     public boolean isAccountNonExpired() {
         return true;
@@ -156,6 +178,10 @@ public class Instructor implements UserDetails {
 
     public void setRoleTypes(Set<RoleType> roleTypes) {
         this.roleTypes = roleTypes;
+    }
+
+    public void setClassDesignator(String classDesignator) {
+        this.classDesignator = classDesignator;
     }
 
     public Collection<? extends GrantedAuthority> getAuthorities() {
