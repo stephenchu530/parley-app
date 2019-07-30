@@ -12,6 +12,7 @@ import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.servlet.view.RedirectView;
 
@@ -68,6 +69,22 @@ public class UserAccountController {
 
         return new RedirectView("/myprofile");
     }
+
+    @GetMapping("/makeAdmin")
+    public String makeAdminGet(Principal user, Model model){
+        Iterable<UserAccount> users = userAccountRepository.findAll();
+        model.addAttribute("loggedInUser", userAccountRepository.findByUsername(user.getName()));
+        model.addAttribute("users", users);
+        return "makeAdmin";
+    }
+
+//    @RequestMapping(value = "/profile", method = RequestMethod.GET)
+//    public String user(Principal user, Model m) {
+//        Iterable<UserAccount> userList = userRepository.findAll();
+//        m.addAttribute("principal", userRepository.findByUsername(user.getName()));
+//        m.addAttribute("users", userList);
+//        return "user";
+//    }
 
 //    @PostMapping("/register")
 //    public RedirectView addNewInstructor(String firstname, String lastname, String username, String password, String email) {

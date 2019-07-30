@@ -9,13 +9,13 @@
 <center>
     <div id="profile">
         <h2>Your Profile</h2>
-        <p th:text="${'Email: ' + principal.username}"></p>
-        <p th:text="${'First Name: ' + principal.firstName}"></p>
-        <p th:text="${'Last Name: ' + principal.lastName}"></p>
-        <p th:text="${'Team: ' + principal.team}"></p>
+        <p th:text="${'Email: ' + loggedInUser.username}"></p>
+        <p th:text="${'First Name: ' + loggedInUser.firstName}"></p>
+        <p th:text="${'Last Name: ' + loggedInUser.lastName}"></p>
+        <!--<p th:text="${'Team: ' + loggedInUser.team}"></p>-->
 
-        <h4 th:if="${principal.isAdmin()}">Create Admin Role</h4>
-        <form method="post" action="/profile" th:if="${principal.isAdmin()}">
+        <h4 th:if="${loggedInUser.isAdmin()}">Create Admin Role</h4>
+        <form method="post" action="/profile" th:if="${loggedInUser.isAdmin()}">
             <select name="makeUserAdmin" style="display: block; width: 50%;">
                 <fragment th:each="user: ${users}" >
                     <option th:if="${!user.isAdmin()}" th:value="${user.username}" th:text="${user.username}"></option>
