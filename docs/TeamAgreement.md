@@ -10,7 +10,7 @@ Talk to them politely and respectfully in order to determine if they have any fu
 
 ### How and when will you escalate the conflict if your attempts are unsuccessful?
 
-If a satisfactory solution is not reached amongst the team members then we will bring an instructor in to act as a mediator
+If a satisfactory solution is not reached amongst the team members then we will bring an userAccount in to act as a mediator
 
 ### Communication Plan
 
@@ -48,5 +48,5 @@ Have a non judgemental atmosphere.
 
 ### How will you handle feature disagreements?
 
-Have a group vote where any arguments are heard. If that doesn’t work, the group will seek the advice of a TA or instructor.
+Have a group vote where any arguments are heard. If that doesn’t work, the group will seek the advice of a TA or userAccount.
 

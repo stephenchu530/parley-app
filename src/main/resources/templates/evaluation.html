@@ -6,7 +6,8 @@
     <link href="/css/slider.css" rel="stylesheet" />
 </head>
 <body>
-<div class="main-block">
+<div id="timer">Time remaining: <strong><span id="time"></span></strong></div>
+<div class="eval">
     <form action="/">
         <h1>Whiteboard Interview Evaluation Form</h1>
         Interviewer:
@@ -23,7 +24,6 @@
                 <input type="range" min="0" max="2" value="0" id="range0" class="range">
                 <span id="range-value0">0</span>
             </div>
-
 
             <div class="slideContainer">
                 <p>Identified inputs and outputs: </p>
@@ -49,7 +49,7 @@
             </div>
 
             <div class="answer">
-                <textarea rows="5"></textarea>
+                <textarea rows="5" cols="100"></textarea>
             </div>
 
         </div>
@@ -57,7 +57,7 @@
         <div class="main">
             <h4>Solved the Technical Problem:<span class="required">*</span></h4>
 
-            <div class="slidecontainer">
+            <div class="slideContainer">
                 <p>Presented & understood a working algorithm: </p>
                 <input type="range" min="0" max="4" value="0" id="range4" class="range">
                 <span id="range-value4">0</span>
@@ -85,7 +85,7 @@
                 <h4 class="comments">Comments:</h4>
                 <p>What did the student do well? What could be improved?</p>
                 <div class="answer">
-                    <textarea rows="5"></textarea>
+                    <textarea rows="5" cols="100"></textarea>
                 </div>
             </div>
         </div>
@@ -93,7 +93,7 @@
         <div class="main">
             <h4>Analyzed the Proposed Solution:<span class="required">*</span></h4>
 
-            <div class="slidecontainer">
+            <div class="slideContainer">
                 <p>Stepped through their solution: </p>
                 <input type="range" min="0" max="2" value="0" id="range8" class="range">
                 <span id="range-value8">0</span>
@@ -115,7 +115,7 @@
                 <h4 class="comments">Comments:</h4>
                 <p>What did the student do well? What could be improved?</p>
                 <div class="answer">
-                    <textarea rows="5"></textarea>
+                    <textarea rows="5" cols="100"></textarea>
                 </div>
             </div>
         </div>
@@ -123,7 +123,7 @@
         <div class="main">
             <h4>Communicated Effectively Throughout:<span class="required">*</span></h4>
 
-            <div class="slidecontainer">
+            <div class="slideContainer">
                 <p>Verbalized their thought process: </p>
                 <input type="range" min="0" max="6" value="0" id="range11" class="range">
                 <span id="range-value11">0</span>
@@ -163,7 +163,7 @@
                 <h4 class="comments">Comments:</h4>
                 <p>What did the student do well? What could be improved?</p>
                 <div class="answer">
-                    <textarea rows="5"></textarea>
+                    <textarea rows="5" cols="100"></textarea>
                 </div>
             </div>
         </div>
@@ -172,17 +172,12 @@
             <span id="finalScore">0</span> out of 40 points
         </div>
 
-        <div id="whiteboardImage">
+        <div id="evalSubmission">
             <p>After completion, please attach an image of the whiteboard</p>
-            <form action="/action_page.php">
                 Select a whiteboard image: <input type="file" name="myFile"><br><br>
-                <input type="submit">
-            </form>
-        </div>
-
-        <div class="btn-block">
             <button type="submit">Submit Evaluation</button>
         </div>
+
     </form>
 </div>
 <script type="text/javascript" src="/js/slider.js"></script>

@@ -1,19 +1,19 @@
 package com.parley.parley.controllers;
 
 import com.parley.parley.models.Assessments;
-import com.parley.parley.models.Student;
+import com.parley.parley.models.UserAccount;
 import com.parley.parley.repository.PromptsRepository;
-import com.parley.parley.repository.StudentRepository;
+import com.parley.parley.repository.UserAccountRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 
 import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.PrintWriter;
 
-public class dummyController {
+public class DummyController {
 
     @Autowired
-    StudentRepository studentRepository;
+    UserAccountRepository userAccountRepository;
 
     @Autowired
     PromptsRepository promptRepository;
@@ -21,8 +21,8 @@ public class dummyController {
 
     public void saveToTxt(Assessments assessment) throws FileNotFoundException {
         //get interviewee and interviewer names from ID
-        Student giving = studentRepository.findById(assessment.getInterviewer()).get();
-        Student receiving = studentRepository.findById(assessment.getInterviewee()).get();
+        UserAccount giving = userAccountRepository.findById(assessment.getInterviewer()).get();
+        UserAccount receiving = userAccountRepository.findById(assessment.getInterviewee()).get();
         String assessmentDate = assessment.getDateOfInterview().toString();
         File otherFile = new File(assessmentDate+receiving.getUsername()+".txt"); //figure this out - send straight to s3 bucket instead of filename
         PrintWriter toFile = new PrintWriter(otherFile);
