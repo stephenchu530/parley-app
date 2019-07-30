@@ -1,10 +1,8 @@
 package com.parley.parley.controllers;
 
-import com.parley.parley.models.Instructor;
-import com.parley.parley.models.Student;
-import com.parley.parley.repository.InstructorRepository;
+import com.parley.parley.models.UserAccount;
+import com.parley.parley.repository.UserAccountRepository;
 import com.parley.parley.repository.RoleRepository;
-import com.parley.parley.repository.StudentRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
@@ -12,6 +10,7 @@ import org.springframework.security.core.Authentication;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.servlet.view.RedirectView;
@@ -21,19 +20,16 @@ import java.util.ArrayList;
 
 
 @Controller
-public class InstructorController {
+public class UserAccountController {
 
     @Autowired
     AuthenticationManager authenticationManager;
 
     @Autowired
-    InstructorRepository instructorRepository;
+    UserAccountRepository userAccountRepository;
 
     @Autowired
     RoleRepository roleRepository;
-
-    @Autowired
-    StudentRepository studentRepository;
 
     @Autowired
     PasswordEncoder bCryptPasswordEncoder;
@@ -53,27 +49,36 @@ public class InstructorController {
         return "myprofile";
     }
 
-    @PostMapping("/register/student")
-    public RedirectView addNewStudent(String firstname, String lastname, String username, String password, String classDesignator, String email) {
-        System.out.println("this ran first");
-        Student newStudent = new Student(firstname, lastname, username, bCryptPasswordEncoder.encode(password), classDesignator, email);
-        System.out.println("this ran");
-        studentRepository.save(newStudent);
-        System.out.println("this ran next");
-        Authentication authentication = new UsernamePasswordAuthenticationToken(newStudent, null, new ArrayList<>());
-        SecurityContextHolder.getContext().setAuthentication(authentication);
-        System.out.println("authentication works, next is reidrect");
-        return new RedirectView("/login");
+    @GetMapping("/myprofile")
+    public String profile(Principal principal, Model model){
+        UserAccount user = userAccountRepository.findByUsername(principal.getName());
+        model.addAttribute("user", user);
+        return "myprofile";
     }
 
-    @PostMapping("/register/instructor")
-    public RedirectView addNewInstructor(String firstname, String lastname, String username, String password, String email) {
-        Instructor instructor = new Instructor(firstname, lastname, username, bCryptPasswordEncoder.encode(password), email);
-        instructorRepository.save(instructor);
-        Authentication authentication = new UsernamePasswordAuthenticationToken(instructor, null, new ArrayList<>());
+    @PostMapping("/register")
+    public RedirectView addNewStudent(String firstName, String lastName, String username, String password, String classDesignator, String email) {
+
+        UserAccount user = new UserAccount(firstName, lastName, username, bCryptPasswordEncoder.encode(password), classDesignator, email);
+
+        userAccountRepository.save(user);
+
+        Authentication authentication = new UsernamePasswordAuthenticationToken(user, null, new ArrayList<>());
         SecurityContextHolder.getContext().setAuthentication(authentication);
-        return new RedirectView("/login");
+
+        return new RedirectView("/myprofile");
     }
+
+//    @PostMapping("/register")
+//    public RedirectView addNewInstructor(String firstname, String lastname, String username, String password, String email) {
+//        System.out.println("hits registration route");
+//        UserAccount userAccount = new UserAccount(firstname, lastname, username, bCryptPasswordEncoder.encode(password), email);
+//        userAccountRepository.save(userAccount);
+//        Authentication authentication = new UsernamePasswordAuthenticationToken(userAccount, null, new ArrayList<>());
+//        SecurityContextHolder.getContext().setAuthentication(authentication);
+//        System.out.println("about to redirect");
+//        return new RedirectView("/login");
+//    }
 
 
 }
