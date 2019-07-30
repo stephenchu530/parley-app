@@ -3,112 +3,188 @@
 <head>
     <meta charset="UTF-8">
     <title>Whiteboard Interview Evaluation Form</title>
+    <link href="/css/slider.css" rel="stylesheet" />
 </head>
 <body>
 <div class="main-block">
     <form action="/">
         <h1>Whiteboard Interview Evaluation Form</h1>
+        Interviewer:
+        Interviewee:
+        Question:<br>
         <p>For the benefit of the interviewee, please evaluate as if it were a real whiteboard interview.</p>
         <h3>Please evaluate the student based on the following categories.</h3>
 
-        <div>
+        <div class="main">
             <h4>Interpreted the question:<span class="required">*</span></h4>
-            <div class="slidecontainer">
+
+            <div class="slideContainer">
                 <p>Asked meaningful clarifying questions: </p>
-                <input type="range" min="0" max="2" value="0">
-
-                <p>Identified inputs and outputs: </p>
-                <input type="range" min="0" max="2" value="0">
-
-                <p>Visually illustrated the problem domain: </p>
-                <input type="range" min="0" max="2" value="0">
-
-                <p>Identified optimal data structure and algorithm: </p>
-                <input type="range" min="0" max="4" value="0">
+                <input type="range" min="0" max="2" value="0" id="range0" class="range">
+                <span id="range-value0">0</span>
             </div>
-        <div class="comments-block">
-            <h4 class="comments">Comments<small>What did the student do well? What could be improved?</small></h4>
+
+
+            <div class="slideContainer">
+                <p>Identified inputs and outputs: </p>
+                <input type="range" min="0" max="2" value="0" id="range1" class="range">
+                <span id="range-value1">0</span>
+            </div>
+
+            <div class="slideContainer">
+                <p>Visually illustrated the problem domain: </p>
+                <input type="range" min="0" max="2" value="0" id="range2" class="range">
+                <span id="range-value2">0</span>
+            </div>
+
+            <div class="slideContainer">
+                <p>Identified optimal data structure and algorithm: </p>
+                <input type="range" min="0" max="4" value="0" id="range3" class="range">
+                <span id="range-value3">0</span>
+            </div>
+
+            <div class="comments-block">
+                <h4 class="comments">Comments:</h4>
+                <p>What did the student do well? What could be improved?</p>
+            </div>
+
             <div class="answer">
                 <textarea rows="5"></textarea>
             </div>
+
         </div>
 
-        <div>
+        <div class="main">
             <h4>Solved the Technical Problem:<span class="required">*</span></h4>
+
             <div class="slidecontainer">
                 <p>Presented & understood a working algorithm: </p>
-                <input type="range" min="0" max="4" value="0">
-
-                <p>Final code was syntactically correct: </p>
-                <input type="range" min="0" max="3" value="0">
-
-                <p>Final code was idiomatically correct: </p>
-                <input type="range" min="0" max="3" value="0">
-
-                <p>Solution was the best possible option: </p>
-                <input type="range" min="0" max="2" value="0">
+                <input type="range" min="0" max="4" value="0" id="range4" class="range">
+                <span id="range-value4">0</span>
             </div>
+
+            <div class="slideContainer">
+                <p>Final code was syntactically correct: </p>
+                <input type="range" min="0" max="3" value="0" id="range5" class="range">
+                <span id="range-value5">0</span>
+            </div>
+
+            <div class="slideContainer">
+                <p>Final code was idiomatically correct: </p>
+                <input type="range" min="0" max="3" value="0" id="range6" class="range">
+                <span id="range-value6">0</span>
+            </div>
+
+            <div class="slideContainer">
+                <p>Solution was the best possible option: </p>
+                <input type="range" min="0" max="2" value="0" id="range7" class="range">
+                <span id="range-value7">0</span>
+            </div>
+
             <div class="comments-block">
-                <h4 class="comments">Comments<small>What did the student do well? What could be improved?</small></h4>
+                <h4 class="comments">Comments:</h4>
+                <p>What did the student do well? What could be improved?</p>
                 <div class="answer">
                     <textarea rows="5"></textarea>
                 </div>
             </div>
         </div>
 
-        <div>
+        <div class="main">
             <h4>Analyzed the Proposed Solution:<span class="required">*</span></h4>
+
             <div class="slidecontainer">
                 <p>Stepped through their solution: </p>
-                <input type="range" min="0" max="2" value="0">
-
-                <p>Big O time and space are analyzed: </p>
-                <input type="range" min="0" max="2" value="0">
-
-                <p>Explain an approach to testing: </p>
-                <input type="range" min="0" max="2" value="0">
+                <input type="range" min="0" max="2" value="0" id="range8" class="range">
+                <span id="range-value8">0</span>
             </div>
+
+            <div class="slideContainer">
+                <p>Big O time and space are analyzed: </p>
+                <input type="range" min="0" max="2" value="0" id="range9" class="range">
+                <span id="range-value9">0</span>
+            </div>
+
+            <div class="slideContainer">
+                <p>Explain an approach to testing: </p>
+                <input type="range" min="0" max="2" value="0" id="range10" class="range">
+                <span id="range-value10">0</span>
+            </div>
+
             <div class="comments-block">
-                <h4 class="comments">Comments<small>What did the student do well? What could be improved?</small></h4>
+                <h4 class="comments">Comments:</h4>
+                <p>What did the student do well? What could be improved?</p>
                 <div class="answer">
                     <textarea rows="5"></textarea>
                 </div>
             </div>
         </div>
 
-        <div>
+        <div class="main">
             <h4>Communicated Effectively Throughout:<span class="required">*</span></h4>
+
             <div class="slidecontainer">
                 <p>Verbalized their thought process: </p>
-                <input type="range" min="0" max="6" value="0">
-
-                <p>Used correct terminology: </p>
-                <input type="range" min="0" max="2" value="0">
-
-                <p>Used the time available effectively: </p>
-                <input type="range" min="0" max="1" value="0">
-
-                <p>Was not overconfident (not listening to suggestions): </p>
-                <input type="range" min="0" max="1" value="0">
-
-                <p>Was not under-confident (unsure of known algorithm): </p>
-                <input type="range" min="0" max="1" value="0">
-
-                <p>Whiteboard was readable (penmanship and spacing): </p>
-                <input type="range" min="0" max="1" value="0">
+                <input type="range" min="0" max="6" value="0" id="range11" class="range">
+                <span id="range-value11">0</span>
             </div>
+
+            <div class="slideContainer">
+                <p>Used correct terminology: </p>
+                <input type="range" min="0" max="2" value="0" id="range12" class="range">
+                <span id="range-value12">0</span>
+            </div>
+
+            <div class="slideContainer">
+                <p>Used the time available effectively: </p>
+                <input type="range" min="0" max="1" value="0" id="range13" class="range">
+                <span id="range-value13">0</span>
+            </div>
+
+            <div class="slideContainer">
+                <p>Was not overconfident (not listening to suggestions): </p>
+                <input type="range" min="0" max="1" value="0" id="range14" class="range">
+                <span id="range-value14">0</span>
+            </div>
+
+            <div class="slideContainer">
+                <p>Was not under-confident (unsure of known algorithm): </p>
+                <input type="range" min="0" max="1" value="0" id="range15" class="range">
+                <span id="range-value15">0</span>
+            </div>
+
+            <div class="slideContainer">
+                <p>Whiteboard was readable (penmanship and spacing): </p>
+                <input type="range" min="0" max="1" value="0" id="range16" class="range">
+                <span id="range-value16">0</span>
+            </div>
+
             <div class="comments-block">
-                <h4 class="comments">Comments<small>What did the student do well? What could be improved?</small></h4>
+                <h4 class="comments">Comments:</h4>
+                <p>What did the student do well? What could be improved?</p>
                 <div class="answer">
                     <textarea rows="5"></textarea>
                 </div>
             </div>
+        </div>
+
+        <div class="finalScore">
+            <span id="finalScore">0</span> out of 40 points
+        </div>
+
+        <div id="whiteboardImage">
+            <p>After completion, please attach an image of the whiteboard</p>
+            <form action="/action_page.php">
+                Select a whiteboard image: <input type="file" name="myFile"><br><br>
+                <input type="submit">
+            </form>
         </div>
 
         <div class="btn-block">
-            <button type="submit" href="/">Send</button>
+            <button type="submit">Submit Evaluation</button>
         </div>
     </form>
 </div>
+<script type="text/javascript" src="/js/slider.js"></script>
 </body>
 </html>
