@@ -15,8 +15,8 @@
         <!--<p th:text="${'Team: ' + loggedInUser.team}"></p>-->
 
         <h4 th:if="${loggedInUser.isAdmin()}">Create Admin Role</h4>
-        <form method="post" action="/profile" th:if="${loggedInUser.isAdmin()}">
-            <select name="makeUserAdmin" style="display: block; width: 50%;">
+        <form method="post" action="/makeAdmin" th:if="${loggedInUser.isAdmin()}">
+            <select name="makeAdmin" style="display: block; width: 50%;">
                 <fragment th:each="user: ${users}" >
                     <option th:if="${!user.isAdmin()}" th:value="${user.username}" th:text="${user.username}"></option>
                     <option th:if="${user.isAdmin()}" th:value="${user.username}" th:text="${user.username + ' (Admin)'}"></option>
