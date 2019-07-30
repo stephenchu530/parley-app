@@ -37,22 +37,19 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
                 .cors().disable()
                 .csrf().disable()
                 .authorizeRequests()
-                .antMatchers("/", "/register/*", "/css/*", "/images/*", "/javascript/*", "/login").permitAll()
+                .antMatchers("/", "/register", "/css/*", "/images/*", "/javascript/*", "/login").permitAll()
                 .antMatchers("/admin").hasAnyAuthority("role_admin")
                     //^^^^adjust has authority to match routes needed for admin/instructors
                 .anyRequest().authenticated()
                 .and()
                 .formLogin()
                 .loginPage("/login")
-                .loginProcessingUrl("/perform_login")
                 .defaultSuccessUrl("/myprofile", true)
                 .failureUrl("/login?error=true")
                 .and()
                 .logout()
                 .logoutUrl("/potato")
         ;
-
-        http.formLogin().defaultSuccessUrl("/main", true);
     }
 
     @Override
