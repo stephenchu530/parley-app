@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="UTF-8">
+    <link href="/css/reset.css" rel="stylesheet" />
+    <link href="/css/bootstrap.min.css" rel="stylesheet" />
+    <title>Login</title>
+</head>
+<body>
+<div th:if="${principal == null}">
+    <div th:replace="fragments/header :: header"></div>
+</div>
+<!--<div th:if="${principal != null}">-->
+    <!--<div th:replace="fragments/loggedInHeader :: header(principal=${principal})"></div>-->
+<!--</div>-->
+    <h4>Login</h4>
+    <form action="/login" class="col s12" method="post">
+        <fieldset>
+            <legend>Login</legend>
+            <div th:if="${error}">
+                <p style="color: red;" th:text="${error}"></p>
+            </div>
+
+            <div class="form-group row">
+                <div class='input-field col s12'>
+                    <label for='username' class="col-sm-2 col-form-label">Enter your username</label>
+                    <div>
+                        <input class='validate' type='text' name='username' id='log-username' />
+                    </div>
+
+                </div>
+            </div>
+
+            <div class='row'>
+                <div class='input-field col s12'>
+                    <input class='validate' type='password' name='password' id='log-password' />
+                    <label for='password' class="col-sm-2 col-form-label">Enter your password</label>
+                </div>
+            </div>
+
+            <div class='row'>
+                <button type='submit' name='btn_login' class='col s12 btn btn-large waves-effect'>Login</button>
+            </div>
+        </fieldset>
+
+
+    </form>
+
+    <button type="button" id="studentRegister" class="btn btn-primary btn-lg">Student Registration</button>
+
+    <button type="button" id="instructorRegister" class="btn btn-primary btn-lg">Instructor Registration</button>
+
+    <div id="studentModal" class="modalStudent" >
+        <div class="modal-content-student">
+            <div class="modal-header-student">
+                <span id="studentClose" class="close-student">&times;</span>
+                <h4>Register</h4>
+            </div>
+            <div class="modal-body-student">
+                <form id="student-form" method="POST" th:action="@{/register}" autocomplete="on">
+                    <div th:if="${errors}" th:each="error: ${errors}">
+                        <p style="color: red;"  th:text="${error}"></p>
+                    </div>
+
+                            <label class="login-info" for="firstName">First Name</label>
+                            <input type='text' name="firstName" id="firstName" />
+
+                            <label class="login-info" for="lastName">Last Name</label>
+                            <input type='text' name="lastName" id="lastName" />
+
+                            <label for="username">Username</label>
+                            <input type='text' name="username" id="username"required/>
+
+                            <label class="login-info" for="password">Password</label>
+                            <input type='password' name="password" id="password"required/>
+
+                            <label class="login-info" for="classDesignator">Class</label>
+                            <input type='text' name="team" id="classDesignator" />
+
+                            <label class="login-info" for="email">Email</label>
+                            <input type='email' name="email" id="email" />
+
+
+                        <button type='submit' name='btn_login' class='col s12 btn btn-large waves-effect'>Register</button>
+
+                </form>
+            </div>
+
+            <div class="modal-footer-student">
+                <div th:replace="fragments/footer :: foot"></div>
+            </div>
+
+        </div>
+
+    </div>
+
+<div th:replace="fragments/footer :: foot"></div>
+<script type="text/javascript" src="/javascript/modal.js"></script>
+</body>
+</html>

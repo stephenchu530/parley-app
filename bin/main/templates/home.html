@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="UTF-8">
+    <title>Home</title>
+
+</head>
+<body>
+
+<div th:if="${principal == null}">
+    <div th:replace="fragments/header :: header"></div>
+</div>
+<div th:if="${principal != null}">
+    <div th:replace="fragments/loggedInHeader :: header(principal=${principal})"></div>
+</div>
+
+<h1>Parley</h1>
+<p>Parley is the application making the mock whiteboard interview process easier.</p>
+<p>No more guessing about when your interview is or who you're doing it with.</p>
+<p>A userAccount simply schedules the interview and you are notified</p>
+<p>We take all of the guesswork out of scheduling the interview. Less stress! More time to practice</p>
+<img src="/dry-erase-home.png" alt="Whiteboard"><br>
+<div th:replace="fragments/footer :: foot"></div>
+</body>

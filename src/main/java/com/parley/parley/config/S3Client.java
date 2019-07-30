@@ -58,6 +58,7 @@ public class S3Client {
             fileUrl = prompt_endpointUrl + "/" + fileName;
             uploadFileTos3bucket(fileName, file, prompt_bucket);
             file.delete();
+            fileUrl = fileUrl.replace("-website-", "-");
         } catch (Exception e) {
             e.printStackTrace();
         }
