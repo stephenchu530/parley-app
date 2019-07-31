@@ -1,25 +1,38 @@
 package com.parley.parley.controllers;
 
 import com.parley.parley.models.Assessments;
+import com.parley.parley.models.Schedules;
 import com.parley.parley.models.UserAccount;
+import com.parley.parley.repository.AssessmentsRepository;
 import com.parley.parley.repository.PromptsRepository;
+import com.parley.parley.repository.SchedulesRepository;
 import com.parley.parley.repository.UserAccountRepository;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.servlet.view.RedirectView;
 
 import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.PrintWriter;
 
+@Controller
 public class DummyController {
 
     @Autowired
     UserAccountRepository userAccountRepository;
-
     @Autowired
     PromptsRepository promptRepository;
+    @Autowired
+    AssessmentsRepository assessmentsRepository;
+    @Autowired
+    SchedulesRepository schedulesRepository;
 
-
-    public void saveToTxt(Assessments assessment) throws FileNotFoundException {
+    @PostMapping("/toFile/{id}")
+    public RedirectView saveToTxt(@PathVariable String id) throws FileNotFoundException {
+        Assessments assessment = assessmentsRepository.findById(Long.valueOf(id)).get();
+//        Schedules interview = schedulesRepository.findById(id).get();
         //get interviewee and interviewer names from ID
         UserAccount giving = userAccountRepository.findById(assessment.getInterviewer()).get();
         UserAccount receiving = userAccountRepository.findById(assessment.getInterviewee()).get();
@@ -36,20 +49,19 @@ public class DummyController {
         results.append(String.format("Prompt: %s\n", promptRepository.findById(assessment.getPrompt())));
         results.append("\n");
         // get scores from assess obj
-        results.append(String.format("Interpreted the Question: %d/10\nSolved the Technical Problem: %d/12\nAnalyzed the Proposed Solution: %d/6\nCommunicated Effectively: %d/12\nTotal Score: %d/40\n",
-                assessment.getInterpretationScore(),
-                assessment.getSolutionScore(),
-                assessment.getAnalysisScore(),
-                assessment.getCommunicationScore(),
-                assessment.getOverallScore())
-        );
+//        results.append(String.format("Interpreted the Question: %d/10\nSolved the Technical Problem: %d/12\nAnalyzed the Proposed Solution: %d/6\nCommunicated Effectively: %d/12\nTotal Score: %d/40\n",
+//                assessment.getInterpretationScore(),
+//                assessment.getSolutionScore(),
+//                assessment.getAnalysisScore(),
+//                assessment.getCommunicationScore(),
+//                assessment.getOverallScore())
+//        );
         results.append("\n");
         //get comments from assess obj
         String interpComm = assessment.getInterpretationComments();
         String solutionComm = assessment.getSolutionComments();
         String analysComm = assessment.getAnalysisComments();
         String commComm = assessment.getCommunicationComments();
-        String overallComm = assessment.getOverallComments();
         //
         results.append("Comments: \n");
         results.append(String.format(interpComm + "\n"));
@@ -60,10 +72,10 @@ public class DummyController {
         results.append("\n");
         results.append(String.format(commComm + "\n"));
         results.append("\n");
-        results.append(String.format(overallComm + "\n"));
         toFile.println(results);
         toFile.close();
         //send file to s3 bucket.
 //        otherFile.delete();
+        return new RedirectView("/myprofile");
     }
 }

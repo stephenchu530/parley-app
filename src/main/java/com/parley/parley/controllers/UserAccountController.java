@@ -1,12 +1,10 @@
 package com.parley.parley.controllers;
 
-import com.amazonaws.services.dynamodbv2.xspec.S;
-import com.parley.parley.models.Schedules;
+import com.parley.parley.models.RoleType;
 import com.parley.parley.models.UserAccount;
 import com.parley.parley.repository.SchedulesRepository;
 import com.parley.parley.repository.UserAccountRepository;
 import com.parley.parley.repository.RoleRepository;
-import org.apache.catalina.User;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
@@ -21,7 +19,6 @@ import org.springframework.web.servlet.view.RedirectView;
 
 import java.security.Principal;
 import java.util.ArrayList;
-import java.util.List;
 
 
 @Controller
@@ -83,4 +80,38 @@ public class UserAccountController {
 
         return new RedirectView("/myprofile");
     }
+
+    @GetMapping("/makeAdmin")
+    public String makeAdminGet(Principal user, Model model){
+        Iterable<UserAccount> users = userAccountRepository.findAll();
+        model.addAttribute("loggedInUser", userAccountRepository.findByUsername(user.getName()));
+        model.addAttribute("users", users);
+        return "makeAdmin";
+    }
+
+    @PostMapping("/makeAdmin")
+    public RedirectView makeInstructor(Principal principal, Model model, String makeAdmin){
+        if(userAccountRepository.findByUsername(principal.getName()).isAdmin()){
+            UserAccount chosenOne = userAccountRepository.findByUsername(makeAdmin);
+            RoleType adminRole = roleRepository.findByRole("admin");
+            chosenOne.getRoleTypes().add(adminRole);
+            userAccountRepository.save(chosenOne);
+        }
+        return new RedirectView("/myprofile");
+    }
+
+    @GetMapping("/logout_complete")
+    public String logoutPage(){
+        return "logout_completed";
+    }
+
+//    @RequestMapping(value = "/profile", method = RequestMethod.POST)
+//    public String makeAdmin(Principal user, Model m, String makeUserAdmin) {
+//        if(userRepository.findByUsername(user.getName()).isAdmin()) {
+//            UserAccount selectedUser = userRepository.findByUsername(makeUserAdmin);
+//            RoleType adminRole = roleRepository.findByRole("admin");
+//            selectedUser.getRoleTypes().add(adminRole);
+//            userRepository.save(selectedUser);
+//        }
+//        return "redirect:/profile";
 }
