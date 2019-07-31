@@ -3,7 +3,9 @@
 <head>
     <meta charset="UTF-8">
     <link href="/css/reset.css" rel="stylesheet" />
-    <link href="/css/bootstrap.min.css" rel="stylesheet" />
+    <link href="/css/general.css" rel="stylesheet" />
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootswatch/4.3.1/sketchy/bootstrap.min.css">
+    <link href="/css/modalOveride.css" rel="stylesheet" />
     <title>Login</title>
 </head>
 <body>
@@ -31,20 +33,21 @@
             </div>
 
             <div class='row'>
-                <button type='submit' name='btn_login' class="btn btn-primary">Login</button>
+                <button type='submit' name='btn_login' class="btn btn-primary centerBtn">Login</button>
             </div>
         </fieldset>
-
-
     </form>
 
-    <button type="button" id="studentRegister" class="btn btn-primary btn-lg">Register</button>
+    <div class="buttonHolder">
+        <button type="button" id="myBtn" class="btn btn-primary btn-lg centerBtn">Register</button>
+    </div>
 
-    <div id="studentModal" class="modal" >
+
+    <div id="myModal" class="modal" >
         <div class="modal-dialog" role="document">
             <div class="modal-content">
                 <div class="modal-header">
-                    <h4>Register</h4>
+                    <h4 class="modal-title">Register</h4>
                     <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                         <span aria-hidden="true">&times;</span>
                     </button>
@@ -81,14 +84,20 @@
                         <button type='submit' name='btn_login' class="btn btn-primary">Register</button>
                     </form>
                 </div>
-                <div class="modal-footer-student">
+                <div class="modal-footer">
                     <div th:replace="fragments/footer :: foot"></div>
                 </div>
             </div>
-      </div>
+        </div>
     </div>
 
 <div th:replace="fragments/footer :: foot"></div>
-<script type="text/javascript" src="/javascript/modal.js"></script>
+<script type="text/javascript" src="/js/modal.js"></script>
+
+<!--<script type="text/javascript" src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>-->
+<!--<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>-->
+<!--<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>-->
+<!--<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>-->
+<script>window.__theme = 'bs4';</script>
 </body>
 </html>
