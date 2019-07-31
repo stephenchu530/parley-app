@@ -4,7 +4,6 @@ import com.parley.parley.models.RoleType;
 import com.parley.parley.models.UserAccount;
 import com.parley.parley.repository.UserAccountRepository;
 import com.parley.parley.repository.RoleRepository;
-import com.sun.org.apache.xpath.internal.operations.Mod;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
@@ -14,7 +13,6 @@ import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.servlet.view.RedirectView;
 
@@ -103,15 +101,6 @@ public class UserAccountController {
         return "logout_completed";
     }
 
-//    @RequestMapping(value = "/profile", method = RequestMethod.POST)
-//    public String makeAdmin(Principal user, Model m, String makeUserAdmin) {
-//        if(userRepository.findByUsername(user.getName()).isAdmin()) {
-//            UserAccount selectedUser = userRepository.findByUsername(makeUserAdmin);
-//            RoleType adminRole = roleRepository.findByRole("admin");
-//            selectedUser.getRoleTypes().add(adminRole);
-//            userRepository.save(selectedUser);
-//        }
-//        return "redirect:/profile";
 
 
 }
