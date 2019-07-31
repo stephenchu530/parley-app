@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
 <head>
     <meta charset="UTF-8">
     <title>Whiteboard Interview Evaluation Form</title>
@@ -11,7 +11,8 @@
 <body>
 <div id="timer">Time remaining: <strong><span id="time"></span></strong></div>
 <div class="eval">
-    <form action="/assessments/${interviewID}/" method="post">
+    <form th:action="@{'/assessments/' + ${interviewID}}" method="POST">
+<!--   action="/assessments/${interviewID}/"     -->
         <h1>Whiteboard Interview Evaluation Form</h1>
         Interviewer:
         Interviewee:<br>

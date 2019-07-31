@@ -21,8 +21,8 @@ public class AssessmentsController {
     @Autowired
     AssessmentsRepository assessmentsRepository;
 
-    @PostMapping("/assessments/{id}")
-    public RedirectView compileAssessment(@PathVariable long id,
+    @PostMapping("/assessments/{idString}")
+    public RedirectView compileAssessment(@PathVariable String idString,
                                           String range0,
                                           String range1,
                                           String range2,
@@ -46,6 +46,7 @@ public class AssessmentsController {
                                           String communicationComments,
                                           String overallScore
                                           ){
+        long id = Long.parseLong(idString);
         Schedules current = schedulesRepository.findById(id).get();
         String pattern = "yyyy-MM-dd";
         SimpleDateFormat simpleDateFormat = new SimpleDateFormat(pattern);
@@ -78,8 +79,8 @@ public class AssessmentsController {
                 communicationComments,
                 Integer.valueOf(overallScore)
         );
-        String assId = Long.toString(thisAssessment.getId());
         assessmentsRepository.save(thisAssessment);
+        String assId = Long.toString(thisAssessment.getId());
         return new RedirectView("/toFile/" + assId);
     }
 }
