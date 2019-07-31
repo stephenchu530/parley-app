@@ -1,15 +1,21 @@
 package com.parley.parley.controllers;
 
 import com.parley.parley.models.Assessments;
+import com.parley.parley.models.Schedules;
 import com.parley.parley.models.UserAccount;
 import com.parley.parley.repository.PromptsRepository;
+import com.parley.parley.repository.SchedulesRepository;
 import com.parley.parley.repository.UserAccountRepository;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.PostMapping;
 
 import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.PrintWriter;
 
+@Controller
 public class DummyController {
 
     @Autowired
@@ -18,8 +24,12 @@ public class DummyController {
     @Autowired
     PromptsRepository promptRepository;
 
+    @Autowired
+    SchedulesRepository schedulesRepository;
 
-    public void saveToTxt(Assessments assessment) throws FileNotFoundException {
+    @PostMapping("/toFile/{id}")
+    public void saveToTxt(@PathVariable long id) throws FileNotFoundException {
+        Schedules interview = schedulesRepository.findById(id).get();
         //get interviewee and interviewer names from ID
         UserAccount giving = userAccountRepository.findById(assessment.getInterviewer()).get();
         UserAccount receiving = userAccountRepository.findById(assessment.getInterviewee()).get();
