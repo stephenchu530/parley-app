@@ -11,12 +11,23 @@ form {
     margin: 30px auto;
 }
 
+form select {
+    display: block;
+    margin: 0 auto;
+    padding: 5px;
+}
+
 .centerBtn {
     display: block;
     margin: 15px auto;
 }
 
-.buttonHolder {
+section {
+    margin: 60px auto;
+    text-align: center;
+}
+
+.divCenterHolder {
     text-align: center;
 }
 
