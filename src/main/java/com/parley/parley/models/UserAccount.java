@@ -24,6 +24,14 @@ public class UserAccount implements UserDetails {
     private String username;
     private String password;
 
+    @OneToMany
+    @ElementCollection(targetClass=Schedules.class)
+    private List<Schedules> interviewSchedule;
+
+    @OneToMany
+    @ElementCollection(targetClass=Assessments.class)
+    private List<Assessments> listOfAssessments;
+
     @Column
     @ElementCollection(targetClass=String.class)
     private List<String> classes;
@@ -58,13 +66,14 @@ public class UserAccount implements UserDetails {
             String lastName,
             String username,
             String password,
-            String email
-    ){
+            String email){
         this.setFirstName(firstName);
         this.setLastName(lastName);
         this.setUsername(username);
         this.setPassword(password);
         this.setEmail(email);
+        this.setInterviewSchedule(new ArrayList<Schedules>() {});
+        this.setListOfAssessments(new ArrayList<Assessments>());
     }
 
     //constructors for student users
@@ -109,6 +118,14 @@ public class UserAccount implements UserDetails {
 
     public String getClassDesignator() {
         return classDesignator;
+    }
+
+    public List<Schedules> getInterviewSchedule() {
+        return interviewSchedule;
+    }
+
+    public List<Assessments> getListOfAssessments() {
+        return listOfAssessments;
     }
 
     //users details service methods
@@ -182,6 +199,14 @@ public class UserAccount implements UserDetails {
 
     public void setClassDesignator(String classDesignator) {
         this.classDesignator = classDesignator;
+    }
+
+    public void setInterviewSchedule(List<Schedules> interviewerSchedule) {
+        this.interviewSchedule = interviewerSchedule;
+    }
+
+    public void setListOfAssessments(List<Assessments> listOfAssessments) {
+        this.listOfAssessments = listOfAssessments;
     }
 
     public Collection<? extends GrantedAuthority> getAuthorities() {
