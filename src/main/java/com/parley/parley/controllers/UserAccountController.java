@@ -2,9 +2,9 @@ package com.parley.parley.controllers;
 
 import com.parley.parley.models.RoleType;
 import com.parley.parley.models.UserAccount;
+import com.parley.parley.repository.SchedulesRepository;
 import com.parley.parley.repository.UserAccountRepository;
 import com.parley.parley.repository.RoleRepository;
-import com.sun.org.apache.xpath.internal.operations.Mod;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
@@ -14,7 +14,6 @@ import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.servlet.view.RedirectView;
 
@@ -30,6 +29,9 @@ public class UserAccountController {
 
     @Autowired
     UserAccountRepository userAccountRepository;
+
+    @Autowired
+    SchedulesRepository schedulesRepository;
 
     @Autowired
     RoleRepository roleRepository;
@@ -53,7 +55,7 @@ public class UserAccountController {
     }
 
     @GetMapping("/myprofile")
-    public String profile(Principal principal, Model model){
+    public String profile(Principal principal, Model model) {
         UserAccount user = userAccountRepository.findByUsername(principal.getName());
         model.addAttribute("user", user);
         return "myprofile";
@@ -112,6 +114,4 @@ public class UserAccountController {
 //            userRepository.save(selectedUser);
 //        }
 //        return "redirect:/profile";
-
-
 }
