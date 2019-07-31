@@ -2,33 +2,53 @@
 <html lang="en" xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8">
+    <link href="/css/reset.css" rel="stylesheet" />
+    <link href="/css/general.css" rel="stylesheet" />
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootswatch/4.3.1/sketchy/bootstrap.min.css">
+
     <title>Schedule Interview</title>
 </head>
 <body>
-    <h1>Schedule Interview</h1>
+    <div th:replace="fragments/header :: header"></div>
     <form action="/scheduleinterview" method="POST">
-        <select name="studentOneId">
-            <div th:each="student: ${studentlist}">
-                <option th:value="${student.getId()}" th:text="${student.getFirstName()}">StudentOneFirstName</option>
+        <fieldset>
+            <legend>Schedule Interview</legend>
+            <div class="form-group">
+                <div class="divCenterHolder2 form-group">
+                    <select name="studentOneId" class="form-control" style="display: block; width: 50%;">
+                        <fragment th:each="student: ${studentlist}">
+                            <option th:value="${student.getId()}" th:text="${student.getFirstName()}">StudentOneFirstName</option>
+                        </fragment>
+                    </select>
+                </div>
+                <div class="divCenterHolder2 form-group">
+                    <select name="promptOneId" class="form-control" style="display: block; width: 50%;">
+                        <fragment th:each="prompt: ${promptslist}">
+                            <option th:value="${prompt.getId()}" th:text="${prompt.getTitle()}">PromptOneTitle</option>
+                        </fragment>
+                    </select>
+                </div>
+                <div class="divCenterHolder2 form-group">
+                    <select name="studentTwoId" class="form-control" style="display: block; width: 50%;">
+                        <fragment th:each="student: ${studentlist}">
+                            <option th:value="${student.getId()}" th:text="${student.getFirstName()}">StudentTwoFirstName</option>
+                        </fragment>
+                    </select>
+                </div>
+                <div class="divCenterHolder2 form-group">
+                    <select name="promptTwoId" class="form-control" style="display: block; width: 50%;">
+                        <fragment th:each="prompt: ${promptslist}">
+                            <option th:value="${prompt.getId()}" th:text="${prompt.getTitle()}">PromptTwoTitle</option>
+                        </fragment>
+                    </select>
+                </div>
             </div>
-        </select>
-        <select name="promptOneId">
-            <div th:each="prompt: ${promptslist}">
-                <option th:value="${prompt.getId()}" th:text="${prompt.getTitle()}">PromptOneTitle</option>
+            <div class="form-group">
+                <label for="dueDate">Due Date: </label><input type="date" name="dueDate" id="dueDate" />
             </div>
-        </select>
-        <select name="studentTwoId">
-            <div th:each="student: ${studentlist}">
-                <option th:value="${student.getId()}" th:text="${student.getFirstName()}">StudentTwoFirstName</option>
-            </div>
-        </select>
-        <select name="promptTwoId">
-            <div th:each="prompt: ${promptslist}">
-                <option th:value="${prompt.getId()}" th:text="${prompt.getTitle()}">PromptTwoTitle</option>
-            </div>
-        </select>
-        <label for="dueDate">Due Date: </label><input type="date" name="dueDate" id="dueDate" />
-        <input type="submit" value="Submit">
+            <input type="submit" value="Submit" class="btn btn-primary">
+        </fieldset>
     </form>
+    <div th:replace="fragments/footer :: foot"></div>
 </body>
 </html>
