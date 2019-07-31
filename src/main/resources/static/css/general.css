@@ -1,3 +1,7 @@
+header {
+    margin-bottom: 60px;
+}
+
 footer{
     position: fixed;
     left: 45%;
@@ -15,6 +19,7 @@ form select {
     display: block;
     margin: 0 auto;
     padding: 5px;
+    width: 50%;
 }
 
 .centerBtn {
@@ -29,6 +34,13 @@ section {
 
 .divCenterHolder {
     text-align: center;
+}
+
+.divCenterHolder2 {
+    display: block;
+    text-align: center;
+    margin: 15px auto;
+    align: center;
 }
 
 .logoutMsg {
