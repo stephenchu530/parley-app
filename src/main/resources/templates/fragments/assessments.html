@@ -1,0 +1,10 @@
+<div class="header" th:fragment="assessments(user)" xmlns:th="http://www.springframework.org/schema/security">
+    <nav>
+
+        <ul>
+            <li th:each="assessment: ${user.getListOfAssessments()}">
+                <p>Place Holder for assessment</p>
+            </li>
+        </ul>
+    </nav>
+</div>
