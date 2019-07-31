@@ -47,6 +47,11 @@ public class UserAccountController {
         return "myprofile";
     }
 
+    @GetMapping("/aboutus")
+    public String aboutus() {
+        return "aboutus";
+    }
+
     @PostMapping("/login")
     public String loginAfterRegister(){
         return "myprofile";
