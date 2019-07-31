@@ -38,20 +38,13 @@ public class ParleyApplication {
 				roleRepository.save(new RoleType("user"));
 			}
 			if(userAccountRepository.findByUsername("admin") == null) {
-
 				UserAccount admin = new UserAccount();
 				admin.setUsername("admin");
+				admin.setFirstName("FirstAdmin");
 				admin.setPassword(passwordEncoder.encode("parley"));
-				admin.setFirstName("I am");
-				admin.setLastName("Iron Man");
-//				admin.setConfirmPassword((passwordEncoder.encode("admin")));
-				admin.getRoleTypes().add(roleRepository.findByRole("user"));
 				admin.getRoleTypes().add(roleRepository.findByRole("admin"));
 				userAccountRepository.save(admin);
 			}
 		};
-
-
 	}
-
 }

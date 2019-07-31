@@ -1,30 +1,23 @@
 <header class="header" th:fragment="header" xmlns:th="http://www.springframework.org/schema/security">
     <h1>Parley</h1>
     <nav class="navbar navbar-expand-lg navbar-dark bg-primary">
-        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="/" aria-controls="navbarColor01" aria-expanded="false" aria-label="Toggle navigation">
-            <span class="navbar-toggler-icon">Home</span>
-        </button>
         <div class="collapse navbar-collapse" id="navbarColor01">
             <ul class="navbar-nav mr-auto">
-                <li class="nav-item">
-                    <a href="/login" class="nav-link" data-toggle="tab">Login</a>
-                </li>
-                <li class="nav-item">
-                    <a href="/signup" class="nav-link" data-toggle="tab">Sign Up</a>
-                </li>
-                <li class="nav-item">
-                    <a href="/aboutus" class="nav-link" data-toggle="tab">About Us</a>
-                </li>
-                <fragment th:if="${user}">
-                    <li th:if="${user.isAdmin()}" class="nav-item">
-                        <a href="/makeAdmin" class="nav-link" data-toggle="tab">Admin</a>
-                    </li>
-                </fragment>
-                <li class="nav-item">
-                    <a href="/logout" class="nav-link" data-toggle="tab">Logout</a>
-                </li>
+                <li class="nav-item"><a href="/"><button>Home</button></a></li>
+                <li th:if="${user == null}" class="nav-item"><a href="/login" class="nav-link" data-toggle="tab"><button>Login</button></a></li>
+                <li th:if="${user == null}" class="nav-item"><a href="/signup" class="nav-link" data-toggle="tab"><button>Sign Up</button></a></li>
+                <div th:if="${user != null}" class="nav-item">
+                    <li th:if="${!user.isAdmin()}"class="nav-item" ><a href="/myassessments" class="nav-link" data-toggle="tab"><button>My Assessments</button></a></li>
+                    <li th:if="${user.isAdmin()}" class="nav-item"><a href="/addstudent" class="nav-link" data-toggle="tab"><button>Add Student</button></a></li>
+                    <li th:if="${user.isAdmin()}" class="nav-item"><a href="/addclass" class="nav-link" data-toggle="tab"><button>Add Class</button></a></li>
+                    <li th:if="${user.isAdmin()}" class="nav-item"><a href="/addprompt" class="nav-link" data-toggle="tab"><button>Add Prompt</button></a></li>
+                    <li th:if="${user.isAdmin()}" class="nav-item"><a href="/schedule" class="nav-link" data-toggle="tab"><button>Schedule Interviews</button></a></li>
+                    <li th:if="${user.isAdmin()}" class="nav-item"><a href="/makeadmin" class="nav-link" data-toggle="tab"><button>Make Admin</button></a></li>
+                    <li class="nav-item"><a href="/editprofile" class="nav-link" data-toggle="tab"><button>Edit Profile</button></a></li>
+                    <li class="nav-item"><a href="/aboutus" class="nav-link" data-toggle="tab"><button>About Us</button></a></li>
+                    <li class="nav-item"><a href="/logout" class="nav-link" data-toggle="tab"><button>Logout</button></a></li>
+                </div>
             </ul>
         </div>
-
     </nav>
 </header>

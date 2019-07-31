@@ -2,48 +2,51 @@
 <html lang="en" xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8">
-    <title>My Profile</title>
-
+    <title th:if="${user.isAdmin()}">Instructor Profile</title>
+    <title th:if="${!user.isAdmin()}">Student Profile</title>
 </head>
 <body>
 
-<!--<div th:if="${user == null}">-->
-    <!--<div th:replace="fragments/header :: header"></div>-->
-<!--</div>-->
-<div th:replace="fragments/header :: header"></div>
-<!--<div th:if="${user != null}">-->
-    <!--<div th:replace="fragments/loggedInHeader :: header(user=${user})"></div>-->
-<!--</div>-->
+    <div th:replace="fragments/header :: header" ></div>
 
-<section>
+    <section>
+        <h1 th:if="${user}">Welcome, [[${user.firstName}]]</h1>
 
-    <h1 th:if="${user}">Welcome, [[${user.firstName}]]</h1>
-
-    <div th:if="${user}">
-        <div th:if="${mywhiteboards}">
-            <h3>Upcoming Whiteboard Interviews</h3>
-            <ol>
-                <li th:each="p:${mywhiteboards}">
-                    <a th:href="'/Interviews/'+${p.id}">
-                        <span th:text="${p.dueDateOfInterview}"></span>ç
-                    </a>
-                </li>
-            </ol>
+        <!--    Student stuff goes here -->
+        <div th:if="${!user.isAdmin()}" >
+            <div th:replace="fragments/schedule :: schedule(${user})" ></div>
         </div>
 
-        <div th:if="${gradedWhiteboards}">
-            <h3>Whiteboard Assessments</h3>
-            <ol>
-                <li th:each="p:${myassessments}">
-                    <a th:href="'/Interviews/'+${p.id}">
-                        <span th:text="${p.dateOfInterview}"></span>
-                    </a>
-                </li>
-            </ol>
+        <!--    Admin stuff goes here -->
+        <div th:if="${user.isAdmin()}" >
+            Place holder for admin fragments
         </div>
-
-    </div>
-</section>
-<div th:replace="fragments/footer :: foot"></div>
+    </section>
+    <div th:replace="fragments/footer :: foot"></div>
 </body>
 </html>
+
+<!--    <div th:if="${user}">-->
+<!--        <div th:if="${mywhiteboards}">-->
+<!--            <h3>Upcoming Whiteboard Interviews</h3>-->
+<!--            <ol>-->
+<!--                <li th:each="p:${mywhiteboards}">-->
+<!--                    <a th:href="'/Interviews/'+${p.id}">-->
+<!--                        <span th:text="${p.dueDateOfInterview}"></span>ç-->
+<!--                    </a>-->
+<!--                </li>-->
+<!--            </ol>-->
+<!--        </div>-->
+
+<!--        <div th:if="${gradedWhiteboards}">-->
+<!--            <h3>Whiteboard Assessments</h3>-->
+<!--            <ol>-->
+<!--                <li th:each="p:${myassessments}">-->
+<!--                    <a th:href="'/Interviews/'+${p.id}">-->
+<!--                        <span th:text="${p.dateOfInterview}"></span>-->
+<!--                    </a>-->
+<!--                </li>-->
+<!--            </ol>-->
+<!--        </div>-->
+
+<!--    </div>-->

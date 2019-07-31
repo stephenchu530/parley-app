@@ -59,6 +59,13 @@ public class UserAccountController {
         return "myprofile";
     }
 
+    @GetMapping("/myassessments")
+    public String myassessments(Principal principal, Model model) {
+        UserAccount user = userAccountRepository.findByUsername(principal.getName());
+        model.addAttribute("user", user);
+        return "myassessments";
+    }
+
     @PostMapping("/register")
     public RedirectView addNewStudent(String firstName, String lastName, String username, String password, String classDesignator, String email) {
 
