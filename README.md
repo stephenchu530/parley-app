@@ -34,12 +34,12 @@ Screenshots of the application
 - [Spring](https://spring.io/)
 - [Thymeleaf](https://www.thymeleaf.org/)
 - [AWS Lambda](https://aws.amazon.com/lambda/)
-- [AWS DynamoDB](https://aws.amazon.com/dynamodb/)
+- [AWS RDS](https://aws.amazon.com/rds/)
 - [AWS CodePipeline](https://aws.amazon.com/codepipeline/)
 - [AWS EC2](https://aws.amazon.com/ec2/)
 - [AWS S3](https://aws.amazon.com/s3/)
 - [AWS Elastic Beanstalk](https://aws.amazon.com/elasticbeanstalk/)
-- [AWS SES](https://aws.amazon.com/ses/)
+<!--- [AWS SES](https://aws.amazon.com/ses/)-->
 - [AWS CloudWatch](https://aws.amazon.com/cloudwatch/)
 
 # How to use Parley

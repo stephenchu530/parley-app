@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Schedule Interview</title>
+</head>
+<body>
+    <h1>Schedule Interview</h1>
+    <form action="/scheduleinterview" method="POST">
+        <select name="studentOneId">
+            <div th:each="student: ${studentlist}">
+                <option th:value="${student.getId()}" th:text="${student.getFirstName()}">StudentOneFirstName</option>
+            </div>
+        </select>
+        <select name="promptOneId">
+            <div th:each="prompt: ${promptslist}">
+                <option th:value="${prompt.getId()}" th:text="${prompt.getTitle()}">PromptOneTitle</option>
+            </div>
+        </select>
+        <select name="studentTwoId">
+            <div th:each="student: ${studentlist}">
+                <option th:value="${student.getId()}" th:text="${student.getFirstName()}">StudentTwoFirstName</option>
+            </div>
+        </select>
+        <select name="promptTwoId">
+            <div th:each="prompt: ${promptslist}">
+                <option th:value="${prompt.getId()}" th:text="${prompt.getTitle()}">PromptTwoTitle</option>
+            </div>
+        </select>
+        <label for="dueDate">Due Date: </label><input type="date" name="dueDate" id="dueDate" />
+        <input type="submit" value="Submit">
+    </form>
+</body>
+</html>

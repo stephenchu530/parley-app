@@ -11,9 +11,11 @@ public class Schedules {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     Long id;
-    Long studentOne;
+    @OneToOne
+    UserAccount studentOne;
     Long promptOne;
-    Long studentTwo;
+    @OneToOne
+    UserAccount studentTwo;
     Long promptTwo;
     Boolean doneOne;
     Boolean doneTwo;
@@ -23,9 +25,9 @@ public class Schedules {
     //Default Constructor
     public Schedules() {}
 
-    public Schedules(Long studentOne,
+    public Schedules(UserAccount studentOne,
                      Long promptOne,
-                     Long studentTwo,
+                     UserAccount studentTwo,
                      Long promptTwo,
                      Date dueDateOfInterview) {
         this.setStudentOne(studentOne);
@@ -41,7 +43,7 @@ public class Schedules {
         return id;
     }
 
-    public Long getStudentOne() {
+    public UserAccount getStudentOne() {
         return studentOne;
     }
 
@@ -49,7 +51,7 @@ public class Schedules {
         return promptOne;
     }
 
-    public Long getStudentTwo() {
+    public UserAccount getStudentTwo() {
         return studentTwo;
     }
 
@@ -71,7 +73,7 @@ public class Schedules {
         this.id = id;
     }
 
-    public void setStudentOne(Long studentOne) {
+    public void setStudentOne(UserAccount studentOne) {
         this.studentOne = studentOne;
     }
 
@@ -79,7 +81,7 @@ public class Schedules {
         this.promptOne = promptOne;
     }
 
-    public void setStudentTwo(Long studentTwo) {
+    public void setStudentTwo(UserAccount studentTwo) {
         this.studentTwo = studentTwo;
     }
 

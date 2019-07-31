@@ -3,19 +3,16 @@
 <head>
     <meta charset="UTF-8">
     <title>Whiteboard Interview Evaluation Form</title>
-    <link href="/css/reset.css" rel="stylesheet" />
-    <link href="/css/general.css" rel="stylesheet" />
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootswatch/4.3.1/sketchy/bootstrap.min.css">
     <link href="/css/slider.css" rel="stylesheet" />
 </head>
 <body>
 <div id="timer">Time remaining: <strong><span id="time"></span></strong></div>
 <div class="eval">
-    <form action="/assessments/${interviewID}/" method="post">
+    <form action="/">
         <h1>Whiteboard Interview Evaluation Form</h1>
         Interviewer:
-        Interviewee:<br>
-        <iframe id="iframe" src="https://codefellows.github.io/common_curriculum/data_structures_and_algorithms/Code_401/class-44/interview-01.html"></iframe><br>
+        Interviewee:
+        Question:<br>
         <p>For the benefit of the interviewee, please evaluate as if it were a real whiteboard interview.</p>
         <h3>Please evaluate the student based on the following categories.</h3>
 
@@ -24,35 +21,35 @@
 
             <div class="slideContainer">
                 <p>Asked meaningful clarifying questions: </p>
-                <input type="range" min="0" max="2" value="0" id="range0" name="range0" class="range">
+                <input type="range" min="0" max="2" value="0" id="range0" class="range">
                 <span id="range-value0">0</span>
             </div>
 
             <div class="slideContainer">
                 <p>Identified inputs and outputs: </p>
-                <input type="range" min="0" max="2" value="0" id="range1" name="range1" class="range">
+                <input type="range" min="0" max="2" value="0" id="range1" class="range">
                 <span id="range-value1">0</span>
             </div>
 
             <div class="slideContainer">
                 <p>Visually illustrated the problem domain: </p>
-                <input type="range" min="0" max="2" value="0" id="range2" name="range2" class="range">
+                <input type="range" min="0" max="2" value="0" id="range2" class="range">
                 <span id="range-value2">0</span>
             </div>
 
             <div class="slideContainer">
                 <p>Identified optimal data structure and algorithm: </p>
-                <input type="range" min="0" max="4" value="0" id="range3" name="range3" class="range">
+                <input type="range" min="0" max="4" value="0" id="range3" class="range">
                 <span id="range-value3">0</span>
             </div>
 
             <div class="comments-block">
                 <h4 class="comments">Comments:</h4>
-                <p class="commentdir">What did the student do well? What could be improved?</p>
+                <p>What did the student do well? What could be improved?</p>
             </div>
 
             <div class="answer">
-                <textarea rows="5" cols="100" name="interpretationComments"></textarea>
+                <textarea rows="5" cols="100"></textarea>
             </div>
 
         </div>
@@ -62,33 +59,33 @@
 
             <div class="slideContainer">
                 <p>Presented & understood a working algorithm: </p>
-                <input type="range" min="0" max="4" value="0" id="range4" name="range4" class="range">
+                <input type="range" min="0" max="4" value="0" id="range4" class="range">
                 <span id="range-value4">0</span>
             </div>
 
             <div class="slideContainer">
                 <p>Final code was syntactically correct: </p>
-                <input type="range" min="0" max="3" value="0" id="range5" name="range5" class="range">
+                <input type="range" min="0" max="3" value="0" id="range5" class="range">
                 <span id="range-value5">0</span>
             </div>
 
             <div class="slideContainer">
                 <p>Final code was idiomatically correct: </p>
-                <input type="range" min="0" max="3" value="0" id="range6" name="range6" class="range">
+                <input type="range" min="0" max="3" value="0" id="range6" class="range">
                 <span id="range-value6">0</span>
             </div>
 
             <div class="slideContainer">
                 <p>Solution was the best possible option: </p>
-                <input type="range" min="0" max="2" value="0" id="range7" name="range7" class="range">
+                <input type="range" min="0" max="2" value="0" id="range7" class="range">
                 <span id="range-value7">0</span>
             </div>
 
             <div class="comments-block">
                 <h4 class="comments">Comments:</h4>
-                <p class="commentdir">What did the student do well? What could be improved?</p>
+                <p>What did the student do well? What could be improved?</p>
                 <div class="answer">
-                    <textarea rows="5" cols="100" name="solutionComments"></textarea>
+                    <textarea rows="5" cols="100"></textarea>
                 </div>
             </div>
         </div>
@@ -98,19 +95,19 @@
 
             <div class="slideContainer">
                 <p>Stepped through their solution: </p>
-                <input type="range" min="0" max="2" value="0" id="range8" name="range8" class="range">
+                <input type="range" min="0" max="2" value="0" id="range8" class="range">
                 <span id="range-value8">0</span>
             </div>
 
             <div class="slideContainer">
                 <p>Big O time and space are analyzed: </p>
-                <input type="range" min="0" max="2" value="0" id="range9" name="range9" class="range">
+                <input type="range" min="0" max="2" value="0" id="range9" class="range">
                 <span id="range-value9">0</span>
             </div>
 
             <div class="slideContainer">
                 <p>Explain an approach to testing: </p>
-                <input type="range" min="0" max="2" value="0" id="range10" name="range10" class="range">
+                <input type="range" min="0" max="2" value="0" id="range10" class="range">
                 <span id="range-value10">0</span>
             </div>
 
@@ -118,7 +115,7 @@
                 <h4 class="comments">Comments:</h4>
                 <p>What did the student do well? What could be improved?</p>
                 <div class="answer">
-                    <textarea rows="5" cols="100" name="analysisComments"></textarea>
+                    <textarea rows="5" cols="100"></textarea>
                 </div>
             </div>
         </div>
@@ -128,37 +125,37 @@
 
             <div class="slideContainer">
                 <p>Verbalized their thought process: </p>
-                <input type="range" min="0" max="6" value="0" id="range11" name="range11" class="range">
+                <input type="range" min="0" max="6" value="0" id="range11" class="range">
                 <span id="range-value11">0</span>
             </div>
 
             <div class="slideContainer">
                 <p>Used correct terminology: </p>
-                <input type="range" min="0" max="2" value="0" id="range12" name="range12" class="range">
+                <input type="range" min="0" max="2" value="0" id="range12" class="range">
                 <span id="range-value12">0</span>
             </div>
 
             <div class="slideContainer">
                 <p>Used the time available effectively: </p>
-                <input type="range" min="0" max="1" value="0" id="range13" name="range13" class="range">
+                <input type="range" min="0" max="1" value="0" id="range13" class="range">
                 <span id="range-value13">0</span>
             </div>
 
             <div class="slideContainer">
                 <p>Was not overconfident (not listening to suggestions): </p>
-                <input type="range" min="0" max="1" value="0" id="range14" name="range14" class="range">
+                <input type="range" min="0" max="1" value="0" id="range14" class="range">
                 <span id="range-value14">0</span>
             </div>
 
             <div class="slideContainer">
                 <p>Was not under-confident (unsure of known algorithm): </p>
-                <input type="range" min="0" max="1" value="0" id="range15" name="range15" class="range">
+                <input type="range" min="0" max="1" value="0" id="range15" class="range">
                 <span id="range-value15">0</span>
             </div>
 
             <div class="slideContainer">
                 <p>Whiteboard was readable (penmanship and spacing): </p>
-                <input type="range" min="0" max="1" value="0" id="range16" name="range16" class="range">
+                <input type="range" min="0" max="1" value="0" id="range16" class="range">
                 <span id="range-value16">0</span>
             </div>
 
@@ -166,25 +163,23 @@
                 <h4 class="comments">Comments:</h4>
                 <p>What did the student do well? What could be improved?</p>
                 <div class="answer">
-                    <textarea rows="5" cols="100" name="communicationComments"></textarea>
+                    <textarea rows="5" cols="100"></textarea>
                 </div>
             </div>
         </div>
 
         <div class="finalScore">
-            <input type="text" id="finalScore" name="overallScore" value="">
-<!--            <span id="finalScore">0</span> out of 40 points-->
+            <span id="finalScore">0</span> out of 40 points
         </div>
 
         <div id="evalSubmission">
             <p>After completion, please attach an image of the whiteboard</p>
-                Select a whiteboard image: <input type="file" name="myFile" ><br><br>
-            <button type="submit" class="btn btn-primary">Submit Evaluation</button>
+                Select a whiteboard image: <input type="file" name="myFile"><br><br>
+            <button type="submit">Submit Evaluation</button>
         </div>
 
     </form>
 </div>
-<script type="text/javascript" src="/js/disableBackButton.js"></script>
 <script type="text/javascript" src="/js/slider.js"></script>
 </body>
 </html>

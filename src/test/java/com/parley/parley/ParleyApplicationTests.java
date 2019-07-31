@@ -90,11 +90,12 @@ public class ParleyApplicationTests {
 	@Test
 	public void contextLoads(){
 	}
-
+	
 	@WithMockUser
 	@Test
 	public void testSignedInMyProfile() throws Exception {
 		mockMvc.perform(get("/myprofile").with(testUser())).andExpect(content().string(containsString("Welcome, ")));
 	}
+
 
 }
