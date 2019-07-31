@@ -1,8 +1,12 @@
 package com.parley.parley.controllers;
 
+import com.amazonaws.services.dynamodbv2.xspec.S;
+import com.parley.parley.models.Schedules;
 import com.parley.parley.models.UserAccount;
+import com.parley.parley.repository.SchedulesRepository;
 import com.parley.parley.repository.UserAccountRepository;
 import com.parley.parley.repository.RoleRepository;
+import org.apache.catalina.User;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
@@ -17,6 +21,7 @@ import org.springframework.web.servlet.view.RedirectView;
 
 import java.security.Principal;
 import java.util.ArrayList;
+import java.util.List;
 
 
 @Controller
@@ -27,6 +32,9 @@ public class UserAccountController {
 
     @Autowired
     UserAccountRepository userAccountRepository;
+
+    @Autowired
+    SchedulesRepository schedulesRepository;
 
     @Autowired
     RoleRepository roleRepository;
@@ -50,7 +58,7 @@ public class UserAccountController {
     }
 
     @GetMapping("/myprofile")
-    public String profile(Principal principal, Model model){
+    public String profile(Principal principal, Model model) {
         UserAccount user = userAccountRepository.findByUsername(principal.getName());
         model.addAttribute("user", user);
         return "myprofile";
@@ -75,17 +83,4 @@ public class UserAccountController {
 
         return new RedirectView("/myprofile");
     }
-
-//    @PostMapping("/register")
-//    public RedirectView addNewInstructor(String firstname, String lastname, String username, String password, String email) {
-//        System.out.println("hits registration route");
-//        UserAccount userAccount = new UserAccount(firstname, lastname, username, bCryptPasswordEncoder.encode(password), email);
-//        userAccountRepository.save(userAccount);
-//        Authentication authentication = new UsernamePasswordAuthenticationToken(userAccount, null, new ArrayList<>());
-//        SecurityContextHolder.getContext().setAuthentication(authentication);
-//        System.out.println("about to redirect");
-//        return new RedirectView("/login");
-//    }
-
-
 }

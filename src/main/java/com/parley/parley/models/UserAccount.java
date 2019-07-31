@@ -9,7 +9,6 @@ import javax.persistence.*;
 import java.util.*;
 
 @Entity
-//@Table(name = "instructors")
 public class UserAccount implements UserDetails {
 
     @Id
@@ -24,13 +23,12 @@ public class UserAccount implements UserDetails {
     private String username;
     private String password;
 
-    @OneToMany
-    @ElementCollection(targetClass=Schedules.class)
+    @ManyToMany
     private List<Schedules> interviewSchedule;
 
-    @OneToMany
-    @ElementCollection(targetClass=Assessments.class)
-    private List<Assessments> listOfAssessments;
+    @Column
+    @ElementCollection(targetClass=Long.class)
+    private List<Long> listOfAssessments;
 
     @Column
     @ElementCollection(targetClass=String.class)
@@ -72,8 +70,8 @@ public class UserAccount implements UserDetails {
         this.setUsername(username);
         this.setPassword(password);
         this.setEmail(email);
-        this.setInterviewSchedule(new ArrayList<Schedules>() {});
-        this.setListOfAssessments(new ArrayList<Assessments>());
+        this.setInterviewSchedule(new ArrayList<Schedules>());
+        this.setListOfAssessments(new ArrayList<Long>());
     }
 
     //constructors for student users
@@ -124,7 +122,7 @@ public class UserAccount implements UserDetails {
         return interviewSchedule;
     }
 
-    public List<Assessments> getListOfAssessments() {
+    public List<Long> getListOfAssessments() {
         return listOfAssessments;
     }
 
@@ -205,7 +203,7 @@ public class UserAccount implements UserDetails {
         this.interviewSchedule = interviewerSchedule;
     }
 
-    public void setListOfAssessments(List<Assessments> listOfAssessments) {
+    public void setListOfAssessments(List<Long> listOfAssessments) {
         this.listOfAssessments = listOfAssessments;
     }
 
