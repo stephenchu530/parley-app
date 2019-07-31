@@ -2,6 +2,7 @@ package com.parley.parley.controllers;
 
 import com.parley.parley.models.RoleType;
 import com.parley.parley.models.UserAccount;
+import com.parley.parley.repository.SchedulesRepository;
 import com.parley.parley.repository.UserAccountRepository;
 import com.parley.parley.repository.RoleRepository;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -30,6 +31,9 @@ public class UserAccountController {
     UserAccountRepository userAccountRepository;
 
     @Autowired
+    SchedulesRepository schedulesRepository;
+
+    @Autowired
     RoleRepository roleRepository;
 
     @Autowired
@@ -51,7 +55,7 @@ public class UserAccountController {
     }
 
     @GetMapping("/myprofile")
-    public String profile(Principal principal, Model model){
+    public String profile(Principal principal, Model model) {
         UserAccount user = userAccountRepository.findByUsername(principal.getName());
         model.addAttribute("user", user);
         return "myprofile";
@@ -100,7 +104,5 @@ public class UserAccountController {
     public String logoutPage(){
         return "logout_completed";
     }
-
-
-
+    
 }

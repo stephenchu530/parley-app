@@ -1,0 +1,13 @@
+<div class="header" th:fragment="schedulelist(user)" xmlns:th="http://www.springframework.org/schema/security">
+    <h2>My Schedule</h2>
+    <nav>
+        <div th:if="${#lists.isEmpty(user.getInterviewSchedule())}" >
+            You have nothing scheduled!
+        </div>
+        <ul>
+            <li th:each="schedule: ${user.getInterviewSchedule()}">
+                <div th:if="${schedule.getDoneOne() == false}"><span th:text="${schedule.getStudentTwo().getFirstName()}">AAAAA</span></div>
+            </li>
+        </ul>
+    </nav>
+</div>
