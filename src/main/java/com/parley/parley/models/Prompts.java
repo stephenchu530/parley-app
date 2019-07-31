@@ -1,7 +1,6 @@
 package com.parley.parley.models;
 
 import javax.persistence.*;
-import java.util.UUID;
 
 @Entity
 public class Prompts {

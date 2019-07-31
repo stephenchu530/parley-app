@@ -1,25 +1,21 @@
 <header class="header" th:fragment="header" xmlns:th="http://www.springframework.org/schema/security">
     <h1>Parley</h1>
     <nav>
-        <!--<a href="/">Home</a>-->
-        <!--<a href="/login">Log In</a>-->
-        <!--<fragment th:if="${principal}">-->
-            <!--<a href="/" th:if="${principal.isAdmin()}">admin test</a>-->
-        <!--</fragment>-->
-
-        <!--<a href="/signup">Sign Up</a>-->
-        <!--<a href="/aboutus">About Us</a>-->
-        <!--<a href="/logout">Logout</a>-->
         <ul>
-            <li><a href="/">Home</a></li>
-            <li><a href="/login">Login</a></li>
-            <li><a href="/signup">Sign Up</a></li>
-            <li><a href="/aboutus">About Us</a></li>
-            <li><a href="/logout">Logout</a></li>
-            <fragment th:if="${user}">
-                <li th:if="${user.isAdmin()}"><a href="#">Admin Test</a></li>
-            </fragment>
-
+            <li><a href="/"><button>Home</button></a></li>
+            <li th:if="${user == null}"><a href="/login"><button>Login</button></a></li>
+            <li th:if="${user == null}"><a href="/signup"><button>Sign Up</button></a></li>
+            <div th:if="${user != null}">
+                <li th:if="${!user.isAdmin()}" ><a href="/myassessments"><button>My Assessments</button></a></li>
+                <li th:if="${user.isAdmin()}" ><a href="/addstudent"><button>Add Student</button></a></li>
+                <li th:if="${user.isAdmin()}" ><a href="/addclass"><button>Add Class</button></a></li>
+                <li th:if="${user.isAdmin()}" ><a href="/addprompt"><button>Add Prompt</button></a></li>
+                <li th:if="${user.isAdmin()}" ><a href="/schedule"><button>Schedule Interviews</button></a></li>
+                <li th:if="${user.isAdmin()}" ><a href="/makeadmin"><button>Make Admin</button></a></li>
+                <li><a href="/editprofile"><button>Edit Profile</button></a></li>
+                <li><a href="/aboutus"><button>About Us</button></a></li>
+                <li><a href="/logout"><button>Logout</button></a></li>
+            </div>
         </ul>
     </nav>
 </header>
