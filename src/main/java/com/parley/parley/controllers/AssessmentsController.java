@@ -54,8 +54,8 @@ public class AssessmentsController {
         Assessments thisAssessment = new Assessments(
                 new Date(),
                 current.getPromptOne(),
-                current.getStudentOne(),
-                current.getStudentTwo(),
+                current.getStudentOne().getId(),
+                current.getStudentTwo().getId(),
                 Integer.valueOf(range0),
                 Integer.valueOf(range1),
                 Integer.valueOf(range2),
