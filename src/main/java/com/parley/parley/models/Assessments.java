@@ -16,7 +16,7 @@ public class Assessments {
     Long prompt;
     Long interviewer;
     Long interviewee;
-    Integer meaninfulQuestionsScore;
+    Integer meaningfulQuestionsScore;
     Integer identifyIOScore;
     Integer visualizeProblemScore;
     Integer optimalDSAScore;
@@ -75,7 +75,7 @@ public class Assessments {
         this.prompt = prompt;
         this.interviewer = interviewer;
         this.interviewee = interviewee;
-        this.meaninfulQuestionsScore = meaningfulQuestionsScore;
+        this.meaningfulQuestionsScore = meaningfulQuestionsScore;
         this.identifyIOScore = identifyIOScore;
         this.visualizeProblemScore = visualizeProblemScore;
         this.optimalDSAScore = optimalDSAScore;
@@ -133,8 +133,8 @@ public class Assessments {
     public Integer getOverallScore() {
         return overallScore;
     }
-    public Integer getMeaninfulQuestionsScore() {
-        return meaninfulQuestionsScore;
+    public Integer getMeaningfulQuestionsScore() {
+        return meaningfulQuestionsScore;
     }
     public Integer getWhiteboardLegibleScore() {
         return whiteboardLegibleScore;
@@ -184,7 +184,7 @@ public class Assessments {
     public Integer getIdentifyIOScore() {
         return identifyIOScore;
     }
-    
+
     // Setters
     public void setId(Long id) { this.id = id;}
     public void setDateOfInterview(Date dateOfInterview) { this.dateOfInterview = dateOfInterview;}
@@ -206,8 +206,8 @@ public class Assessments {
     public void setCommunicationComments(String communicationComments) { this.communicationComments = communicationComments;}
     public void setOverallScore(Integer overallScore) { this.overallScore = overallScore;}
 
-    public void setMeaninfulQuestionsScore(Integer meaninfulQuestionsScore) {
-        this.meaninfulQuestionsScore = meaninfulQuestionsScore;
+    public void setMeaninfulQuestionsScore(Integer meaningfulQuestionsScore) {
+        this.meaningfulQuestionsScore = meaningfulQuestionsScore;
     }
     public void setIdentifyIOScore(Integer identifyIOScore) {
         this.identifyIOScore = identifyIOScore;
