@@ -51,21 +51,35 @@ public class AssessmentsController {
         SimpleDateFormat simpleDateFormat = new SimpleDateFormat(pattern);
         String today = simpleDateFormat.format(new Date());
         Assessments thisAssessment = new Assessments(
-                today,
+                new Date(),
                 current.getPromptOne(),
                 current.getStudentOne(),
                 current.getStudentTwo(),
-                {interpretation score},
-                {interpretationComments},
-                {solution score},
-                {solutionComments},
-                {analysis score},
-                {analysisComments},
-                {communications score},
-                {communicationComments},
-                Long.parseLong(overallScore)
-
+                Integer.valueOf(range0),
+                Integer.valueOf(range1),
+                Integer.valueOf(range2),
+                Integer.valueOf(range3),
+                solutionComments,
+                Integer.valueOf(range4),
+                Integer.valueOf(range5),
+                Integer.valueOf(range6),
+                Integer.valueOf(range7),
+                interpretationComments,
+                Integer.valueOf(range8),
+                Integer.valueOf(range9),
+                Integer.valueOf(range10),
+                analysisComments,
+                Integer.valueOf(range11),
+                Integer.valueOf(range12),
+                Integer.valueOf(range13),
+                Integer.valueOf(range14),
+                Integer.valueOf(range15),
+                Integer.valueOf(range16),
+                communicationComments,
+                Integer.valueOf(overallScore)
         );
-        return new RedirectView("/toFile/{assId}");
+        String assId = Long.toString(thisAssessment.getId());
+        assessmentsRepository.save(thisAssessment);
+        return new RedirectView("/toFile/" + assId);
     }
 }
