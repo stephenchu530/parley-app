@@ -84,7 +84,7 @@ public class UserAccountController {
     @GetMapping("/makeAdmin")
     public String makeAdminGet(Principal user, Model model){
         Iterable<UserAccount> users = userAccountRepository.findAll();
-        model.addAttribute("loggedInUser", userAccountRepository.findByUsername(user.getName()));
+        model.addAttribute("user", userAccountRepository.findByUsername(user.getName()));
         model.addAttribute("users", users);
         return "makeAdmin";
     }
@@ -104,5 +104,5 @@ public class UserAccountController {
     public String logoutPage(){
         return "logout_completed";
     }
-    
+
 }
