@@ -30,12 +30,10 @@ public class PromptsController {
     }
 
     @PostMapping("/prompt")
-    public RedirectView addNewPrompt(String title, String category, MultipartFile file){
-        String fileUrl = s3Client.uploadFile2Prompts(file);
-        Prompts prompt = new Prompts(title, category, fileUrl);
+    public RedirectView addNewPrompt(String title, String category, String promptUrl){
+        Prompts prompt = new Prompts(title, category, promptUrl);
         promptsRepository.save(prompt);
         return new RedirectView("/instructors");
     }
-
 
 }
