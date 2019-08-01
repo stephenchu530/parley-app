@@ -1,12 +1,28 @@
 <div class="header" th:fragment="assessments(user)" xmlns:th="http://www.springframework.org/schema/security">
-    <nav>
-        <div th:if="${#lists.isEmpty(user.getListOfAssessments())}" >
-            You have no assessments!
+
+
+    <div th:if="${#lists.isEmpty(user.getListOfAssessments())}" >
+        You have no assessments!
+    </div>
+
+    <div class="assessmentHolder">
+        <div class="card text-white bg-dark mb-3" style="max-width: 20rem;" th:each="assessment: ${user.getListOfAssessments()}">
+            <div th:text="${#strings.substring(assessment,46,56)}" class="card-header">
+
+            </div>
+            <div class="card-body">
+                <p><span ></span> <a th:href="${assessment}"><button>View</button></a></p>
+            </div>
+
         </div>
-        <ul>
-            <li th:each="assessment: ${user.getListOfAssessments()}">
-                <p><span th:text="${#strings.substring(assessment,46,56)}"></span> <a th:href="${assessment}"><button>View</button></a></p>
-            </li>
-        </ul>
-    </nav>
+    </div>
+
+    <!--<ul class="list-group">-->
+        <!--<li th:each="assessment: ${user.getListOfAssessments()}">-->
+            <!--<p><span th:text="${#strings.substring(assessment,46,56)}"></span> <a th:href="${assessment}"><button>View</button></a></p>-->
+        <!--</li>-->
+    <!--</ul>-->
+
+
+
 </div>
