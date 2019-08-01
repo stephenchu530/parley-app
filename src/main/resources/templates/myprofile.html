@@ -2,23 +2,23 @@
 <html lang="en" xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8">
-    <title th:if="${user.isAdmin()}">Instructor Profile</title>
-    <title th:if="${!user.isAdmin()}">Student Profile</title>
+    <title th:if="${user.isAdmin() == true}">Instructor Profile</title>
+    <title th:if="${user.isAdmin() == false}">Student Profile</title>
 </head>
 <body>
 
     <div th:replace="fragments/header :: header" ></div>
 
     <section>
-        <h1 th:if="${user}">Welcome, [[${user.firstName}]]</h1>
+        <h1 th:if="${user != null}">Welcome, [[${user.firstName}]]</h1>
 
         <!--    Student stuff goes here -->
-        <div th:if="${!user.isAdmin()}" >
+        <div th:if="${user.isAdmin() == false}" >
             <div th:replace="fragments/scheduledInterviewsFragment :: schedulelist(${user})" ></div>
         </div>
 
         <!--    Admin stuff goes here -->
-        <div th:if="${user.isAdmin()}" >
+        <div th:if="${user.isAdmin() == true}" >
             Place holder for admin fragments
         </div>
     </section>
