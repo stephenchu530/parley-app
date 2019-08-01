@@ -7,7 +7,6 @@ import com.parley.parley.repository.PromptsRepository;
 import com.parley.parley.repository.RoleRepository;
 import com.parley.parley.repository.SchedulesRepository;
 import com.parley.parley.repository.UserAccountRepository;
-import javafx.scene.Scene;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.format.annotation.DateTimeFormat;
 import org.springframework.security.authentication.AuthenticationManager;
@@ -80,23 +79,7 @@ public class scheduleInterviewController {
         scheduledInterviewsTwo.add(newScheduledInterview);
         studentTwo.setInterviewSchedule(scheduledInterviewsTwo);
         userAccountRepository.save(studentTwo);
-
-        // BACKUP IN CASE SHIT GOES SOUTH
-//        Schedules newScheduledInterview = new Schedules(studentOneId, promptOneId, studentTwoId, promptTwoId, dueDate);
-//        schedulesRepository.save(newScheduledInterview);
-//
-//        UserAccount studentOne = userAccountRepository.findById(studentOneId).get();
-//        List<Long> studentOneNewSchedule = studentOne.getInterviewSchedule();
-//        studentOneNewSchedule.add(newScheduledInterview.getId());
-//        studentOne.setInterviewSchedule(studentOneNewSchedule);
-//        userAccountRepository.save(studentOne);
-//
-//        UserAccount studentTwo = userAccountRepository.findById(studentTwoId).get();
-//        List<Long> studentTwoNewSchedule = studentTwo.getInterviewSchedule();
-//        studentTwoNewSchedule.add(newScheduledInterview.getId());
-//        studentTwo.setInterviewSchedule(studentTwoNewSchedule);
-//        userAccountRepository.save(studentTwo);
-
+        
         return new RedirectView("/myprofile");
     }
 }
