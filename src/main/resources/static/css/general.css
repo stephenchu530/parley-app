@@ -1,3 +1,7 @@
+body{
+    top: 0;
+}
+
 header {
     margin-bottom: 60px;
 }
@@ -22,6 +26,25 @@ footer{
 
 .push {
   height: 50px;
+}
+
+.loginHolder{
+    display: flex;
+    flex-direction: row;
+
+}
+
+.imageHolder{
+    position: relative;
+}
+
+.imageContent{
+    position: absolute;
+    top: 60%;
+    left: 25%;
+    transform: translate(-50%, -50%);
+    font-size: 14px;
+    text-align: center;
 }
 
 form {
@@ -86,6 +109,26 @@ section {
 
 #timer{
     text-align: center;
+    align-content: center;
+}
+
+
+.timerBox{
+    background-color: gray;
+    z-index: 9999;
+    height: 45px;
     width: 100%;
     position: fixed;
+    display: flex;
+    flex-flow: row nowrap;
+    top: 0;
+    overflow: hidden;
+    justify-content: center;
+    align-content: center;
+    text-align: center;
+    margin-bottom: 15px;
+}
+
+.eval{
+    margin-top: 30px;
 }
