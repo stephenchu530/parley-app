@@ -49,11 +49,6 @@ public class UserAccountController {
         return "myprofile";
     }
 
-    @GetMapping("/aboutus")
-    public String aboutus() {
-        return "aboutus";
-    }
-
     @PostMapping("/login")
     public String loginAfterRegister(){
         return "myprofile";
@@ -111,7 +106,7 @@ public class UserAccountController {
     }
 
     @GetMapping("/aboutus")
-    public String aboutUs(Principal principal, Model model){
+    public String getAboutUs(Principal principal, Model model){
         UserAccount user = userAccountRepository.findByUsername(principal.getName());
         model.addAttribute("user", user);
         return "aboutus";
