@@ -1,26 +1,23 @@
 <!DOCTYPE html>
 <html lang="en" xmlns:th="http://www.thymeleaf.org">
-<head>
-    <meta charset="UTF-8">
-    <link href="/css/reset.css" rel="stylesheet" />
-    <link href="/css/general.css" rel="stylesheet" />
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootswatch/4.3.1/sketchy/bootstrap.min.css">
-    <title>My Assessments</title>
-</head>
-<body>
-    <div th:replace="fragments/header :: header" ></div>
+    <head>
+        <meta charset="UTF-8">
+        <link href="/css/reset.css" rel="stylesheet" />
+        <link href="/css/general.css" rel="stylesheet" />
+        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootswatch/4.3.1/sketchy/bootstrap.min.css">
+        <title>My Assessments</title>
+    </head>
+    <body>
+        <div th:replace="fragments/header :: header" ></div>
 
-    <div class="divCenterHolder2">
         <h1>My Assessments</h1>
 
-        <div th:if="${#lists.isEmpty(user.getInterviewSchedule())}" >
+        <div th:if="${#lists.isEmpty(user.getListOfAssessments())}" >
             You have no assessments!
         </div>
-    </div>
 
-
-
-    <div th:replace="fragments/assessments :: assessments(${user})" ></div>
-
-</body>
+        <section>
+            <div th:replace="fragments/assessments :: assessments(${user})" ></div>
+        </section>
+    </body>
 </html>
