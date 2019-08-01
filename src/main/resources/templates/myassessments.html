@@ -9,15 +9,13 @@
     </head>
     <body>
         <div th:replace="fragments/header :: header" ></div>
+        <div class="divCenterHolder2">
 
-        <h1>My Assessments</h1>
+                <h1>My Assessments</h1>
 
-        <div th:if="${#lists.isEmpty(user.getListOfAssessments())}" >
-            You have no assessments!
+            <div th:replace="fragments/assessments :: assessments(${user})" ></div>
         </div>
 
-        <section>
-            <div th:replace="fragments/assessments :: assessments(${user})" ></div>
-        </section>
+
     </body>
 </html>

@@ -1,12 +1,17 @@
 <div class="header" th:fragment="assessments(user)" xmlns:th="http://www.springframework.org/schema/security">
-    <nav>
-        <div th:if="${#lists.isEmpty(user.getListOfAssessments())}" >
-            You have no assessments!
-        </div>
-        <ul>
-            <li th:each="assessment: ${user.getListOfAssessments()}">
-                <p><span th:text="${#strings.substring(assessment,46,56)}"></span> <a th:href="${assessment}"><button>View</button></a></p>
-            </li>
-        </ul>
-    </nav>
+
+
+    <div th:if="${#lists.isEmpty(user.getListOfAssessments())}" >
+        You have no assessments!
+    </div>
+
+
+    <ul class="list-group">
+        <li th:each="assessment: ${user.getListOfAssessments()}" class="list-group-item d-flex justify-content-between align-items-center">
+            <p><span th:text="${#strings.substring(assessment,46,56)}"></span> <a th:href="${assessment}"><button>View</button></a></p>
+        </li>
+    </ul>
+
+
+
 </div>
