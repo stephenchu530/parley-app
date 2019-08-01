@@ -9,12 +9,15 @@
     </head>
     <body>
         <div th:replace="fragments/header :: header" ></div>
-        <div class="divCenterHolder2">
 
-                <h1>My Assessments</h1>
+        <center>
+            <h1>My Assessments</h1>
+            <div class="assessmentHolder">
+                <div th:replace="fragments/assessments :: assessments(${user})" ></div>
+            </div>
+        </center>
 
-            <div th:replace="fragments/assessments :: assessments(${user})" ></div>
-        </div>
+
 
 
     </body>
