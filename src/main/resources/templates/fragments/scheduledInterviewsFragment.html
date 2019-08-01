@@ -1,6 +1,6 @@
 <div class="header" th:fragment="schedulelist(user)" xmlns:th="http://www.springframework.org/schema/security">
     <h2>My Schedule</h2>
-    <nav>
+
         <div th:if="${#lists.isEmpty(user.getInterviewSchedule())}" >
             You have nothing scheduled!
         </div>
@@ -10,7 +10,7 @@
                     <h3>Due at midnight on: <span th:text="${#dates.format(schedule.getDueDateOfInterview(), 'dd-MMM-yyyy')}">AAA</span></h3>
                     <p th:if="${schedule.getStudentOne().getId() == user.getId()}">
                         You will be interviewing <span th:text="${schedule.getStudentTwo().getFirstName()}">AAA</span> first.
-                        <a th:href="@{'/evaluation/' + ${schedule.getId()}}"><button>Start!</button></a>
+                        <a th:href="@{'/evaluation/' + ${schedule.getId()}}"><button class="btn btn-primary">Start!</button></a>
                     </p>
                     <p th:if="${schedule.getStudentOne().getId() != user.getId()}">You will be interviewed by <span th:text="${schedule.getStudentOne().getFirstName()}">AAA</span> first.</p>
                 </div>
@@ -18,11 +18,11 @@
                     <h3>Due at midnight on: <span th:text="${#dates.format(schedule.getDueDateOfInterview(), 'dd-MMM-yyyy')}">AAA</span></h3>
                     <p th:if="${schedule.getStudentTwo().getId() == user.getId()}">
                         You will be interviewing <span th:text="${schedule.getStudentOne().getFirstName()}">AAA</span>
-                        <a th:href="@{'/evaluation/' + ${schedule.getId()}}"><button>Start!</button></a>
+                        <a th:href="@{'/evaluation/' + ${schedule.getId()}}"><button class="btn btn-primary">Start!</button></a>
                     </p>
                     <p th:if="${schedule.getStudentTwo().getId() != user.getId()}">You will be interviewed by <span th:text="${schedule.getStudentTwo().getFirstName()}">AAA</span></p>
                 </div>
             </li>
         </ul>
-    </nav>
+
 </div>
