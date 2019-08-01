@@ -5,8 +5,6 @@
     <link href="/css/reset.css" rel="stylesheet" />
     <link href="/css/general.css" rel="stylesheet" />
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootswatch/4.3.1/sketchy/bootstrap.min.css">
-    <title th:if="${user.isAdmin() == true}">Instructor Profile</title>
-    <title th:if="${user.isAdmin() == false}">Student Profile</title>
     <title th:if="${user.isAdmin()}">Instructor Profile</title>
     <title th:if="${!user.isAdmin()}">Student Profile</title>
 </head>

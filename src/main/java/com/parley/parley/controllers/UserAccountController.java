@@ -15,8 +15,7 @@ import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.view.RedirectView;
 
 import java.security.Principal;
@@ -121,6 +120,8 @@ public class UserAccountController {
     public String showPromptEntryPage(Principal principal, Model model){
         UserAccount user = userAccountRepository.findByUsername(principal.getName());
         model.addAttribute("user", user);
+        Iterable<Prompts> promptsList = promptsRepository.findAll();
+        model.addAttribute("promptsList", promptsList);
         return "add_prompt";
     }
 
@@ -128,6 +129,33 @@ public class UserAccountController {
     public RedirectView addNewPrompt(String title, String category, String promptUrl){
         Prompts prompt = new Prompts(title, category, promptUrl);
         promptsRepository.save(prompt);
+        return new RedirectView("/prompt");
+    }
+
+    @GetMapping("/editprofile")
+    public String editProfile(Principal principal, Model model) {
+        UserAccount user = userAccountRepository.findByUsername(principal.getName());
+        model.addAttribute("user", user);
+        return "editprofile";
+    }
+
+    @GetMapping("/addstudent")
+    public String addStudent(Principal principal, Model model) {
+        UserAccount user = userAccountRepository.findByUsername(principal.getName());
+        model.addAttribute("user", user);
+        return "addstudent";
+    }
+
+    @GetMapping("/addclass")
+    public String addClass(Principal principal, Model model) {
+        UserAccount user = userAccountRepository.findByUsername(principal.getName());
+        model.addAttribute("user", user);
+        return "addclass";
+    }
+
+    @PostMapping("/delete/prompt")
+    public RedirectView deletePrompt(@RequestParam Long promptId){
+        promptsRepository.deleteById(promptId);
         return new RedirectView("/prompt");
     }
 }
