@@ -28,7 +28,7 @@
                 <fragment th:each="prompt: ${promptsList}">
                     <option th:value="${prompt.getId()}" th:text="${prompt.getTitle()}">Prompt To Be Deleted</option>
                 </fragment>
-            </select>
+            </select> <br>
             <input type="submit" value="Delete This Prompt" />
         </form>
     </div>
