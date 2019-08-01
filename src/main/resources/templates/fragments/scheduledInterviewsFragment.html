@@ -6,7 +6,22 @@
         </div>
         <ul>
             <li th:each="schedule: ${user.getInterviewSchedule()}">
-                <div th:if="${schedule.getDoneOne() == false}"><span th:text="${schedule.getStudentTwo().getFirstName()}">AAAAA</span></div>
+                <div th:if="${schedule.getDoneOne() == false}">
+                    <h3>Due at midnight on: <span th:text="${#dates.format(schedule.getDueDateOfInterview(), 'dd-MMM-yyyy')}">AAA</span></h3>
+                    <p th:if="${schedule.getStudentOne().getId() == user.getId()}">
+                        You will be interviewing <span th:text="${schedule.getStudentTwo().getFirstName()}">AAA</span> first.
+                        <a th:href="@{'/evaluation/' + ${schedule.getId()}}"><button>Start!</button></a>
+                    </p>
+                    <p th:if="${schedule.getStudentOne().getId() != user.getId()}">You will be interviewed by <span th:text="${schedule.getStudentOne().getFirstName()}">AAA</span> first.</p>
+                </div>
+                <div th:if="${schedule.getDoneOne() == true}">
+                    <h3>Due at midnight on: <span th:text="${#dates.format(schedule.getDueDateOfInterview(), 'dd-MMM-yyyy')}">AAA</span></h3>
+                    <p th:if="${schedule.getStudentTwo().getId() == user.getId()}">
+                        You will be interviewing <span th:text="${schedule.getStudentOne().getFirstName()}">AAA</span>
+                        <a th:href="@{'/evaluation/' + ${schedule.getId()}}"><button>Start!</button></a>
+                    </p>
+                    <p th:if="${schedule.getStudentTwo().getId() != user.getId()}">You will be interviewed by <span th:text="${schedule.getStudentTwo().getFirstName()}">AAA</span></p>
+                </div>
             </li>
         </ul>
     </nav>
