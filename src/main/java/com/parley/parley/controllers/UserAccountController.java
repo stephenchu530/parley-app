@@ -105,4 +105,11 @@ public class UserAccountController {
         return "logout_completed";
     }
 
+    @GetMapping("/aboutus")
+    public String aboutUs(Principal principal, Model model){
+        UserAccount user = userAccountRepository.findByUsername(principal.getName());
+        model.addAttribute("user", user);
+        return "aboutus";
+    }
+
 }
