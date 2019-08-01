@@ -1,3 +1,7 @@
+header {
+    margin-bottom: 60px;
+}
+
 footer{
     position: fixed;
     left: 45%;
@@ -15,6 +19,7 @@ form select {
     display: block;
     margin: 0 auto;
     padding: 5px;
+    width: 50%;
 }
 
 .centerBtn {
@@ -31,7 +36,31 @@ section {
     text-align: center;
 }
 
+.divCenterHolder2 {
+    display: block;
+    text-align: center;
+    margin: 15px auto;
+    align: center;
+}
+
 .logoutMsg {
     margin: 120px auto;
     text-align: center;
+}
+
+.devTeam{
+    height: 200px;
+    width: 100%;
+    display: block;
+}
+
+.devHolder{
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: center;
+}
+
+.devCard{
+    margin: 30px;
 }
