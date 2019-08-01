@@ -130,4 +130,25 @@ public class UserAccountController {
         promptsRepository.save(prompt);
         return new RedirectView("/prompt");
     }
+
+    @GetMapping("/editprofile")
+    public String editProfile(Principal principal, Model model) {
+        UserAccount user = userAccountRepository.findByUsername(principal.getName());
+        model.addAttribute("user", user);
+        return "editprofile";
+    }
+
+    @GetMapping("/addstudent")
+    public String addStudent(Principal principal, Model model) {
+        UserAccount user = userAccountRepository.findByUsername(principal.getName());
+        model.addAttribute("user", user);
+        return "addstudent";
+    }
+
+    @GetMapping("/addclass")
+    public String addClass(Principal principal, Model model) {
+        UserAccount user = userAccountRepository.findByUsername(principal.getName());
+        model.addAttribute("user", user);
+        return "addclass";
+    }
 }
