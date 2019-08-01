@@ -9,7 +9,7 @@ import java.util.Date;
 public class Assessments {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     Long id;
     @DateTimeFormat(pattern = "yyyy-mm-dd")
     Date dateOfInterview;
@@ -39,7 +39,6 @@ public class Assessments {
     Integer whiteboardLegibleScore;
     String communicationComments;
     Integer overallScore;
-//    String overallComments;
 
     // Default Constructor
     public Assessments() {}
