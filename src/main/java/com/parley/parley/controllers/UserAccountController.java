@@ -8,8 +8,6 @@ import com.parley.parley.repository.SchedulesRepository;
 import com.parley.parley.repository.UserAccountRepository;
 import com.parley.parley.repository.RoleRepository;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.http.HttpStatus;
-import org.springframework.http.ResponseEntity;
 import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
 import org.springframework.security.core.Authentication;
@@ -22,7 +20,6 @@ import org.springframework.web.servlet.view.RedirectView;
 
 import java.security.Principal;
 import java.util.ArrayList;
-import java.util.Optional;
 
 
 @Controller
@@ -133,6 +130,27 @@ public class UserAccountController {
         Prompts prompt = new Prompts(title, category, promptUrl);
         promptsRepository.save(prompt);
         return new RedirectView("/prompt");
+    }
+
+    @GetMapping("/editprofile")
+    public String editProfile(Principal principal, Model model) {
+        UserAccount user = userAccountRepository.findByUsername(principal.getName());
+        model.addAttribute("user", user);
+        return "editprofile";
+    }
+
+    @GetMapping("/addstudent")
+    public String addStudent(Principal principal, Model model) {
+        UserAccount user = userAccountRepository.findByUsername(principal.getName());
+        model.addAttribute("user", user);
+        return "addstudent";
+    }
+
+    @GetMapping("/addclass")
+    public String addClass(Principal principal, Model model) {
+        UserAccount user = userAccountRepository.findByUsername(principal.getName());
+        model.addAttribute("user", user);
+        return "addclass";
     }
 
     @PostMapping("/delete/prompt")
