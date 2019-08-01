@@ -29,8 +29,7 @@ footer{
 }
 
 .loginHolder{
-    display: flex;
-    flex-direction: row;
+    display: block;
 
 }
 

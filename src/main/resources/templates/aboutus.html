@@ -10,7 +10,11 @@
 
 </head>
 <body>
-<div th:replace="fragments/header :: header" ></div>
+<div th:if="${user != null}" ? th:replace="fragments/header :: header" : th:replace="fragments/loginPageHeader :: header">
+
+    <!--<div th:replace="fragments/header :: header" ></div>-->
+</div>
+<!--<div th:replace="fragments/header :: header" ></div>-->
     <center>
         <h1 class="center">About The Parley Developers</h1>
     </center>
