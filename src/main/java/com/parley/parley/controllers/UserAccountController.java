@@ -111,6 +111,10 @@ public class UserAccountController {
 
     @GetMapping("/aboutus")
     public String getAboutUs(Principal principal, Model model){
+        if (principal == null) {
+            model.addAttribute("user", null);
+            return "aboutus";
+        }
         UserAccount user = userAccountRepository.findByUsername(principal.getName());
         model.addAttribute("user", user);
         return "aboutus";
