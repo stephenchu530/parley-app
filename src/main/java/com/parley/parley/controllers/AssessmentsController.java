@@ -157,8 +157,10 @@ public class AssessmentsController {
         String fileUrl = s3Client.uploadFile2Pdfs(otherFile);
         UserAccount student = userAccountRepository.findById(assessment.getInterviewee()).get();
         List tempList = student.getListOfAssessments();
-        tempList.add(fileUrl);
-        student.setListOfAssessments(tempList);
+        if (!tempList.contains(fileUrl)){
+            tempList.add(fileUrl);
+            student.setListOfAssessments(tempList);
+        }
         userAccountRepository.save(student);
         otherFile.delete();
         return new RedirectView("/myprofile");
