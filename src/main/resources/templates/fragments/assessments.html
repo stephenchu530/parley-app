@@ -1,9 +1,11 @@
 <div class="header" th:fragment="assessments(user)" xmlns:th="http://www.springframework.org/schema/security">
     <nav>
-
+        <div th:if="${#lists.isEmpty(user.getListOfAssessments())}" >
+            You have no assessments!
+        </div>
         <ul>
             <li th:each="assessment: ${user.getListOfAssessments()}">
-                <p>Place Holder for assessment</p>
+                <p><span th:text="${#strings.substring(assessment,46,56)}"></span> <a th:href="${assessment}"><button>Download</button></a></p>
             </li>
         </ul>
     </nav>
