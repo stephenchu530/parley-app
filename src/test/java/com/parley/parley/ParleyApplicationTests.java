@@ -42,35 +42,52 @@ public class ParleyApplicationTests {
 	@Autowired
 	private MockMvc mockMvc;
 
-	@Autowired
-	WebApplicationContext context;
-
-//	@Before
-//	public void setup(){
-//		mockMvc = MockMvcBuilders.webAppContextSetup(context).apply(springSecurity()).build();
-//	}
-//	public static RequestPostProcessor testUser(){
-//		return user("TestUser").password("pass");
-//	}
-
-//	public UserAccount createTestUser(){
-//		UserAccount testUser = new UserAccount ("joe", "smith", "joe", "password", "joe@smith.com");
-//		testUser.getRoleTypes().add(roleRepository.findByRole("admin"));
-//		return testUser;
-//	}
-
 	public static RequestPostProcessor testUser(){
-		return user("user").password("pass").authorities(new GrantedAuthority() {
-			@Override
-			public String getAuthority() {
-				return "role_admin";
-			}
-		});
+		return user("TestUser").password("pass");
 	}
+
+	public UserAccount createTestUser(){
+		UserAccount testUser = new UserAccount ("joe", "smith", "joe", "password", "joe@smith.com");
+		testUser.getRoleTypes().add(roleRepository.findByRole("admin"));
+		return testUser;
+	}
+
+//	public static RequestPostProcessor testUser(){
+//		return user("TestUser").password("pass").authorities(new GrantedAuthority() {
+//			@Override
+//			public String getAuthority() {
+//				return "role_admin";
+//			}
+//		});
+//	}
 
 	@Test
 	public void testMyProfileNotSignedIn() throws Exception{
 		this.mockMvc.perform(get("/myprofile")).andExpect(status().is3xxRedirection());	}
+
+	@Test
+	public void testScheduleNotSignedIn() throws Exception{
+		this.mockMvc.perform(get("/schedule")).andExpect(status().is3xxRedirection());	}
+
+	@Test
+	public void testAddPromptNotSignedIn() throws Exception{
+		this.mockMvc.perform(get("/addprompt")).andExpect(status().is3xxRedirection());	}
+
+	@Test
+	public void testMakeAdminNotSignedIn() throws Exception{
+		this.mockMvc.perform(get("/makeadmin")).andExpect(status().is3xxRedirection());	}
+
+	@Test
+	public void testAddClassNotSignedIn() throws Exception{
+		this.mockMvc.perform(get("/addclass")).andExpect(status().is3xxRedirection());	}
+
+	@Test
+	public void testAddStudentNotSignedIn() throws Exception{
+		this.mockMvc.perform(get("/addstudent")).andExpect(status().is3xxRedirection());	}
+
+	@Test
+	public void testEditProfileNotSignedIn() throws Exception{
+		this.mockMvc.perform(get("/editprofile")).andExpect(status().is3xxRedirection());	}
 
 	@Test
 	public void testLoginNotSignedIn() throws Exception {
@@ -90,12 +107,23 @@ public class ParleyApplicationTests {
 	@Test
 	public void contextLoads(){
 	}
-	
-	@WithMockUser
-	@Test
-	public void testSignedInMyProfile() throws Exception {
-		mockMvc.perform(get("/myprofile").with(testUser())).andExpect(content().string(containsString("Welcome, ")));
-	}
 
+//	@Test
+//	@WithMockUser
+//	public void testMyProfileSignedIn() throws Exception {
+//		mockMvc.perform(get("/myprofile").with(testUser())).andExpect(status().isOk());
+//	}
+
+//	@WithMockUser
+//	@Test
+//	public void testLoginSignedIn() throws Exception {
+//		this.mockMvc.perform(get("/login").with(testUser())).andExpect(status().isOk());
+//	}
+
+	@Test
+	public void testCreateUser(){
+		UserAccount testUser = new UserAccount();
+		assertNotNull(testUser);
+	}
 
 }
