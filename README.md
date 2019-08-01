@@ -1,12 +1,12 @@
-# Parley App
+# [Parley App](http://www.techparley.com/)
 They Parley app allows code school userAccounts to easily set up and administer whiteboard technical challenges to their students.  Students are able to log in and use a visual interface to interview and grade other students.
 
 - Instructors can:  
-    - Add/remove students to a class list
+    - Add/remove students to a class list (Coming Soon)
     - Add/remove technical prompts from prompt list
-    - View a list of scheduled interviews by day/week/month
+    - View a list of scheduled interviews by day/week/month (Coming Soon)
     - Schedule student pairs for whiteboard interviews
-    - Generate randomized whiteboard pairs and questions from a class list
+    - Generate randomized whiteboard pairs and questions from a class list (Coming Soon)
 - Students can: 
     - See their scheduled interviews
     - Start an interview session
@@ -18,13 +18,17 @@ They Parley app allows code school userAccounts to easily set up and administer 
 An architecture and/or data-flow drawing (preferably in UML) that illustrates how your application works.  
 ![](docs/parley_render.png)
 
-Screenshots of the application
-![]()
-![]()
-![]()
+![](docs/login.png)  
+  
+    
+![](docs/home.png)  
+  
+![](docs/addInterview.png)  
+  
+![](docs/scheduleInterview.png)  
+  
+![](docs/logout.png)  
 
-# The App - 
-[Parley App](http://www.techparley.com/)
 
 ## Thanks to - 
     Links to any other repos used in the application (where applicable)
@@ -33,14 +37,11 @@ Screenshots of the application
 # Technologies 
 - [Spring](https://spring.io/)
 - [Thymeleaf](https://www.thymeleaf.org/)
-- [AWS Lambda](https://aws.amazon.com/lambda/)
 - [AWS RDS](https://aws.amazon.com/rds/)
 - [AWS CodePipeline](https://aws.amazon.com/codepipeline/)
 - [AWS EC2](https://aws.amazon.com/ec2/)
 - [AWS S3](https://aws.amazon.com/s3/)
 - [AWS Elastic Beanstalk](https://aws.amazon.com/elasticbeanstalk/)
-<!--- [AWS SES](https://aws.amazon.com/ses/)-->
-- [AWS CloudWatch](https://aws.amazon.com/cloudwatch/)
 
 # How to use Parley
 Directions to run the application, both for local development and in production
