@@ -2,30 +2,44 @@
 <html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
 <head>
     <meta charset="UTF-8">
+    <link href="/css/reset.css" rel="stylesheet" />
+    <link href="/css/general.css" rel="stylesheet" />
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootswatch/4.3.1/sketchy/bootstrap.min.css">
     <title>Error</title>
 
 </head>
 <body>
-<h3>There was an error that occurred</h3>
-<img src="/images/error.jpg" alt="Error" width="500px">
-<table id="errorMsg">
-    <tr>
-        <td>Path:</td>
-        <td th:text="${path}"/>
-    </tr>
-    <tr>
-        <td>Error:</td>
-        <td th:text="${error}"/>
-    </tr>
-    <tr>
-        <td>Status:</td>
-        <td th:text="${status}"/>
-    </tr>
-    <tr>
-        <td>Message:</td>
-        <td th:text="${message}"/>
-    </tr>
-</table>
+<!--<div th:if="${principal == null}">-->
+    <!--<div th:replace="fragments/header :: header"></div>-->
+<!--</div>-->
+<div class="divCenterHolder">
+    <div class="errorScreen">
+        <h3>There was an error that occurred</h3>
+        <img src="/images/error.jpg" alt="Error" width="500px">
+        <a href="/"><h3>Home</h3></a>
+    </div>
+
+    <table id="errorMsg" class="table table-hover">
+        <tr class="table-active">
+            <td scope="row">Path:</td>
+            <td th:text="${path}"/>
+        </tr>
+        <tr class="table-active">
+            <td scope="row">Error:</td>
+            <td th:text="${error}"/>
+        </tr>
+        <tr class="table-active">
+            <td scope="row">Status:</td>
+            <td th:text="${status}"/>
+        </tr>
+        <tr class="table-active">
+            <td scope="row">Message:</td>
+            <td th:text="${message}"/>
+        </tr>
+    </table>
+
+</div>
+
 
 <div th:replace="fragments/footer :: foot"></div>
 </body>
