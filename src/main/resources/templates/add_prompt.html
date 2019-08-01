@@ -22,6 +22,17 @@
         <button>Save</button>
     </form>
 
+    <div>
+        <form method="POST" action="/delete/prompt">
+            <select name="promptId">
+                <fragment th:each="prompt: ${promptsList}">
+                    <option th:value="${prompt.getId()}" th:text="${prompt.getTitle()}">Prompt To Be Deleted</option>
+                </fragment>
+            </select>
+            <input type="submit" value="Delete This Prompt" />
+        </form>
+    </div>
+
     <img src="images/dry-erase-home.png" alt="Whiteboard"><br>
 
     <div th:replace="fragments/footer :: foot"></div>
