@@ -1,0 +1,77 @@
+header {
+    margin-bottom: 60px;
+}
+
+footer{
+    position: fixed;
+    left: 45%;
+    bottom: 0;
+    width 100%;
+    text-align: center;
+}
+
+form {
+    text-align: center;
+    margin: 30px auto;
+}
+
+form select {
+    display: block;
+    margin: 0 auto;
+    padding: 5px;
+    width: 50%;
+}
+
+.centerBtn {
+    display: block;
+    margin: 15px auto;
+}
+
+section {
+    margin: 60px auto;
+    text-align: center;
+}
+
+.divCenterHolder {
+    text-align: center;
+}
+
+.divCenterHolder2 {
+    display: block;
+    text-align: center;
+    margin: 15px auto;
+    align: center;
+}
+
+.logoutMsg {
+    margin: 120px auto;
+    text-align: center;
+}
+
+.devTeam{
+    height: 200px;
+    width: 100%;
+    display: block;
+}
+
+.devHolder{
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: center;
+}
+
+.devCard{
+    margin: 30px;
+}
+
+.errorScreen{
+    margin: 30px auto;
+    display: block;
+}
+
+#timer{
+    text-align: center;
+    width: 100%;
+    position: fixed;
+}

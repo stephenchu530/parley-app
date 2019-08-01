@@ -79,14 +79,15 @@ public class S3Client {
         return fileUrl;
     }
 
-    public String uploadFile2Pdfs(MultipartFile multipartFile) {
+    public String uploadFile2Pdfs(File file) {
         String fileUrl = "";
         try {
-            File file = convertMultiPartToFile(multipartFile);
-            String fileName = generateFileName(multipartFile);
+//            File file = convertMultiPartToFile(multipartFile);
+            String fileName = file.getName();
             fileUrl = pdf_endpointUrl + "/" + fileName;
             uploadFileTos3bucket(fileName, file, pdf_bucket);
             file.delete();
+            fileUrl = fileUrl.replace("-website-", "-");
         } catch (Exception e) {
             e.printStackTrace();
         }

@@ -27,8 +27,8 @@ public class UserAccount implements UserDetails {
     private List<Schedules> interviewSchedule;
 
     @Column
-    @ElementCollection(targetClass=Long.class)
-    private List<Long> listOfAssessments;
+    @ElementCollection(targetClass=String.class)
+    private List<String> listOfAssessments;
 
     @Column
     @ElementCollection(targetClass=String.class)
@@ -71,7 +71,7 @@ public class UserAccount implements UserDetails {
         this.setPassword(password);
         this.setEmail(email);
         this.setInterviewSchedule(new ArrayList<Schedules>());
-        this.setListOfAssessments(new ArrayList<Long>());
+        this.setListOfAssessments(new ArrayList<String>());
     }
 
     //constructors for student users
@@ -122,7 +122,7 @@ public class UserAccount implements UserDetails {
         return interviewSchedule;
     }
 
-    public List<Long> getListOfAssessments() {
+    public List<String> getListOfAssessments() {
         return listOfAssessments;
     }
 
@@ -203,7 +203,7 @@ public class UserAccount implements UserDetails {
         this.interviewSchedule = interviewerSchedule;
     }
 
-    public void setListOfAssessments(List<Long> listOfAssessments) {
+    public void setListOfAssessments(List<String> listOfAssessments) {
         this.listOfAssessments = listOfAssessments;
     }
 
