@@ -1,12 +1,48 @@
+body{
+    top: 0;
+}
+
 header {
     margin-bottom: 60px;
 }
 
 footer{
+    height: 50px;
     position: fixed;
     left: 45%;
     bottom: 0;
     width 100%;
+    text-align: center;
+
+}
+
+.wrapper {
+  min-height: 100%;
+
+  /* Equal to height of footer */
+  /* But also accounting for potential margin-bottom of last child */
+  margin-bottom: -50px;
+}
+
+.push {
+  height: 50px;
+}
+
+.loginHolder{
+    display: block;
+
+}
+
+.imageHolder{
+    position: relative;
+}
+
+.imageContent{
+    position: absolute;
+    top: 60%;
+    left: 25%;
+    transform: translate(-50%, -50%);
+    font-size: 14px;
     text-align: center;
 }
 
@@ -72,6 +108,26 @@ section {
 
 #timer{
     text-align: center;
+    align-content: center;
+}
+
+
+.timerBox{
+    background-color: gray;
+    z-index: 9999;
+    height: 45px;
     width: 100%;
     position: fixed;
+    display: flex;
+    flex-flow: row nowrap;
+    top: 0;
+    overflow: hidden;
+    justify-content: center;
+    align-content: center;
+    text-align: center;
+    margin-bottom: 15px;
+}
+
+.eval{
+    margin-top: 30px;
 }

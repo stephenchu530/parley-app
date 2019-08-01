@@ -12,16 +12,31 @@
 
     <div th:replace="fragments/header :: header" ></div>
 
-    <h1>Add Interview Prompt</h1>
+    <center>
+        <h1>Add Interview Prompt</h1>
+    </center>
+
 
     <!-- form to add prompts to the db-->
     <form method="POST" action="/prompt" encType="multipart/form-data">
-        <p>Prompt Title: <input name="title" id="title"></p>
-        <p>Category: <input name="category" id="category"></p>
-        <p>Prompt URL: <input name="promptUrl" id="promptUrl"></p>
-        <button>Save</button>
+        <fieldset>
+            <legend></legend>
+            <div class="form-group">
+                <label for="title">Prompt Title:</label>
+                <input name="title" id="title">
+            </div>
+            <div class="form-group">
+                <label for="category">Category: </label>
+                <input name="category" id="category">
+            </div>
+            <div class="form-group">
+                <label for="promptUrl">Prompt URL: </label>
+                <input name="promptUrl" id="promptUrl">
+            </div>
+            <input type="submit" class="btn btn-primary" value="Submit">
+        </fieldset>
     </form>
-
+  
     <div>
         <form method="POST" action="/delete/prompt">
             <select name="promptId">
@@ -33,7 +48,12 @@
         </form>
     </div>
 
-    <img src="images/dry-erase-home.png" alt="Whiteboard"><br>
+    <div class="divCenterHolder2">
+        <img src="images/dry-erase-home.png" alt="Whiteboard"><br>
+    </div>
+    <div class="wrapper">
+        <div class="push"></div>
+    </div>
 
     <div th:replace="fragments/footer :: foot"></div>
 

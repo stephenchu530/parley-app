@@ -10,31 +10,52 @@
 </head>
 <body>
     <div th:replace="fragments/loginPageHeader :: header"></div>
-    <form action="/login" class="col s12" method="post">
-        <fieldset>
-            <legend>Login</legend>
-            <div th:if="${error}">
-                <p style="color: red;" th:text="${error}"></p>
-            </div>
 
-            <div class="form-group">
-                <label for='username' class="col-sm-2 col-form-label">Enter your username</label>
-                <input class='validate' type='text' name='username' id='log-username' />
+    <div class="loginHolder">
+        <div class="imageContainer">
+            <img src="/images/dry-erase-home.png" alt="Whiteboard" style="width:70%;">
+            <div class="imageContent">
+                <h1>Parley</h1>
+                <p>Parley is the application making the mock whiteboard interview process easier.</p>
+                <p>No more guessing about when your interview is or who you're doing it with.</p>
+                <p>A userAccount simply schedules the interview and you are notified</p>
+                <p>We take all of the guesswork out of scheduling the interview. Less stress! More time to practice</p>
             </div>
+        </div>
 
-            <div class="form-group">
-                <label for='password' class="col-sm-2 col-form-label">Enter your password</label>
-                <input class='validate' type='password' name='password' id='log-password' />
+        <!--<div class="divCenterHolder2">-->
+        <div>
+            <form action="/login" class="col s12" method="post">
+                <fieldset>
+                    <legend>Login</legend>
+                    <div th:if="${error}">
+                        <p style="color: red;" th:text="${error}"></p>
+                    </div>
+
+                    <div class="form-group">
+                        <label for='username' class="col-sm-2 col-form-label">Enter your username</label>
+                        <input class='validate' type='text' name='username' id='log-username' />
+                    </div>
+
+                    <div class="form-group">
+                        <label for='password' class="col-sm-2 col-form-label">Enter your password</label>
+                        <input class='validate' type='password' name='password' id='log-password' />
+                    </div>
+
+                    <div class='row'>
+                        <button type='submit' name='btn_login' class="btn btn-primary centerBtn">Login</button>
+                    </div>
+                </fieldset>
+            </form>
+
+            <div>
+                <!--<button type="button" id="myBtn" class="btn btn-primary btn-lg centerBtn">Login</button>-->
+                <button type="button" id="myBtn" class="btn btn-primary btn-lg centerBtn">Register</button>
             </div>
+        </div>
 
-            <div class='row'>
-                <button type='submit' name='btn_login' class="btn btn-primary centerBtn">Login</button>
-            </div>
-        </fieldset>
-    </form>
+        <!--</div>-->
 
-    <div class="divCenterHolder">
-        <button type="button" id="myBtn" class="btn btn-primary btn-lg centerBtn">Register</button>
     </div>
 
 
@@ -85,8 +106,11 @@
             </div>
         </div>
     </div>
+    <div class="wrapper">
+        <div class="push"></div>
+    </div>
 
-<div th:replace="fragments/footer :: foot"></div>
+    <div th:replace="fragments/footer :: foot"></div>
 <script type="text/javascript" src="/js/modal.js"></script>
 
 <!--<script type="text/javascript" src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>-->
