@@ -5,7 +5,7 @@
         </div>
         <ul>
             <li th:each="assessment: ${user.getListOfAssessments()}">
-                <p><span th:text="${#strings.substring(assessment,46,56)}"></span> <a th:href="${assessment}"><button>Download</button></a></p>
+                <p><span th:text="${#strings.substring(assessment,46,56)}"></span> <a th:href="${assessment}"><button>View</button></a></p>
             </li>
         </ul>
     </nav>
