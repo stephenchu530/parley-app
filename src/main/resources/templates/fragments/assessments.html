@@ -5,12 +5,23 @@
         You have no assessments!
     </div>
 
+    <div class="assessmentHolder">
+        <div class="card text-white bg-dark mb-3" style="max-width: 20rem;" th:each="assessment: ${user.getListOfAssessments()}">
+            <div th:text="${#strings.substring(assessment,46,56)}" class="card-header">
 
-    <ul class="list-group">
-        <li th:each="assessment: ${user.getListOfAssessments()}" class="list-group-item d-flex justify-content-between align-items-center">
-            <p><span th:text="${#strings.substring(assessment,46,56)}"></span> <a th:href="${assessment}"><button>View</button></a></p>
-        </li>
-    </ul>
+            </div>
+            <div class="card-body">
+                <p><span ></span> <a th:href="${assessment}"><button>View</button></a></p>
+            </div>
+
+        </div>
+    </div>
+
+    <!--<ul class="list-group">-->
+        <!--<li th:each="assessment: ${user.getListOfAssessments()}">-->
+            <!--<p><span th:text="${#strings.substring(assessment,46,56)}"></span> <a th:href="${assessment}"><button>View</button></a></p>-->
+        <!--</li>-->
+    <!--</ul>-->
 
 
 
