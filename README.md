@@ -55,7 +55,7 @@ these should be very detailed!
 ## Directions to Clone and Run Locally
 + CD into the desired directory on your local machine and clone the repo by typing the following in your terminal:
 ```
- $ https://github.com/stephenchu530/parley-app
+ $ git clone https://github.com/stephenchu530/parley-app
 ```
 
 + Link for cloning the repo can be found from [Parley Repo](https://github.com/stephenchu530/parley-app)
