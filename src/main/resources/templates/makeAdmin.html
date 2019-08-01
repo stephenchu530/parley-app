@@ -5,21 +5,20 @@
     <link href="/css/reset.css" rel="stylesheet" />
     <link href="/css/general.css" rel="stylesheet" />
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootswatch/4.3.1/sketchy/bootstrap.min.css">
-    <link href="/css/modalOveride.css" rel="stylesheet" />
     <title>Make Admin</title>
 </head>
 <body>
-<div th:replace="fragments/header :: header"></div>
+    <div th:replace="fragments/header :: header" ></div>
 
     <section>
         <h2>Your Profile</h2>
-        <p th:text="${'Email: ' + loggedInUser.username}"></p>
-        <p th:text="${'First Name: ' + loggedInUser.firstName}"></p>
-        <p th:text="${'Last Name: ' + loggedInUser.lastName}"></p>
+        <p th:text="${'Email: ' + user.username}"></p>
+        <p th:text="${'First Name: ' + user.firstName}"></p>
+        <p th:text="${'Last Name: ' + user.lastName}"></p>
         <!--<p th:text="${'Team: ' + loggedInUser.team}"></p>-->
     </section>
-    <section th:if="${loggedInUser.isAdmin()}">
-        <form method="post" action="/makeAdmin" th:if="${loggedInUser.isAdmin()}">
+    <section >
+        <form method="post" action="/makeAdmin" >
             <fieldset>
                 <legend>Grant Admin Rights</legend>
                 <div class="form-group">

@@ -1,7 +1,9 @@
 package com.parley.parley.controllers;
 
+import com.parley.parley.models.Prompts;
 import com.parley.parley.models.RoleType;
 import com.parley.parley.models.UserAccount;
+import com.parley.parley.repository.PromptsRepository;
 import com.parley.parley.repository.SchedulesRepository;
 import com.parley.parley.repository.UserAccountRepository;
 import com.parley.parley.repository.RoleRepository;
@@ -38,6 +40,9 @@ public class UserAccountController {
 
     @Autowired
     PasswordEncoder bCryptPasswordEncoder;
+
+    @Autowired
+    PromptsRepository promptsRepository;
 
     @GetMapping("/")
     public String splashPage(){
@@ -84,7 +89,7 @@ public class UserAccountController {
     @GetMapping("/makeAdmin")
     public String makeAdminGet(Principal user, Model model){
         Iterable<UserAccount> users = userAccountRepository.findAll();
-        model.addAttribute("loggedInUser", userAccountRepository.findByUsername(user.getName()));
+        model.addAttribute("user", userAccountRepository.findByUsername(user.getName()));
         model.addAttribute("users", users);
         return "makeAdmin";
     }
@@ -105,13 +110,24 @@ public class UserAccountController {
         return "logout_completed";
     }
 
-//    @RequestMapping(value = "/profile", method = RequestMethod.POST)
-//    public String makeAdmin(Principal user, Model m, String makeUserAdmin) {
-//        if(userRepository.findByUsername(user.getName()).isAdmin()) {
-//            UserAccount selectedUser = userRepository.findByUsername(makeUserAdmin);
-//            RoleType adminRole = roleRepository.findByRole("admin");
-//            selectedUser.getRoleTypes().add(adminRole);
-//            userRepository.save(selectedUser);
-//        }
-//        return "redirect:/profile";
+    @GetMapping("/aboutus")
+    public String getAboutUs(Principal principal, Model model){
+        UserAccount user = userAccountRepository.findByUsername(principal.getName());
+        model.addAttribute("user", user);
+        return "aboutus";
+    }
+
+    @GetMapping("/prompt")
+    public String showPromptEntryPage(Principal principal, Model model){
+        UserAccount user = userAccountRepository.findByUsername(principal.getName());
+        model.addAttribute("user", user);
+        return "add_prompt";
+    }
+
+    @PostMapping("/prompt")
+    public RedirectView addNewPrompt(String title, String category, String promptUrl){
+        Prompts prompt = new Prompts(title, category, promptUrl);
+        promptsRepository.save(prompt);
+        return new RedirectView("/prompt");
+    }
 }

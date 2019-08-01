@@ -92,10 +92,13 @@ function getTally() {
        sum += parseInt(document.getElementById('range-value'+i).innerHTML);
        console.log(sum);
     }
-    document.getElementById('finalScore').innerHTML = sum;
+//    document.getElementById('finalScore').innerHTML = sum;
+    document.getElementById('finalScore').setAttribute("value", sum);
+
 }
 
-document.getElementById('finalScore').innerHTML = 0;
+//document.getElementById('finalScore').innerHTML = 0;
+document.getElementById('finalScore').setAttribute("value", 0);
 
 var mins = 45;
     var secs = mins * 60;

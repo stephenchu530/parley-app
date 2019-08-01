@@ -9,12 +9,7 @@
     <title>Login</title>
 </head>
 <body>
-<div th:if="${principal == null}">
-    <div th:replace="fragments/header :: header"></div>
-</div>
-<!--<div th:if="${principal != null}">-->
-    <!--<div th:replace="fragments/loggedInHeader :: header(principal=${principal})"></div>-->
-<!--</div>-->
+    <div th:replace="fragments/loginPageHeader :: header"></div>
     <form action="/login" class="col s12" method="post">
         <fieldset>
             <legend>Login</legend>
