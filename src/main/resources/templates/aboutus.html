@@ -1,20 +1,21 @@
 <!DOCTYPE html>
-<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml" >
 <head>
     <meta charset="UTF-8">
     <title>About The Parley Developers</title>
-    <!--<link href="/aboutUs.css" rel="stylesheet" />-->
     <link href="/css/reset.css" rel="stylesheet" />
     <link href="/css/general.css" rel="stylesheet" />
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootswatch/4.3.1/sketchy/bootstrap.min.css">
 
 </head>
 <body>
-<div th:if="${user != null}" ? th:replace="fragments/header :: header" : th:replace="fragments/loginPageHeader :: header">
+    <div th:if="${user == null}">
+        <div th:replace="fragments/loginPageHeader :: header" ></div>
+    </div>
+    <div th:if="${user != null}">
+        <div th:replace="fragments/header :: header" ></div>
+    </div>
 
-    <!--<div th:replace="fragments/header :: header" ></div>-->
-</div>
-<!--<div th:replace="fragments/header :: header" ></div>-->
     <center>
         <h1 class="center">About The Parley Developers</h1>
     </center>
@@ -38,8 +39,11 @@
             <div class="card-header">Robert Bronson</div>
             <div class="card-body">
                 <img src="/images/Robert.png" alt="RobertImage" title="Robert image" style="height: 200px; width: 100%; display: block;"/>
-                <p class="card-text">
-
+                <p class="card-text">Hello my name is Robert. I come from a background in Army aviation where I worked on helicopters. I worked
+                    in aviation as a civilian for a while, but the industry became unstable I decided to transition into a career that would be
+                    more mentally challenging and in demand. I took a leap and got out of that field and went back to school to become a developer.
+                    I chose software development because I feel like technology is in a position now to improve the quality of life for people on
+                    our planet. I want to be a part of creating things that have widespread positive impact on the world.
                 </p>
                 <a class="aboutb card-link" href="https://www.linkedin.com/in/robert-bronson/" target="_blank">LinkedIn</a>
                 <a class="aboutb card-link" href="https://github.com/rjbrons" target="_blank">GitHub</a>
