@@ -2,8 +2,13 @@
 <html lang="en" xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8">
+    <link href="/css/reset.css" rel="stylesheet" />
+    <link href="/css/general.css" rel="stylesheet" />
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootswatch/4.3.1/sketchy/bootstrap.min.css">
     <title th:if="${user.isAdmin() == true}">Instructor Profile</title>
     <title th:if="${user.isAdmin() == false}">Student Profile</title>
+    <title th:if="${user.isAdmin()}">Instructor Profile</title>
+    <title th:if="${!user.isAdmin()}">Student Profile</title>
 </head>
 <body>
 

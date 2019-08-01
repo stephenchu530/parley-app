@@ -89,7 +89,7 @@ public class UserAccountController {
     @GetMapping("/makeAdmin")
     public String makeAdminGet(Principal user, Model model){
         Iterable<UserAccount> users = userAccountRepository.findAll();
-        model.addAttribute("loggedInUser", userAccountRepository.findByUsername(user.getName()));
+        model.addAttribute("user", userAccountRepository.findByUsername(user.getName()));
         model.addAttribute("users", users);
         return "makeAdmin";
     }
@@ -110,13 +110,11 @@ public class UserAccountController {
         return "logout_completed";
     }
 
-//    @RequestMapping(value = "/profile", method = RequestMethod.POST)
-//    public String makeAdmin(Principal user, Model m, String makeUserAdmin) {
-//        if(userRepository.findByUsername(user.getName()).isAdmin()) {
-//            UserAccount selectedUser = userRepository.findByUsername(makeUserAdmin);
-//            RoleType adminRole = roleRepository.findByRole("admin");
-//            selectedUser.getRoleTypes().add(adminRole);
-//            userRepository.save(selectedUser);
-//        }
-//        return "redirect:/profile";
+    @GetMapping("/aboutus")
+    public String aboutUs(Principal principal, Model model){
+        UserAccount user = userAccountRepository.findByUsername(principal.getName());
+        model.addAttribute("user", user);
+        return "aboutus";
+    }
+
 }
