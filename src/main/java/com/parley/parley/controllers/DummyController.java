@@ -1,5 +1,6 @@
 package com.parley.parley.controllers;
 
+import com.parley.parley.config.S3Client;
 import com.parley.parley.models.Assessments;
 import com.parley.parley.models.Schedules;
 import com.parley.parley.models.UserAccount;
@@ -17,10 +18,17 @@ import org.springframework.web.servlet.view.RedirectView;
 import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.PrintWriter;
+import java.util.List;
 
 @Controller
 public class DummyController {
 
+    private S3Client s3Client;
+
+    @Autowired
+    DummyController(S3Client s3Client){
+        this.s3Client = s3Client;
+    }
     @Autowired
     UserAccountRepository userAccountRepository;
     @Autowired
@@ -37,7 +45,7 @@ public class DummyController {
         //get interviewee and interviewer names from ID
         UserAccount giving = userAccountRepository.findById(assessment.getInterviewer()).get();
         UserAccount receiving = userAccountRepository.findById(assessment.getInterviewee()).get();
-        String assessmentDate = assessment.getDateOfInterview().toString();
+        String assessmentDate = assessment.getDateOfInterview().toString().substring(0,10);
         File otherFile = new File(assessmentDate+receiving.getUsername()+".txt"); //figure this out - send straight to s3 bucket instead of filename
         PrintWriter toFile = new PrintWriter(otherFile);
         StringBuilder results = new StringBuilder();
@@ -75,8 +83,13 @@ public class DummyController {
         results.append("\n");
         toFile.println(results);
         toFile.close();
-        //send file to s3 bucket.
-//        otherFile.delete();
+        String fileUrl = s3Client.uploadFile2Pdfs(otherFile);
+        UserAccount student = userAccountRepository.findById(assessment.getInterviewee()).get();
+        List tempList = student.getListOfAssessments();
+        tempList.add(fileUrl);
+        student.setListOfAssessments(tempList);
+        userAccountRepository.save(student);
+        otherFile.delete();
         return new RedirectView("/myprofile");
     }
 }
