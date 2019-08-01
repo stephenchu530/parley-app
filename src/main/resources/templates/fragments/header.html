@@ -7,7 +7,7 @@
                 <li th:if="${!user.isAdmin()}"class="nav-item" ><a href="/myassessments" class="nav-link" data-toggle="tab"><button>My Assessments</button></a></li>
                 <li th:if="${user.isAdmin()}" class="nav-item"><a href="/addstudent" class="nav-link" data-toggle="tab"><button>Add Student</button></a></li>
                 <li th:if="${user.isAdmin()}" class="nav-item"><a href="/addclass" class="nav-link" data-toggle="tab"><button>Add Class</button></a></li>
-                <li th:if="${user.isAdmin()}" class="nav-item"><a href="/addprompt" class="nav-link" data-toggle="tab"><button>Add Prompt</button></a></li>
+                <li th:if="${user.isAdmin()}" class="nav-item"><a href="/prompt" class="nav-link" data-toggle="tab"><button>Add Prompt</button></a></li>
                 <li th:if="${user.isAdmin()}" class="nav-item"><a href="/schedule" class="nav-link" data-toggle="tab"><button>Schedule Interviews</button></a></li>
                 <li th:if="${user.isAdmin()}" class="nav-item"><a href="/makeAdmin" class="nav-link" data-toggle="tab"><button>Make Admin</button></a></li>
                 <li class="nav-item"><a href="/editprofile" class="nav-link" data-toggle="tab"><button>Edit Profile</button></a></li>
