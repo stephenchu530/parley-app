@@ -18,9 +18,6 @@ footer{
 
 .wrapper {
   min-height: 100%;
-
-  /* Equal to height of footer */
-  /* But also accounting for potential margin-bottom of last child */
   margin-bottom: -50px;
 }
 
@@ -29,21 +26,36 @@ footer{
 }
 
 .loginHolder{
-    display: block;
+    display: flex;
+    flex-direction: wrap;
 
 }
 
 .imageHolder{
     position: relative;
+    width: 70%;
 }
 
 .imageContent{
     position: absolute;
-    top: 60%;
-    left: 25%;
+    top: 50%;
+    left: 47%;
     transform: translate(-50%, -50%);
     font-size: 14px;
     text-align: center;
+}
+
+.logInForm{
+    width: 50%;
+    margin-right: 45px;
+    margin-top: 120px;
+    text-align: center;
+}
+
+.logInForm form{
+    width: 100%;
+    margin-top: 45px;
+    align: center;;
 }
 
 form {
@@ -77,6 +89,15 @@ section {
     text-align: center;
     margin: 15px auto;
     align: center;
+}
+
+.divCenterHolder3 {
+    display: block;
+    text-align: center;
+    margin: 15px auto;
+    align-content: center;
+    justify-content: center;
+
 }
 
 .logoutMsg {
@@ -113,7 +134,7 @@ section {
 
 
 .timerBox{
-    background-color: gray;
+    background-color: white;
     z-index: 9999;
     height: 45px;
     width: 100%;
@@ -130,4 +151,13 @@ section {
 
 .eval{
     margin-top: 30px;
+}
+
+.assessmentHolder{
+    display: flex;
+    flex-direction: column;
+    flex-wrap: wrap;
+    justify-content: center;
+    margin: 15px;
+
 }

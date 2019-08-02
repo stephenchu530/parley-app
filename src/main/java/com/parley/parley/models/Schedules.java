@@ -67,6 +67,10 @@ public class Schedules {
         return doneOne;
     }
 
+    public Boolean getDoneTwo() {
+        return doneTwo;
+    }
+
     // Setters
 
     public void setId(Long id) {
