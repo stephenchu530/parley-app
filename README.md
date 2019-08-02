@@ -20,22 +20,27 @@ An architecture and/or data-flow drawing (preferably in UML) that illustrates ho
 
 ![](docs/login.png)  
     
-![](docs/home.png)  
+![](docs/instructorHome.png)  
   
-![](docs/addInterview.png)  
+![](docs/grantAdmin.png)  
   
 ![](docs/scheduleInterview.png)  
+
+![](docs/studentHome.png)  
+
+![](docs/studentWithScheduled.png)  
+
+![](docs/viewAssessments.png)  
   
 ![](docs/logout.png)  
 
-
-## Thanks to - 
-https://css-tricks.com/snippets/css/a-guide-to-flexbox/
-https://www.w3schools.com/css/tryit.asp?filename=trycss_image_text_center2
-https://stackoverflow.com/questions/15000239/2-style-inline-css-img-tags
-https://stackoverflow.com/questions/2744690/preventing-fixed-footer-from-overlapping-content
-https://css-tricks.com/couple-takes-sticky-footer/
-https://stackoverflow.com/questions/12381563/how-to-stop-browser-back-button-using-javascript
+## Thanks to
+* https://css-tricks.com/snippets/css/a-guide-to-flexbox/
+* https://www.w3schools.com/css/tryit.asp?filename=trycss_image_text_center2
+* https://stackoverflow.com/questions/15000239/2-style-inline-css-img-tags
+* https://stackoverflow.com/questions/2744690/preventing-fixed-footer-from-overlapping-content
+* https://css-tricks.com/couple-takes-sticky-footer/
+* https://stackoverflow.com/questions/12381563/how-to-stop-browser-back-button-using-javascript
 
 # Technologies 
 - [Spring](https://spring.io/)
@@ -68,7 +73,7 @@ these should be very detailed!
     + In the terminal: ``$ psql``
     + You may need to type your password
     + Then in the terminal: ``$ CREATE DATABASE parley;``
-    + The tables will be created according to the following schema
+    + The tables will be created according to the following schema:  
     ![](docs/db_schema_render.png) 
 + Open the code on your desired IDE.
 + If using ItelliJ IDEA, this is found in the PotluckPlannerApplication dropdown and clicking Edit Configurations, then 
