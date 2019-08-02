@@ -93,9 +93,9 @@ Environment variables: field.
 + @GetMapping("/")
     + Redirect the user to the home page
 + @GetMapping("/register")
-    + The page where a user can register for the Potlucky websited
+    + The page where a user can register as a Parley user  
 + @GetMapping("/login")
-    + The page to login once registered
+    + The page for registered users to login  
 + @GetMapping("/logout_complete")
     + The page where user are redirected once successfully logged out
 + @GetMapping("/aboutus")
@@ -125,11 +125,11 @@ Environment variables: field.
 + @PostMapping("/assessments/{idString}")
     + Upon submission of an evaluation, it will be turned into an assessment object
 + @PostMapping("/scheduleinterview")
-    + Scheduling an interview for a student
+    + Scheduling an interview for a student - for instructors only.  
 + @PostMapping("/register")
     + Puts the user information in the database so they can login later
 + @PostMapping("/makeAdmin")
-    + Gives a designated user admin rights
+    + Gives a designated user admin rights - admins only.
 + @PostMapping("/delete/prompt")
     + An admin can choose a prompt to be deleted from the database
 
