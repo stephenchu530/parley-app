@@ -86,11 +86,21 @@ public class AssessmentsController {
         );
         assessmentsRepository.save(thisAssessment);
         String assId = Long.toString(thisAssessment.getId());
-        return new RedirectView("/toFile/" + assId);
+        String person = "1";
+        if (current.getDoneOne() == false) {
+            current.setDoneOne(true);
+            person = "1";
+        }
+        else {
+            current.setDoneTwo(true);
+            person = "2";
+        }
+        schedulesRepository.save(current);
+        return new RedirectView("/toFile/" + assId + "/" + person);
     }
 
-    @GetMapping("/toFile/{id}")
-    public RedirectView saveToTxt(@PathVariable String id) throws FileNotFoundException {
+    @GetMapping("/toFile/{id}/{person}")
+    public RedirectView saveToTxt(@PathVariable String id, @PathVariable String person) throws FileNotFoundException {
         Assessments assessment = assessmentsRepository.findById(Long.valueOf(id)).get();
         UserAccount giving = userAccountRepository.findById(assessment.getInterviewer()).get();
         UserAccount receiving = userAccountRepository.findById(assessment.getInterviewee()).get();
@@ -155,7 +165,12 @@ public class AssessmentsController {
         toFile.println(results);
         toFile.close();
         String fileUrl = s3Client.uploadFile2Pdfs(otherFile);
-        UserAccount student = userAccountRepository.findById(assessment.getInterviewee()).get();
+        UserAccount student;
+        if (person.equals("1")) {
+            student = userAccountRepository.findById(assessment.getInterviewee()).get();
+        } else {
+            student = userAccountRepository.findById(assessment.getInterviewer()).get();
+        }
         List tempList = student.getListOfAssessments();
         if (!tempList.contains(fileUrl)){
             tempList.add(fileUrl);
