@@ -34,13 +34,13 @@ An architecture and/or data-flow drawing (preferably in UML) that illustrates ho
   
 ![](docs/logout.png)  
 
-## Thanks to - 
-https://css-tricks.com/snippets/css/a-guide-to-flexbox/
-https://www.w3schools.com/css/tryit.asp?filename=trycss_image_text_center2
-https://stackoverflow.com/questions/15000239/2-style-inline-css-img-tags
-https://stackoverflow.com/questions/2744690/preventing-fixed-footer-from-overlapping-content
-https://css-tricks.com/couple-takes-sticky-footer/
-https://stackoverflow.com/questions/12381563/how-to-stop-browser-back-button-using-javascript
+## Thanks to
+* https://css-tricks.com/snippets/css/a-guide-to-flexbox/
+* https://www.w3schools.com/css/tryit.asp?filename=trycss_image_text_center2
+* https://stackoverflow.com/questions/15000239/2-style-inline-css-img-tags
+* https://stackoverflow.com/questions/2744690/preventing-fixed-footer-from-overlapping-content
+* https://css-tricks.com/couple-takes-sticky-footer/
+* https://stackoverflow.com/questions/12381563/how-to-stop-browser-back-button-using-javascript
 
 # Technologies 
 - [Spring](https://spring.io/)
