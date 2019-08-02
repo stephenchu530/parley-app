@@ -30,7 +30,12 @@ An architecture and/or data-flow drawing (preferably in UML) that illustrates ho
 
 
 ## Thanks to - 
-    Links to any other repos used in the application (where applicable)
+https://css-tricks.com/snippets/css/a-guide-to-flexbox/
+https://www.w3schools.com/css/tryit.asp?filename=trycss_image_text_center2
+https://stackoverflow.com/questions/15000239/2-style-inline-css-img-tags
+https://stackoverflow.com/questions/2744690/preventing-fixed-footer-from-overlapping-content
+https://css-tricks.com/couple-takes-sticky-footer/
+https://stackoverflow.com/questions/12381563/how-to-stop-browser-back-button-using-javascript
 
 # Technologies 
 - [Spring](https://spring.io/)
@@ -122,8 +127,6 @@ Environment variables: field.
     + Gives a designated user admin rights
 + @PostMapping("/delete/prompt")
     + An admin can choose a prompt to be deleted from the database
-
-    
 
 ## Planning
 + [User Stories](docs/UserStories.md)
