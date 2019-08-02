@@ -34,7 +34,7 @@ An architecture and/or data-flow drawing (preferably in UML) that illustrates ho
   
 ![](docs/logout.png)  
 
-## Thanks to - 
+## Thanks to
 * https://css-tricks.com/snippets/css/a-guide-to-flexbox/
 * https://www.w3schools.com/css/tryit.asp?filename=trycss_image_text_center2
 * https://stackoverflow.com/questions/15000239/2-style-inline-css-img-tags
