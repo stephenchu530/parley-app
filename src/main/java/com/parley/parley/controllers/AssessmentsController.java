@@ -102,8 +102,15 @@ public class AssessmentsController {
     @GetMapping("/toFile/{id}/{person}")
     public RedirectView saveToTxt(@PathVariable String id, @PathVariable String person) throws FileNotFoundException {
         Assessments assessment = assessmentsRepository.findById(Long.valueOf(id)).get();
-        UserAccount giving = userAccountRepository.findById(assessment.getInterviewer()).get();
-        UserAccount receiving = userAccountRepository.findById(assessment.getInterviewee()).get();
+        UserAccount giving;
+        UserAccount receiving;
+        if (person.equals("1")) {
+            giving = userAccountRepository.findById(assessment.getInterviewer()).get();
+            receiving = userAccountRepository.findById(assessment.getInterviewee()).get();
+        } else {
+            receiving = userAccountRepository.findById(assessment.getInterviewer()).get();
+            giving = userAccountRepository.findById(assessment.getInterviewee()).get();
+        }
         String assessmentDate = assessment.getDateOfInterview().toString().substring(0,10);
         File otherFile = new File(assessmentDate+receiving.getUsername()+".txt");
         PrintWriter toFile = new PrintWriter(otherFile);
